@@ -1,0 +1,17 @@
+.chatform  {
+    background: lightgreen;
+    display: flex;
+  }
+  .chatform input::placeholder {
+    color: black;
+  }
+  .chatform input {
+    width: 100%;
+    padding: 15px 10px;
+    margin: 0;
+    border-style: none;
+    background: whitesmoke;
+    font-weight: 300;
+    
+  
+  }

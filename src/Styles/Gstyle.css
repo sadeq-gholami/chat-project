@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+    font-weight: 200;
+    color: 	#3e5869; 
+  }
+  
+  #root {
+    height: 100%;
+  }
+  
+  .app {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 70px;
+    grid-template-areas: 
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r f f f f f";
+  }
+    
+  /*.new-room-form {
+    grid-area: n;
+  }*/
+  
+  .sidebar {
+    grid-area: r;
+  }
+  
+  .messagescreen {
+    grid-area: m;
+  }
+  
+  .chatform {
+    grid-area: f;
+  }
+  

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import '../Styles/MessageScreen.css';
+import '../Styles/Gstyle.css';
+
 
 
 const hardCode= [
@@ -7,7 +10,7 @@ const hardCode= [
         text:'hej hur går det?' 
     },
     {
-        senderId :'Bergitta',
+        senderId :'Birgitta',
         text:'Inte bra :(' 
     },
 
@@ -24,12 +27,13 @@ const hardCode= [
 class MessageScreen extends React.Component {
     render() { 
         return (  
-            <div className= "messagecreen" >
+            <div className= "messagescreen" >
                 {hardCode.map((message,index)=>{
                     return (
                         <div key={index} className= "Message">
-                        <div className = "message-text"> {message.text}</div>
                         <div className = "message-sender"> {message.senderId}</div>
+                        <div className = "message-text"> {message.text}</div>
+                        
                         </div>
                     )
                 })}

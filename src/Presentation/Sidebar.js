@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import '../Styles/Sidebar.css';
+import '../Styles/Gstyle.css';
+
+
+
+
+
+
 class Sidebar extends Component {
-    state = {  }
     render() { 
         return ( 
-            <div></div>
+
+            <div className="sidebar">sidebar</div>
          );
     }
 }

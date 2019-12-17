@@ -1,0 +1,7 @@
+.sidebar {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: lightslategrey;
+    overflow: scroll;
+    height: 100%;
+  }
