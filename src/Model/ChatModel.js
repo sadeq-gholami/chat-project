@@ -6,11 +6,13 @@ import {tokenUrl, instanceLocator} from "../config.js"
 export default class ChatModel extends Observable {
    constructor(){
        super();
-       this.messages =[];
-       this.currentRoomId= null;
-       this.currentUser = null;  //contains functions for interacting with the API.
-       this.availableRooms= [];
-       this.takenRooms= [];
+       this.state={
+       messages :[],
+       currentRoomId:  null,
+       currentUser : null,  //contains functions for interacting with the API
+       availableRooms: [],
+       takenRooms: []
+       }
    }
     
    init(){
@@ -33,8 +35,15 @@ export default class ChatModel extends Observable {
         })           
     .catch(err => console.log('Failed to connect: ', err))
 }
-sendMessage(text) {
-    this.currentUser.sendMessage({
+setCurrentRoomId(id){
+    this.state.currentRoomId= id;
+}
+getCurrentRoomId(){
+   return this.state.currentRoomId;
+}
+sendMessage(text, currentUser) {
+    console.log(this.state.currentRoomId)
+    currentUser.sendMessage({
         text,
         roomId: this.state.currentRoomId
     })
@@ -50,6 +59,7 @@ createRoom(name) {
 subscribeToRoom(roomId ,currentUser) {
     this.messages= [];
     currentUser.subscribeToRoom({
+
         roomId: roomId,
         hooks: {
             onMessage: message => {
@@ -59,7 +69,11 @@ subscribeToRoom(roomId ,currentUser) {
         }
     })
     .then(currentRoom => {
-        this.currentRoomId=  currentRoom.id});
+       // this.setState({currentRoomId: currentRoom.id})
+        this.setCurrentRoomId(currentRoom.id);
+        
+    });
+        
         return currentUser.getJoinableRooms()
         .then(availableRooms => {
             this.availableRooms = availableRooms;

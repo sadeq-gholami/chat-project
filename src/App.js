@@ -10,8 +10,14 @@ class App extends Component {
 }
   render() { 
     this.state.model.init().then(
-      currentUser=> {this.state.model.subscribeToRoom("c1afc728-2acf-40d7-b0d5-f51ce79e2c04", currentUser)}
-    )
+      currentUser=> {this.state.model.subscribeToRoom("c1afc728-2acf-40d7-b0d5-f51ce79e2c04", currentUser)
+    })
+    this.state.model.init().then(
+      currentUser=> {this.state.model.sendMessage("zei was here", currentUser)
+    })
+    
+    
+
     return ( 
       <div></div>
      );
