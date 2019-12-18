@@ -7,14 +7,17 @@ class App extends Component {
   this.state = {  
     model : new ChatModel()
   }
+  this.state.model.addObserver(this)
+}
+update(payLoad){
+  this.state.model.subscribeToRoom("c1afc728-2acf-40d7-b0d5-f51ce79e2c04",this.state.model.currentUser).then(
+    message => console.log(message)
+  )
 }
   render() { 
     this.state.model.init().then(
-      currentUser=> {this.state.model.subscribeToRoom("c1afc728-2acf-40d7-b0d5-f51ce79e2c04", currentUser)
-    })
-    this.state.model.init().then(
-      currentUser=> {this.state.model.sendMessage("zei was here", currentUser)
-    })
+      currentUser=> {this.state.model.setCurrentUser(currentUser)})
+
     
     
 

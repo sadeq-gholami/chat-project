@@ -1,18 +1,16 @@
 import Chatkit from '@pusher/chatkit-client'
 import Observable from "./Observable";
-import {tokenUrl, instanceLocator} from "../config.js"
+import {tokenUrl, instanceLocator} from "./config.js"
 
 
 export default class ChatModel extends Observable {
    constructor(){
        super();
-       this.state={
-       messages :[],
-       currentRoomId:  null,
-       currentUser : null,  //contains functions for interacting with the API
-       availableRooms: [],
-       takenRooms: []
-       }
+       this.messages =[];
+       this.currentRoomId=  null;
+       this.currentUser = null;  //contains functions for interacting with the API
+       this.availableRooms= [];
+       this.takenRooms = [];
    }
     
    init(){
@@ -27,19 +25,28 @@ export default class ChatModel extends Observable {
     return chatManager.connect()
     .then(currentUser => {
         return currentUser
-        //return this.currentUser.getJoinableRooms()
-      /*  .then(availableRooms => {
-                this.availableRooms= availableRooms;
-                this.takenRooms= this.currentUser.rooms;
-            })*/
+        /***/
         })           
     .catch(err => console.log('Failed to connect: ', err))
 }
+roomStatus(currentUser){
+    return currentUser.getJoinableRooms()
+        .then(availableRooms => {
+                return availableRooms;
+            })
+}
 setCurrentRoomId(id){
-    this.state.currentRoomId= id;
+    this.currentRoomId= id;
 }
 getCurrentRoomId(){
-   return this.state.currentRoomId;
+   return this.currentRoomId;
+}
+setCurrentUser(currentUser){
+    this.currentUser = currentUser;
+    this.notifyObservers(currentUser);
+}
+getMessages(){
+    return this.state.messages;
 }
 sendMessage(text, currentUser) {
     console.log(this.state.currentRoomId)
@@ -58,17 +65,15 @@ createRoom(name) {
 }
 subscribeToRoom(roomId ,currentUser) {
     this.messages= [];
-    currentUser.subscribeToRoom({
-
+    return currentUser.subscribeToRoom({
         roomId: roomId,
         hooks: {
             onMessage: message => {
-                console.log("message.text:", message.text)
-                    //this.messages= [...this.state.messages, message]
+                   return message.text;
             }
         }
     })
-    .then(currentRoom => {
+     /** .then(currentRoom => {
        // this.setState({currentRoomId: currentRoom.id})
         this.setCurrentRoomId(currentRoom.id);
         
@@ -78,9 +83,7 @@ subscribeToRoom(roomId ,currentUser) {
         .then(availableRooms => {
             this.availableRooms = availableRooms;
             this.takenRooms= currentUser.rooms;
-            })
+            })*/
     .catch(err => console.log('error on subscribing: ', err))
 }
 }
-
-
