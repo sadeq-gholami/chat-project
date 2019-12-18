@@ -6,7 +6,7 @@
     color: black;
   }
   .chatform input {
-    width: 100%;
+    width: 90%;
     padding: 15px 10px;
     margin: 0;
     border-style: none;
@@ -14,4 +14,10 @@
     font-weight: 300;
     
   
+  }
+  #Sbtn{
+    width: 10%;
+    background: slategray;
+    padding: 20px 10px;
+    font-size: 13px
   }

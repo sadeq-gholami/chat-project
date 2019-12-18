@@ -7,13 +7,17 @@ import '../Styles/Gstyle.css';
 
 
 
-class Sidebar extends Component {
+class Sidebar extends React.Component {
     render() { 
         return ( 
 
-            <div className="sidebar">sidebar</div>
+            <div className="sidebar">
+            <button id = "Rbtn" onClick={this.handleSubmit} type="button" >Rooms</button> 
+            <button id = "Cbtn" onClick={this.handleSubmit} type="button" >Contacts</button> 
+            <h3>Your rooms:</h3>
+            </div>
          );
     }
 }
  
-export default Sidebar;
+export default Sidebar; 

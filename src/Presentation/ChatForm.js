@@ -21,10 +21,11 @@ handleSubmit(e){
 }
     render() { 
         return ( 
-            <form className ="chatform" onSubmit={this.handleSubmit}>
+        <form className ="chatform" onSubmit={this.handleSubmit}>
             <input  onChange ={this.handlechange} 
                     placeholder="Type"
                     type="text"/>
+            <button id = "Sbtn" onClick={this.handleSubmit} type="button" >Send</button> 
             </form>
          );
     }

@@ -15,7 +15,7 @@ html, body {
     display: grid;
     height: 100%;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 70px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
     grid-template-areas: 
         "r m m m m m"
         "r m m m m m"
