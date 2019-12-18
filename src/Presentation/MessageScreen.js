@@ -1,22 +1,25 @@
   
 import React, { Component } from 'react';
-import '../Styles/MessageScreen.css';
+import Message from './Message'
+//import '../Styles/MessageScreen.css';
 import '../Styles/Gstyle.css';
-class MessageScreen extends React.Component {
-    render() { 
-        return (  
-            <div className= "messagecreen" >
-                {hardCode.map((message,index)=>{
-                    return (
-                        <div key={index} className= "Message">
-                        <div className = "message-text"> {message.text}</div>
-                        <div className = "message-sender"> {message.senderId}</div>
-                        </div>
-                    )
-                })}
+ const MessageScreen = ({messages})=> { 
+    if (messages.length===0){    
+        return <div>no messages</div>
+        
+        }
+        else{
+            return (  
+                <div className= "messagescreen" >
+                    {messages.map((message,index)=>{
+                        return (
+                            <Message key={index} message ={message}/>
+                            )
+                    })
+                }
                 </div>
-        );
-    }
+            );
+        }
 }
  
 export default MessageScreen;

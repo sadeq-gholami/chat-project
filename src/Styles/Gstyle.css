@@ -40,4 +40,82 @@ html, body {
   .chatform {
     grid-area: f;
   }
+
+  .messagescreen{
+    box-sizing: border-box;
+    padding-left: 6px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background:lightgrey;
+
+}
+
+
+  .message-sender{
+    font-size: 11px;
+    color: black;
+    opacity: 0.9;
+    margin-bottom: 9px;
+    margin-left: 9px;
+    margin-top: 9px;
+
+}
+.message-text{
+    background:lightblue;
+    color: black;
+    display: inline;
+    padding: 5px 9px;
+    border-radius: 9px;
+
+}
+.sidebar {
+  box-sizing: border-box;
+  padding: 10px;
+  background: darkslategrey;
+  overflow: scroll;
   
+  height: 100%;
+}
+
+
+#Rbtn{
+ 
+  background: whitesmoke;
+  padding: 8px 20px;
+  border-radius: 15px;
+  color: black;
+  font-size: 13px
+}
+#Cbtn{
+  margin-left: 4px;
+  background: whitesmoke;
+  padding: 8px 18px;
+  border-radius: 15px;
+  font-size: 13px
+  
+}
+
+.chatform  {
+  background: lightgreen;
+  display: flex;
+}
+.chatform input::placeholder {
+  color: black;
+}
+.chatform input {
+  width: 90%;
+  padding: 15px 10px;
+  margin: 0;
+  border-style: none;
+  background: whitesmoke;
+  font-weight: 300;
+  
+
+}
+#Sbtn{
+  width: 10%;
+  background: slategray;
+  padding: 20px 10px;
+  font-size: 13px
+}
