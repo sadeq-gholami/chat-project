@@ -16,14 +16,15 @@ export default class ChatModel extends Observable {
    init(){
     const chatManager = new Chatkit.ChatManager({
             instanceLocator,
-            userId: '8869',
+            userId: '1st user',
             tokenProvider: new Chatkit.TokenProvider({
-                url: tokenUrl
+                 url: 'http://localhost:3001/authenticate'
         })
 
     })
     return chatManager.connect()
     .then(currentUser => {
+        console.log(currentUser)
         return currentUser
         })           
     .catch(err => console.log('Failed to connect: ', err))

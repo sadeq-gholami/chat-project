@@ -12,6 +12,18 @@ class ChatScreen extends Component {
             availableRooms:[],
             takenRooms:[],
         }
+        let username= 'Sadeq';
+        fetch('http://localhost:3001/users', {
+         method: 'POST',
+         headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username }),
+    })
+      .then(response => {
+       console.log(response)
+      })
+      .catch(error => console.error('error', error))
     }
     componentDidMount() {
         this.props.model.init().then(
@@ -19,7 +31,7 @@ class ChatScreen extends Component {
                 this.setState({currentUser:currentUser,
                 takenRooms:currentUser.rooms})
                 currentUser.subscribeToRoom({
-                roomId: "c1afc728-2acf-40d7-b0d5-f51ce79e2c04",
+                roomId: "8270ba83-7cf5-4647-9e0b-2302741b45c1",
                 hooks: {
                     onMessage: message => {
                         this.setState({
