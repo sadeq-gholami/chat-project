@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Project Description
 
-The Chat-App is created specifically for students. The main goal of this app is to help students with their projects and their school work. The features that this app WILL provide are, a group room/rooms, where the students can discuss, invite and share files/pictures and texts. A to-do list will be available for te students to check on and off some tasks. The to-do list will even remind the students of the deadlines of their set tasks. 
+The Chat-App is created specifically for students. The main goal of this app is to help students with their projects and their school work. The features that this app WILL provide are, a group room/rooms, where the students can discuss, invite and share files/pictures and texts. A to-do list will be available for the students to check on and off some tasks. The to-do list will even remind the students of the deadlines of their set tasks. 
 The API of choice for this project is the [CHAT-KIT API](https://pusher.com/chatkit).
 
 ## Available Components
