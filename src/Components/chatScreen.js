@@ -14,9 +14,9 @@ class ChatScreen extends Component {
             availableRooms:[],
             takenRooms:[],
         }
-        
     }
     componentDidMount() {
+        console.log(this.props.model.userName)
         this.props.model.init('Sadeq').then(
             currentUser =>{ 
                 this.setState({currentUser:currentUser,

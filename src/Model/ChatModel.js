@@ -11,12 +11,28 @@ export default class ChatModel extends Observable {
        this.currentUser = null;  //contains functions for interacting with the API
        this.availableRooms= [];
        this.takenRooms = [];
-   }
+       this.userName="";
     
+   }
+   logIn(username){
+    this.userName=username;
+    console.log(username)
+    fetch('http://localhost:3001/users', {
+        method: 'POST',
+        headers: {
+       'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username }),
+       })
+       .then(response => {
+           
+       })
+     .catch(error => console.error('error', error))
+   }
    init(user){
     const chatManager = new Chatkit.ChatManager({
             instanceLocator,
-            userId: user,
+            userId: "Sadeq",
             tokenProvider: new Chatkit.TokenProvider({
                  url: 'http://localhost:3001/authenticate'
         })
