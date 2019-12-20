@@ -28,16 +28,16 @@ The styles folder contains the css for the components in the presentation folder
 ## Check-List tasks:
 
 ### Checked
-Succeeded with simple API calls e.g sending messages, creating users and creating rooms.
-Fixed own server for handling authentication.
+##### Succeeded with simple API calls e.g sending messages, creating users and creating rooms.
+##### Fixed own server for handling authentication.
 
 ### Unchecked
-No spaghetti-like code.
-To-do list.
-Sending files and pictures.
-user icon.
-Being able to see user status.
-Server handles file transfers.
+##### No spaghetti-like code.
+##### To-do list for the students.
+##### Sending files and pictures.
+##### user icon.
+##### Being able to see user status.
+##### Server handles file transfers.
 
 ## Learn More
 
