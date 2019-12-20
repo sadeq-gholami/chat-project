@@ -1,9 +1,46 @@
 import React, { Component } from 'react';
-class ChatForm extends Component {
-    state = {  }
+//import '../Styles/ChatForm.css';
+
+
+
+
+
+
+class ChatForm extends React.Component {
+    constructor(){
+        super();
+        this.state= {
+            message: " "
+        };
+    }
+    
+    handlechange=(e)=>{
+        this.setState({message:e.target.value})
+    }
+    handleSubmit=(e)=>{
+        e.preventDefault();
+        this.props.sendMsg(this.state.message)
+        this.setState({
+            message:" "
+        })
+    }
+    handleSubmitbtn=(e)=>{
+        if (this.state.message!==""){
+        this.props.sendMsg(this.state.message)
+        }
+        this.setState({
+            message:" "
+        })
+    }
     render() { 
         return ( 
-            <div></div>
+        <form className ="chatform" onSubmit={this.handleSubmit}>
+            <input  onChange ={this.handlechange} 
+                    value={this.state.message}
+                    placeholder="Enter Text"
+                    type="text"/>
+            <button id = "Sbtn" onClick={e=>this.handleSubmitbtn()} type="button" >Send</button> 
+            </form>
          );
     }
 }

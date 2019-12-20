@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-class Message extends Component {
-    state = {  }
-    render() { 
+
+const Message =({message})=> {
         return (
-            <div></div>
+            <div className="Message">
+              <div className = "message-sender"> {message.sender.name}</div>
+            <div className = "message-text"> {message.text}</div>
+            </div>
           );
-    }
 }
  
 export default Message;

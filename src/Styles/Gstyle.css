@@ -1,0 +1,184 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+    font-weight: 200;
+    color: 	#3e5869; 
+  }
+  
+  #root {
+    height: 100%;
+  }
+  .root1 {
+    height: 100%;
+  }
+  
+  
+  .app {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 250px;
+    grid-template-areas: 
+        "h h h h h h"
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r m m m m m"
+        "r f f f f f";
+  }
+    
+  /*.new-room-form {
+    grid-area: n;
+  }*/
+  .header{
+    grid-area: h;
+  }
+  .sidebar {
+    grid-area: r;
+  }
+  
+  .messagescreen {
+    grid-area: m;
+  }
+  
+  .chatform {
+    grid-area: f;
+  }
+
+  .messagescreen{
+    
+    box-sizing: border-box;
+    padding-left: 6px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background:rgb(236, 236, 236);
+
+}
+
+.Message {
+  margin: 15px 0;
+}
+
+  .Message .message-sender{
+    font-size: 11px;
+    color: rgb(162, 163, 163);
+    opacity: 0.9;
+    margin-bottom: 9px;
+    margin-left: 9px;
+    margin-top: 9px;
+
+}
+.Message .message-text{
+    background:#D2E9F8;
+    color: #4f8aa3;
+    display: inline;
+    padding: 3px 10px;
+    border-radius: 9px;
+
+}
+
+
+.sidebar {
+  box-sizing: border-box;
+  padding: 10px;
+  background: #F9F9F9;
+  border-right-style:solid;
+  border-color:rgba(146, 120, 109, 0.247) ;
+  border-width: 2px 2px 2px 2px;
+ 
+
+  overflow: scroll;
+  
+  height: 100%;
+}
+.header{
+  background:#F9F9F9;
+  border-bottom: 2px;
+  border-bottom: yellow;
+  text-align: center;
+  font-weight: 900;
+  padding-top: 15px;
+  font-size: large;
+  background: #F9F9F9;
+  border-bottom-style:solid;
+  border-color:rgba(146, 120, 109, 0.199) ;
+  border-width: 2px 2px 2px 2px;
+}
+
+#Rbtn{
+ 
+  background: whitesmoke;
+  padding: 8px 20px;
+  border-radius: 15px;
+  color: black;
+  font-size: 13px
+}
+#Cbtn{
+  margin-left: 4px;
+  background: whitesmoke;
+  padding: 8px 18px;
+  border-radius: 15px;
+  font-size: 13px
+  
+}
+
+.chatform  {
+  background: lightgreen;
+  display: flex;
+}
+.chatform input::placeholder {
+  color: rgba(0, 0, 0, 0.692);
+}
+.chatform input {
+  width: 90%;
+  padding: 15px 10px;
+  margin: 0;
+  border-style: none;
+  background: rgb(245, 245, 245);
+  font-weight: 300;
+  
+
+}
+#Sbtn{
+  width: 10%;
+  background: rgb(245, 245, 245);
+  padding: 20px 10px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #2195F6;
+  border: none;
+
+}
+
+
+.sidebar .room  {
+  color: rgba(0, 0, 0, 0.568);
+  border-color:rgba(146, 120, 109, 0.603);
+  font-weight: 900;
+  text-decoration: none;
+  border-style:solid;
+  border-width: 1px 1px 1px 1px;
+  padding: 20px 0px;
+  border-left: none;
+  border-right: none;
+ 
+
+  
+}
+
+.sidebar .room.active  {
+  color: black;
+}
+.sidebar .room  :hover {
+  background-color: yellow;
+}
+.help-text{
+  position: absolute;
+  top:10px
+}

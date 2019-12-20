@@ -1,0 +1,26 @@
+.sidebar {
+    box-sizing: border-box;
+    padding: 10px;
+    background: darkslategrey;
+    overflow: scroll;
+    
+    height: 100%;
+  }
+  
+  
+  #Rbtn{
+   
+    background: whitesmoke;
+    padding: 8px 20px;
+    border-radius: 15px;
+    color: black;
+    font-size: 13px
+  }
+  #Cbtn{
+    margin-left: 4px;
+    background: whitesmoke;
+    padding: 8px 18px;
+    border-radius: 15px;
+    font-size: 13px
+    
+  }
