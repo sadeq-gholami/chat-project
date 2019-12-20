@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import MessageScreen from '../Presentation/MessageScreen';
 import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
+import Header from '../Presentation/Header';
+
 class ChatScreen extends Component {
     constructor(props){
         super(props);
@@ -72,6 +74,7 @@ class ChatScreen extends Component {
                 <MessageScreen messages = {this.state.messages}/>
                 <Sidebar rooms={this.state.takenRooms}/>
                 <ChatForm sendMsg = {msg => this.sendMsg (msg)}/>
+                <Header />
             </div>
          );
     }

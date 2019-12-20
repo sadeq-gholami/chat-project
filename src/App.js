@@ -13,7 +13,7 @@ class App extends React.Component{
   }
   render(){
   return(    
-    <div>
+    <div className="root1">
       <ChatScreen model = {this.state.model}/>
       </div>
   );

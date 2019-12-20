@@ -1,0 +1,18 @@
+
+  .message-sender{
+    font-size: 11px;
+    color: black;
+    opacity: 0.9;
+    margin-bottom: 9px;
+    margin-left: 9px;
+    margin-top: 9px;
+
+}
+.message-text{
+    background:lightblue;
+    color: black;
+    display: inline;
+    padding: 5px 9px;
+    border-radius: 9px;
+
+}
