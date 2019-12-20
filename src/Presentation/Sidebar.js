@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import '../Styles/Sidebar.css';
-import '../Styles/Gstyle.css';
+
 
 
 
@@ -14,7 +14,7 @@ const Sidebar=({rooms})=> {
             
             <h3>Your rooms:</h3>
             <ul>
-        {rooms.map(room=> <li key={room.id}>{room.name}</li>)}
+        {rooms.map(room=> <li key={room.id} className = "room">{room.name}</li>)}
             </ul>
             </div>
          );

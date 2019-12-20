@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Styles/Gstyle.css';
+
 const Message =({message})=> {
         return (
             <div className="Message">

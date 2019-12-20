@@ -22,9 +22,10 @@ class App extends React.Component{
    
   }
   render(){
+
   return(
      <Router>
-        <div>
+        <div className="root1">
           <Route path ="/" exact render={(props)=>{
                 return <Home {...props}  setUserName={userName=> this.setUserName(userName)}/>
                }}/>
