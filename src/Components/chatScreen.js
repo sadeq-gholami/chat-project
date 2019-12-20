@@ -14,19 +14,7 @@ class ChatScreen extends Component {
             availableRooms:[],
             takenRooms:[],
         }
-        console.log(this.props.userName)
-        let username= 'Sadeq';
-        fetch('http://localhost:3001/users', {
-         method: 'POST',
-         headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username }),
-    })
-      .then(response => {
-       console.log(response)
-      })
-      .catch(error => console.error('error', error))
+        
     }
     componentDidMount() {
         this.props.model.init('Sadeq').then(
@@ -52,7 +40,6 @@ class ChatScreen extends Component {
         })
     }
     sendMsg=(text)=>{
-        console.log(text);
         this.state.currentUser.sendMessage({
         text,
         roomId: this.state.currentRoomId

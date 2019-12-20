@@ -1,8 +1,5 @@
 import ChatModel from './Model/ChatModel';
 import React, { Component } from 'react';
-import Sidebar from './Presentation/Sidebar';
-import ChatForm from './Presentation/ChatForm';
-import MessageScreenComp from './Components/chatScreen';
 import ChatScreen from './Components/chatScreen';
 import Home from './Components/Home';
 import{BrowserRouter as Router, Route} from "react-router-dom";
@@ -12,13 +9,24 @@ class App extends React.Component{
     this.state = {  
       userName: "",
       model : new ChatModel()
-      
     }
   }
   setUserName= username=>{
-    this.state.userName = username;
-   // this.setState({userName:username});
-    console.log(this.state.userName);
+    fetch('http://localhost:3001/users', {
+     method: 'POST',
+     headers: {
+    'Content-Type': 'application/json',
+     },
+     body: JSON.stringify({ username }),
+    })
+    .then(response => {
+      this.setState({userName:username})
+      console.log(this.state.userName)
+      console.log(response)
+    })
+  .catch(error => console.error('error', error))
+  }
+  componentDidMount(){
    
   }
   render(){

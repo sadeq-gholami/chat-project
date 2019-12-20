@@ -14,8 +14,7 @@ class Home extends Component {
     }
     handleSubmit=(e)=>{
         e.preventDefault();
-        this.props.setUserName(this.state.userName);
-        console.log(this.state.userName);
+        this.props.setUserName(this.state.userName.toLowerCase());
     }
     render() { 
         return ( 
@@ -25,7 +24,9 @@ class Home extends Component {
                     value={this.state.userName}
                     placeholder="Enter username..."
                     type="text"/>
-            <button id = "Sbtn" onClick={e=>this.handleSubmit(e)} type="button" >login</button> 
+            <Link to ="/chatScreen">
+                 <button id = "Sbtn" onClick={e=>this.handleSubmit(e)} type="button" >login</button> 
+            </Link>
             </form>
             
          );
