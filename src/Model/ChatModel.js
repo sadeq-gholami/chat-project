@@ -1,6 +1,6 @@
 import Chatkit from '@pusher/chatkit-client'
 import Observable from "./Observable";
-import {tokenUrl, instanceLocator} from "./config.js"
+import {tokenUrl, instanceLocator} from "../config.js"
 
 
 export default class ChatModel extends Observable {
@@ -13,10 +13,10 @@ export default class ChatModel extends Observable {
        this.takenRooms = [];
    }
     
-   init(){
+   init(user){
     const chatManager = new Chatkit.ChatManager({
             instanceLocator,
-            userId: '1st user',
+            userId: user,
             tokenProvider: new Chatkit.TokenProvider({
                  url: 'http://localhost:3001/authenticate'
         })

@@ -12,6 +12,7 @@ class ChatScreen extends Component {
             availableRooms:[],
             takenRooms:[],
         }
+        console.log(this.props.userName)
         let username= 'Sadeq';
         fetch('http://localhost:3001/users', {
          method: 'POST',
@@ -26,7 +27,7 @@ class ChatScreen extends Component {
       .catch(error => console.error('error', error))
     }
     componentDidMount() {
-        this.props.model.init().then(
+        this.props.model.init('Sadeq').then(
             currentUser =>{ 
                 this.setState({currentUser:currentUser,
                 takenRooms:currentUser.rooms})
