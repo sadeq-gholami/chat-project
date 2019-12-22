@@ -36,7 +36,6 @@ class ChatScreen extends Component {
                     availableRooms:joinableRooms,
                     takenRooms: this.state.currentUser.rooms
                 })
-                console.log(this.state.currentUser.rooms)
                 })
             })
             .catch(err => console.log('error on subscribing: ', err))   
@@ -61,6 +60,7 @@ class ChatScreen extends Component {
                     this.setState({
                         messages: [...this.state.messages, message]
                     })
+                    console.log(message)
                 }
             }
         })
