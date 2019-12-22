@@ -14,7 +14,6 @@ html, body {
     height: 100%;
   }
   
-  
   .app {
     display: grid;
     height: 100%;
@@ -29,12 +28,12 @@ html, body {
         "r m m m m m"
         "r m m m m m"
         "r m m m m m"
-        "r f f f f f";
+        "n f f f f f";
   }
     
-  /*.new-room-form {
+  .new-room-form {
     grid-area: n;
-  }*/
+  }
   .header{
     grid-area: h;
   }

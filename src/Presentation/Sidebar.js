@@ -7,14 +7,18 @@ import React, { Component } from 'react';
 
 
 
-const Sidebar=({rooms})=> {
+const Sidebar=({rooms, subscribeToRoom})=> {
         return ( 
 
             <div className="sidebar">
             
             <h3>Your rooms:</h3>
             <ul>
-        {rooms.map(room=> <li key={room.id} className = "room">{room.name}</li>)}
+        {rooms.map(room=>  <li key={room.id}>
+                                <a href='#' onClick={() => subscribeToRoom(room.id)}>
+                                    # {room.name}
+                                </a>
+                            </li>)}
             </ul>
             </div>
          );
