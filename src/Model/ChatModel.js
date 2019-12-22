@@ -15,7 +15,8 @@ export default class ChatModel extends Observable {
     
    }
    logIn(username){
-    fetch('http://localhost:3001/users', {
+
+    return fetch('http://localhost:3001/users', {
         method: 'POST',
         headers: {
        'Content-Type': 'application/json',
@@ -23,7 +24,7 @@ export default class ChatModel extends Observable {
         body: JSON.stringify({ username }),
        })
        .then(response => {
-           this.userName = username;
+          return response;
        })
      .catch(error => console.error('error', error))
    }
@@ -31,7 +32,7 @@ export default class ChatModel extends Observable {
    connectToAPI(user){
     const chatManager = new Chatkit.ChatManager({
             instanceLocator,
-            userId: "Sadeq",
+            userId: user,
             tokenProvider: new Chatkit.TokenProvider({
                  url: 'http://localhost:3001/authenticate'
         })

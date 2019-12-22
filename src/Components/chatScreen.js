@@ -20,18 +20,23 @@ class ChatScreen extends Component {
         
     }
     componentDidMount() {
-        console.log(this.props.model.userName)
-        this.props.model.connectToAPI('Sadeq').then(
+        console.log(this.props.match.params.userName)
+        this.props.model.logIn(this.props.match.params.userName).then(res=>{
+            this.start();
+        });
+        
+    }
+    start=()=>{
+        this.props.model.connectToAPI(this.props.match.params.userName).then(
             currentUser =>{ 
                 this.setState({currentUser:currentUser});
-                console.log(this.state.currentUser);
                 return currentUser.getJoinableRooms()
-             
             .then(joinableRooms => {
                 this.setState({
                     availableRooms:joinableRooms,
                     takenRooms: this.state.currentUser.rooms
                 })
+                console.log(this.state.currentUser.rooms)
                 })
             })
             .catch(err => console.log('error on subscribing: ', err))   
@@ -40,20 +45,19 @@ class ChatScreen extends Component {
         this.props.model.sendMessage(text, this.state.currentUser);
     };
     createRoom=(name)=> {
-        this.currentUser.createRoom({
+        this.state.currentUser.createRoom({
             name
         })
         .then(room => this.subscribeToRoom(room.id))
         .catch(err => console.log(err))
     }
     subscribeToRoom(roomId) {
-        this.setState({
-            messages: []
-        });
-        this.currentUser.subscribeToRoom({
+        this.state.messages=[];
+        this.props.model.setCurrentRoomId(roomId);
+        this.state.currentUser.subscribeToRoom({
             roomId: roomId,
             hooks: {
-                onNewMessage: message => {
+                onMessage: message => {
                     this.setState({
                         messages: [...this.state.messages, message]
                     })
@@ -62,11 +66,11 @@ class ChatScreen extends Component {
         })
         .then(currentRoom => {
             this.setState({currentRoomId: currentRoom.id})
-            return this.currentUser.getJoinableRooms()
+            return this.state.currentUser.getJoinableRooms()
             .then(joinableRooms => {
                 this.setState({
                     availableRooms:joinableRooms,
-                    takenRooms: this.currentUser.rooms
+                    takenRooms: this.state.currentUser.rooms
                 })
             })
         })
@@ -77,9 +81,9 @@ class ChatScreen extends Component {
         return ( 
             <div className="app">
                 <MessageScreen messages = {this.state.messages}/>
-                <Sidebar rooms={this.state.takenRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
+                <Sidebar rooms={[...this.state.availableRooms,...this.state.takenRooms]} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg = {msg => this.sendMsg (msg)}/>
-                <Group createRomm={name =>this.createRoom(name)}/>
+                <Group createRoom={name =>this.createRoom(name)}/>
                 <Header />
             </div>
          );

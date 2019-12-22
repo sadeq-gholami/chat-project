@@ -12,6 +12,7 @@ class App extends React.Component{
     }
   }
   setUserName= username=>{
+    console.log(username);
     this.state.model.logIn(username);
   }
   componentDidMount(){

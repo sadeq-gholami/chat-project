@@ -4,11 +4,6 @@ import Message from './Message'
 //import '../Styles/MessageScreen.css';
 
  const MessageScreen = ({messages})=> { 
-    if (messages.length===0){    
-        return <div>no messages</div>
-        
-        }
-        else{
             return (  
                 <div className= "messagescreen" >
                     {messages.map((message,index)=>{
@@ -19,7 +14,6 @@ import Message from './Message'
                 }
                 </div>
             );
-        }
 }
  
 export default MessageScreen;
