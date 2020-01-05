@@ -24,9 +24,9 @@ class Home extends Component {
                     value={this.state.userName}
                     placeholder="Enter username..."
                     type="text"/>
-            <Link to ={`/chatScreen/${this.state.userName.toLowerCase().substring(1)}`}>
-                 <button id = "Sbtn" onClick={e=>this.handleSubmit(e)} type="button" >login</button> 
-            </Link>
+            <button id = "Sbtn" onClick={e=>this.handleSubmit(e)} type="button" >
+                <Link to ={`/chatScreen/${this.state.userName.toLowerCase()}`}>login</Link>
+                </button>
             </form>
             
          );
