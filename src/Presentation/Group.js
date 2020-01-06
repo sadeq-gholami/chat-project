@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../Styles/View Chatscreen Styles/Group.css';
 class Group extends Component {
     constructor(){
         super();
@@ -20,11 +21,12 @@ class Group extends Component {
     
     render() { 
         return ( 
-        <form className ="new-room-form" onSubmit={this.handleSubmit}>
+        <form className ="creategroupe" onSubmit={this.handleSubmit}>
             <input  onChange ={this.handlechange} 
                     value={this.state.groupName}
                     placeholder="Group Name"
                     type="text"/>
+                     
             </form>
          );
     }

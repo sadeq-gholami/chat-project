@@ -1,0 +1,19 @@
+.creategroupe{
+    background: rgb(236, 236, 236);
+    display: flex;
+  }
+  .creategroupe input{
+    background-color: rgb(245, 245, 245);
+    border-right-style:solid;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-color:rgba(146, 120, 109, 0.247) ;
+    border-width: 2px 2px 2px 2px;
+    width: 98%;
+    height: 100%;
+    border-radius: 35px;
+  
+  }
+  .creategroupe input::placeholder{
+    color: rgba(0, 0, 0, 0.692);
+  }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import '../Styles/Sidebar.css';
+import '../Styles/View Chatscreen Styles/Sidebar.css';
 
 const Sidebar=({rooms, subscribeToRoom})=> {
     const orderedRooms = [...rooms].sort((a, b) => a.id > b.id);
@@ -9,9 +9,9 @@ const Sidebar=({rooms, subscribeToRoom})=> {
             
             <h3>Your rooms:</h3>
             <ul>
-        {orderedRooms.map(room=>  <li key={room.id}>
+        {orderedRooms.map(room=>  <li key={room.id}className="room">
                                 <a href='#' onClick={() => subscribeToRoom(room.id)}>
-                                    # {room.name}
+                                     {room.name}
                                 </a>
                             </li>)}
             </ul>

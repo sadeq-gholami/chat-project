@@ -1,0 +1,22 @@
+.Message {
+  margin: 15px 0;
+}
+
+  .Message .message-sender{
+    font-size: 11px;
+    color: rgb(162, 163, 163);
+    opacity: 0.9;
+    margin-bottom: 9px;
+    margin-left: 9px;
+    margin-top: 9px;
+
+}
+.Message .message-text{
+    background:#D2E9F8;
+    color: #4f8aa3;
+    display: inline;
+    padding: 3px 10px;
+    border-radius: 9px;
+
+}
+
