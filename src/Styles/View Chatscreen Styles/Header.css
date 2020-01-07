@@ -1,0 +1,13 @@
+.header{
+
+  background:#F9F9F9;
+  border-bottom: 2px;
+  text-align: center;
+  font-weight: 900;
+  padding-top: 15px;
+  font-size: large;
+  background: #F9F9F9;
+  border-bottom-style:solid;
+  border-color:rgba(146, 120, 109, 0.199) ;
+  border-width: 2px 2px 2px 2px;
+}

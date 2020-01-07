@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../Styles/View Chatscreen Styles/Message.css';
 const Message =({message})=> {
         return (
             <div className="Message">
