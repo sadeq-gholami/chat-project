@@ -31,6 +31,7 @@ class Home extends Component {
                     value={this.state.userName}
                     placeholder="Enter username..."
                     type="text"/>
+<<<<<<< HEAD
             <div>
             <Link to ={`/chatScreen/${this.state.userName.toLowerCase()}`}>
                  <button id = "tbtn" onClick={e=>this.handleSubmit(e)} 
@@ -39,6 +40,11 @@ class Home extends Component {
                 
             </Link>
              </div>
+=======
+            <button id = "Sbtn" onClick={e=>this.handleSubmit(e)} type="button" >
+                <Link to ={`/chatScreen/${this.state.userName.toLowerCase()}`}>login</Link>
+                </button>
+>>>>>>> f2715e923f7f88bd0aa09a9144ac205221a0a8dd
             </form>
                 </div>
               </div>
