@@ -39,6 +39,10 @@ class ChatForm extends React.Component {
                     value={this.state.message}
                     placeholder="Enter Text"
                     type="text"/>
+            <img className={"add-image-icon"}
+                 src ={ require('../images/imageIcon.png')}
+                 alt ={"could not load image"}
+                 onClick={this.props.displayPopup}/>
             <button id = "Sbtn" onClick={e=>this.handleSubmitbtn()} type="button" >Send</button> 
             </form>
          );

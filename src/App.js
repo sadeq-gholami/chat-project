@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ChatScreen from './Components/chatScreen';
 import Home from './Components/Home';
 import{BrowserRouter as Router, Route} from "react-router-dom";
+import Phtotos from './Components/photos';
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -28,6 +29,9 @@ class App extends React.Component{
                }}/>
            <Route path="/chatScreen/:userName" render= {(props)=>{
                  return <ChatScreen  {...props}model = {this.state.model}/>
+                }}/>
+            <Route path="/photos" render= {(props)=>{
+                 return <Phtotos  {...props}model = {this.state.model}/>
                 }}/>
           </div>
       </Router>   

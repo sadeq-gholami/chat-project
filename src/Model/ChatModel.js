@@ -12,11 +12,12 @@ export default class ChatModel extends Observable {
        this.availableRooms= [];
        this.takenRooms = [];
        this.userName="";
+       this.images=[];
     
    }
    logIn(username){
 
-    return fetch('http://localhost:3001/users', {
+    return fetch('https://chat-application-api.herokuapp.com/chatkit/users', {
         method: 'POST',
         headers: {
        'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ export default class ChatModel extends Observable {
             instanceLocator,
             userId: user,
             tokenProvider: new Chatkit.TokenProvider({
-                 url: 'http://localhost:3001/authenticate'
+                 url: 'https://chat-application-api.herokuapp.com/chatkit/authenticate'
         })
 
     })
@@ -44,7 +45,14 @@ export default class ChatModel extends Observable {
         })           
     .catch(err => console.log('Failed to connect: ', err))
 }
-
+setImages(messages){
+    messages.map(message => {
+        if(message.text.includes(10101)){
+            this.images.push("https://chat-application-api.herokuapp.com/" + message.text.substr(5))
+        }
+    });
+    console.log(this.images)
+}
 roomStatus(currentUser){
     return currentUser.getJoinableRooms()
         .then(availableRooms => {

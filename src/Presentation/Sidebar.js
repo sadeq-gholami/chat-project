@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 import '../Styles/View Chatscreen Styles/Sidebar.css';
 
 const Sidebar=({rooms, subscribeToRoom})=> {
@@ -15,6 +16,9 @@ const Sidebar=({rooms, subscribeToRoom})=> {
                                 </a>
                             </li>)}
             </ul>
+            <Link to={"/photos"}>
+                <div  className="room">Photos</div>
+            </Link>
             </div>
          );
 }

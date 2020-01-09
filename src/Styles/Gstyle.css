@@ -60,5 +60,51 @@ html, body {
     grid-area: chatform;
   }
 
+.add-image-icon{
+  width: 50px;
+  cursor: pointer;
+}
+.add-image-icon-form{
+  width: 120px;
+}
+.bg-modal{
+  width:100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.7);
+  position: absolute;
+  top:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.modal-pop-up{
+  width:500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+.btn{
+  font-size: 1rem;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 0.65em;
+  margin: 15px auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 12px;
+}
+.close{
+  position: absolute;
+  top:0;
+  right: 14px;
+  font-size: 42px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
 
-
+.sent-image{
+  width:250px;
+}
