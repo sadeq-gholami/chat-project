@@ -5,7 +5,7 @@ class Home extends Component {
     constructor(){
         super();
         this.state= {
-            userName: " "
+            userName: ""
         };
     }
     
@@ -36,7 +36,6 @@ class Home extends Component {
                  <button id = "tbtn" onClick={e=>this.handleSubmit(e)} 
                  type="button" >Sign in
                  </button> 
-                
             </Link>
              </div>
             </form>

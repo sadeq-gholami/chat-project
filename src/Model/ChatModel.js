@@ -12,7 +12,6 @@ export default class ChatModel extends Observable {
        this.availableRooms= [];
        this.takenRooms = [];
        this.userName="";
-    
    }
    logIn(username){
 
