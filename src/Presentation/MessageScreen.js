@@ -1,13 +1,31 @@
   
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Message from './Message'
 import '../Styles/View Chatscreen Styles/MessageScreen.css';
- const MessageScreen = ({messages})=> { 
-     
-    if(messages.length>0){
+
+class MessageScreen extends Component{
+
+
+    componentWillUpdate(){
+        const position = ReactDOM.findDOMNode(this)
+        this.ToBottom = position.scrollTop + position.clientHeight +100 >= position.scrollHeight
+    }
+    
+    componentDidUpdate(){
+            if(this.ScrollToBottom){
+                const position = ReactDOM.findDOMNode(this)
+                position.scrollTop= position.scrollHeight
+        
+            }
+        } 
+
+
+render(){
+    if(this.props.messages.length>0){
         return (  
             <div className= "messagescreen" >
-                {messages.map((message,index)=>{
+                {this.props.messages.map((message,index)=>{
                     return (
                         <Message key={index} message ={message}/>
                         )
@@ -20,7 +38,7 @@ import '../Styles/View Chatscreen Styles/MessageScreen.css';
             Please select a room
         </div>);
     }        
-   
+ }
 }
  
 export default MessageScreen;

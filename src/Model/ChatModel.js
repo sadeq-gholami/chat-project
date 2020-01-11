@@ -28,7 +28,7 @@ export default class ChatModel extends Observable {
        })
      .catch(error => console.error('error', error))
    }
-
+  
    connectToAPI(user){
     const chatManager = new Chatkit.ChatManager({
             instanceLocator,
@@ -36,7 +36,6 @@ export default class ChatModel extends Observable {
             tokenProvider: new Chatkit.TokenProvider({
                  url: 'https://chat-application-api.herokuapp.com/chatkit/authenticate'
         })
-
     })
     return chatManager.connect()
     .then(currentUser => {
@@ -44,6 +43,7 @@ export default class ChatModel extends Observable {
         })           
     .catch(err => console.log('Failed to connect: ', err))
 }
+
 setImages(messages){
     messages.map(message => {
         if(message.text.includes(10101)){

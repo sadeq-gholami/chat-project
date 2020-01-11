@@ -9,13 +9,13 @@ const Sidebar=({joinedRooms, subscribeToRoom})=> {
             <div className="sidebar">
             
             <h3>Your rooms:</h3>
-            <ul>
+         
         {orderedJoinedRooms.map(room=>  <li key={room.id}className="room">
                                 <a href='#' onClick={() => subscribeToRoom(room.id)}>
                                      {room.name}
                                 </a>
                             </li>)}
-            </ul>
+           
             <Link to={"/photos"}>
                 <div  className="room">Photos</div>
             </Link>
