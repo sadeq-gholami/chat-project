@@ -5,6 +5,7 @@ import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import Group from '../Presentation/Group';
+import Roomsettings from '../Presentation/Roomsettings'; 
 
 class ChatScreen extends Component {
     constructor(props){
@@ -13,10 +14,10 @@ class ChatScreen extends Component {
             currentUser:null,
             messages:[],
             currentRoomId:null,
-            availableRooms:[],
-            takenRooms:[],
             selectedImage:null,
-            imageId: null
+            imageId: null,
+            joinedRooms:[],
+
         }
     }
     update(){
@@ -32,17 +33,15 @@ class ChatScreen extends Component {
     start=()=>{
         this.props.model.connectToAPI(this.props.match.params.userName).then(
             currentUser =>{ 
-                this.setState({currentUser:currentUser});
-                return currentUser.getJoinableRooms()
-            .then(joinableRooms => {
                 this.setState({
-                    availableRooms:joinableRooms,
-                    takenRooms: this.state.currentUser.rooms
-                })
+
+                    currentUser:currentUser,
+                    joinedRooms:currentUser.rooms
                 })
             })
-            .catch(err => console.log('error on subscribing: ', err))   
+            .catch(err => console.log('error on subscribing: ', err));   
     }
+    
     sendMsg=(text)=>{
         this.props.model.sendMessage(text, this.state.currentUser);
     };
@@ -53,6 +52,56 @@ class ChatScreen extends Component {
         .then(room => this.subscribeToRoom(room.id))
         .catch(err => console.log(err))
     }
+    
+    leaveroomID(){
+        this.state.currentUser.leaveRoom({ roomId: this.state.currentRoomId })
+        .then(room => {
+            this.setState({
+                joinedRooms:this.state.currentUser.rooms,
+                messages:[]
+            });
+            console.log(`Left room with ID: ${room.id}`);
+        })
+        .catch(err => {
+            console.log(`Error leaving room ${this.state.currentRoomId}: ${err}`)
+        })
+    }
+
+    deleteRoom(){
+        this.state.currentUser.deleteRoom({ roomId: this.state.currentRoomId })
+            .then(() => {
+                console.log(`Deleted room with ID: ${this.state.currentRoomId}`)
+            })
+            .catch(err => {
+                console.log(`Error deleted room ${this.state.currentRoomId}: ${err}`)
+            })
+    }
+
+    addusertoroom=(userName)=>{
+        this.state.currentUser.addUserToRoom({
+            userId: userName,
+            roomId: this.state.currentRoomId
+          })
+            .then(() => {
+              console.log(`Added User to room ${this.state.currentRoomId}`)
+            })
+            .catch(err => {
+              console.log(`Error adding User to room 123: ${this.state.currentRoomId} ${err}`)
+            })
+    }
+    removeUserFromRoom=(userName)=>{
+        this.state.currentUser.removeUserFromRoom({
+            userId: userName,
+            roomId: this.state.currentRoomId
+          })
+            .then(() => {
+              console.log(`Removed User to room ${this.state.currentRoomId}`)
+            })
+            .catch(err => {
+              console.log(`Error Removing User from room: ${this.state.currentRoomId} ${err}`)
+            })
+    }
+
     subscribeToRoom(roomId) {
         this.state.messages=[];
         this.props.model.setCurrentRoomId(roomId);
@@ -117,7 +166,7 @@ class ChatScreen extends Component {
         return ( 
             <div className="app">
                 <MessageScreen messages = {this.state.messages} imageId={this.state.imageId}/>
-                <Sidebar rooms={[...this.state.availableRooms,...this.state.takenRooms]} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
+                <Sidebar joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup}/>
                 <Group createRoom={name =>this.createRoom(name)}/>
                 <Header />
@@ -136,6 +185,11 @@ class ChatScreen extends Component {
                                     </button>   
                     </div>
                 </div>
+
+                <Roomsettings leaveRoom={roomId=>this.leaveroomID()} 
+                                deleteRoom = {roomId=> this.deleteRoom()} 
+                                addusertoroom={user=>this.addusertoroom(user)}
+                                removeUserFromRoom={user=>this.removeUserFromRoom(user)}/>
             </div>
          );
     }

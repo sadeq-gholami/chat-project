@@ -5,7 +5,7 @@ class Home extends Component {
     constructor(){
         super();
         this.state= {
-            userName: " "
+            userName: ""
         };
     }
     
@@ -40,6 +40,7 @@ class Home extends Component {
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>  
         );

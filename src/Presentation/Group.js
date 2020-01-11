@@ -4,7 +4,7 @@ class Group extends Component {
     constructor(){
         super();
         this.state= {
-            groupName: " "
+            groupName: ""
         };
     }
     
@@ -15,7 +15,7 @@ class Group extends Component {
         e.preventDefault();
         this.props.createRoom(this.state.groupName)
         this.setState({
-            groupName:" "
+            groupName:""
         })
     }
     

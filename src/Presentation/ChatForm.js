@@ -10,7 +10,7 @@ class ChatForm extends React.Component {
     constructor(){
         super();
         this.state= {
-            message: " "
+            message: ""
         };
     }
     
@@ -21,7 +21,7 @@ class ChatForm extends React.Component {
         e.preventDefault();
         this.props.sendMsg(this.state.message)
         this.setState({
-            message:" "
+            message:""
         })
     }
     handleSubmitbtn=(e)=>{
@@ -29,7 +29,7 @@ class ChatForm extends React.Component {
         this.props.sendMsg(this.state.message)
         }
         this.setState({
-            message:" "
+            message:""
         })
     }
     render() { 

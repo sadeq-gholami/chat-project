@@ -2,18 +2,25 @@
 import React, { Component } from 'react';
 import Message from './Message'
 import '../Styles/View Chatscreen Styles/MessageScreen.css';
-
- const MessageScreen =({messages})=>{
-           return (  
-               <div className= "messagescreen" >
-                       {messages.map((message,index)=>{
-                           return (
-                               <Message key={index} message ={message}/>
-                               )
-                       })
-                    }
-               </div>
-           );
- }
-  
- export default MessageScreen;
+ const MessageScreen = ({messages})=> { 
+     
+    if(messages.length>0){
+        return (  
+            <div className= "messagescreen" >
+                {messages.map((message,index)=>{
+                    return (
+                        <Message key={index} message ={message}/>
+                        )
+                })
+            }
+            </div>
+        );
+    }else{
+        return(<div className= "messagescreen">
+            Please select a room
+        </div>);
+    }        
+   
+}
+ 
+export default MessageScreen;
