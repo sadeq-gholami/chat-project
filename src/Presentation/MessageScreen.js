@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Message from './Message'
 import '../Styles/View Chatscreen Styles/MessageScreen.css';
 
-class MessageScreen extends Component{
+class MessageScreen extends React.Component{
 
 
     componentWillUpdate(){
@@ -13,7 +13,7 @@ class MessageScreen extends Component{
     }
     
     componentDidUpdate(){
-            if(this.ScrollToBottom){
+            if(this.ToBottom){
                 const position = ReactDOM.findDOMNode(this)
                 position.scrollTop= position.scrollHeight
         
