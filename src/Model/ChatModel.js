@@ -50,7 +50,6 @@ setImages(messages){
             this.images.push("https://chat-application-api.herokuapp.com/" + message.text.substr(5))
         }
     });
-    console.log(this.images)
 }
 roomStatus(currentUser){
     return currentUser.getJoinableRooms()

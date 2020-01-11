@@ -17,6 +17,7 @@ class ChatScreen extends Component {
             selectedImage:null,
             imageId: null,
             joinedRooms:[],
+            currentRoom:[]
 
         }
     }
@@ -117,7 +118,11 @@ class ChatScreen extends Component {
             }
         })
         .then(currentRoom => {
-            this.setState({currentRoomId: currentRoom.id})
+            this.setState({
+                currentRoomId: currentRoom.id,
+                currentRoom:currentRoom
+            })
+            console.log(this.state.currentRoom)
             return this.state.currentUser.getJoinableRooms()
             .then(joinableRooms => {
                 this.setState({

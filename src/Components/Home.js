@@ -32,9 +32,8 @@ class Home extends Component {
                                 type="text"/>
                             <div>
                                 <Link to ={`/chatScreen/${this.state.userName.toLowerCase()}`}>
-                                    <button id = "tbtn" onClick={e=>this.handleSubmit(e)} 
-                                        type="button">Sign in
-                                    </button> 
+                                    <div id = "tbtn">Sign in
+                                    </div> 
                         
                                 </Link>
                             </div>
