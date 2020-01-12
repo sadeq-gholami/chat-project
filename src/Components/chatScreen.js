@@ -35,7 +35,6 @@ class ChatScreen extends Component {
         this.props.model.connectToAPI(this.props.match.params.userName).then(
             currentUser => {
                 this.setState({
-
                     currentUser: currentUser,
                     joinedRooms: currentUser.rooms
                 })
@@ -48,7 +47,6 @@ class ChatScreen extends Component {
     };
 
     createRoom = (name) => {
-        console.log("---->"+name);
         this.state.currentUser.createRoom({
             name
         })

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../Styles/Gstyle.css';
+import Members from "./Members";
 
 
 class Roomsettings extends Component {
@@ -7,7 +8,6 @@ class Roomsettings extends Component {
         super();
         this.state = {
             usernameToadd: "",
-
         };
     }
 
@@ -26,9 +26,7 @@ class Roomsettings extends Component {
     }
 
 
-    handleSubmitToRemove = (e, userid) => {
-        this.props.removeUserFromRoom(userid);
-    }
+
 
 
     render() {
@@ -66,31 +64,9 @@ class Roomsettings extends Component {
                 <button id="deleteroom" onClick={this.props.deleteRoom}
                         type="button">Delete room
                 </button>
-
-                {(this.props.users == null) || (this.props.users.length == 0) ? '' :
-                    <table>
-                        <tbody>
-                        {this.props.users.map(user =>
-                            <tr key={user.id + "tr"}>
-                                <td key={user.id + "td_1"}>{user.id}</td>
-                                <td key={user.id + "id_2"}>
-                                    <button key={user.id + "remove"}
-                                            onClick={(e) => this.handleSubmitToRemove(e, user.id)}>
-                                        <img key={user.id + "cross_image"}
-                                             width="12"
-                                             height="12"
-                                             src="https://img.icons8.com/material-sharp/50/000000/delete-sign.png"
-                                             alt={"X"}/>
-                                    </button>
-                                </td>
-                            </tr>)
-                        }
-                        </tbody>
-                    </table>
-                }
+                 <Members {...this.props} users={this.props.users} />
             </div>
         );
-
     }
 }
 
