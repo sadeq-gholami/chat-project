@@ -25,10 +25,6 @@ class Roomsettings extends Component {
         })
     }
 
-
-
-
-
     render() {
         return (
 
@@ -64,7 +60,7 @@ class Roomsettings extends Component {
                 <button id="deleteroom" onClick={this.props.deleteRoom}
                         type="button">Delete room
                 </button>
-                 <Members {...this.props} users={this.props.users} />
+                <Members {...this.props} users={this.props.users}/>
             </div>
         );
     }
