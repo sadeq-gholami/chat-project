@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import '../Styles/View Chatscreen Styles/ChatForm.css';
 
-
-
-
-
-
 class ChatForm extends React.Component {
     constructor(){
         super();

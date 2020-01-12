@@ -24,6 +24,13 @@ class ChatScreen extends Component {
 
     update() {}
 
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true; //(nextProps != this.props)||(nextState != this.state);
+
+    }
+
+
     componentDidMount() {
         console.log(this.props.match.params.userName)
         this.props.model.logIn(this.props.match.params.userName).then(res => {
@@ -46,11 +53,16 @@ class ChatScreen extends Component {
     sendMsg = (text) => {
         this.props.model.sendMessage(text, this.state.currentUser);
     };
+
     createRoom = (name) => {
+        console.log("---->"+name);
         this.state.currentUser.createRoom({
             name
         })
-            .then(room => this.subscribeToRoom(room.id))
+            .then(room => {
+                this.subscribeToRoom(room.id);
+                this.setState({joinedRooms: this.state.currentUser.rooms})
+            })
             .catch(err => console.log(err))
     }
 
@@ -83,6 +95,7 @@ class ChatScreen extends Component {
             userId: userName,
             roomId: this.state.currentRoomId
         }).then(() => {
+            this.subscribeToRoom(this.state.currentRoomId);
             console.log(`Added User to room ${this.state.currentRoomId}`)
         }).catch(err => {
             console.log(`Error adding User to room 123: ${this.state.currentRoomId} ${JSON.stringify(err)}`)
@@ -95,6 +108,7 @@ class ChatScreen extends Component {
             userId: userName,
             roomId: this.state.currentRoomId
         }).then(() => {
+            this.subscribeToRoom(this.state.currentRoomId);
             console.log(`Removed User to room ${this.state.currentRoomId}`)
         }).catch(err => {
             console.log(`Error Removing User from room: ${this.state.currentRoomId} ${err}`)

@@ -88,10 +88,7 @@ class Roomsettings extends Component {
                         </tbody>
                     </table>
                 }
-
             </div>
-
-
         );
 
     }
