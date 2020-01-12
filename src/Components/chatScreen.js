@@ -5,7 +5,7 @@ import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import Group from '../Presentation/Group';
-import Roomsettings from '../Presentation/Roomsettings';
+import RoomSettings from '../Presentation/RoomSettings';
 
 class ChatScreen extends Component {
 
@@ -22,7 +22,8 @@ class ChatScreen extends Component {
         }
     }
 
-    update() {}
+    update() {
+    }
 
     componentDidMount() {
         console.log(this.props.match.params.userName)
@@ -166,9 +167,16 @@ class ChatScreen extends Component {
         node.querySelector('.bg-modal').style.display = 'flex';
     }
 
+    displayRoomSettings = event => {
+        const node = ReactDOM.findDOMNode(this);
+        if (node.querySelector('.RoomSettings') != null) {
+            node.querySelector('.RoomSettings').style.display = 'flex';
+        }
+    }
+
     closePopup = event => {
         const node = ReactDOM.findDOMNode(this);
-        node.querySelector('.bg-modal').style.display = 'none';
+        node.querySelector('.popup').style.display = 'none';
     }
 
     render() {
@@ -179,7 +187,7 @@ class ChatScreen extends Component {
                 <ChatForm sendMsg={msg => this.sendMsg(msg)} displayPopup={this.displayPopup}/>
                 <Group createRoom={name => this.createRoom(name)}/>
                 <Header/>
-                <div className={"bg-modal"}>
+                <div className={"bg-modal popup"}>
                     <div className={"modal-pop-up"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <img className={"add-image-icon-form"}
@@ -194,12 +202,18 @@ class ChatScreen extends Component {
                         </button>
                     </div>
                 </div>
+
                 {this.state.currentRoom == null ? '' :
-                    <Roomsettings leaveRoom={roomId => this.leaveroomID()}
+                <button className="roomSettingsButton" onClick={this.displayRoomSettings} type="button">Room settings</button>
+                }
+
+                {this.state.currentRoom == null ? '' :
+                    <RoomSettings leaveRoom={roomId => this.leaveroomID()}
                                   deleteRoom={roomId => this.deleteRoom()}
                                   addusertoroom={user => this.addusertoroom(user)}
                                   removeUserFromRoom={user => this.removeUserFromRoom(user)}
-                                  users={this.state.currentRoom.users}/>
+                                  users={this.state.currentRoom.users}
+                                  room ={this.state.currentRoom}/>
                 }
             </div>
         );
