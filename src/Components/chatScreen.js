@@ -24,13 +24,6 @@ class ChatScreen extends Component {
 
     update() {}
 
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return true; //(nextProps != this.props)||(nextState != this.state);
-
-    }
-
-
     componentDidMount() {
         console.log(this.props.match.params.userName)
         this.props.model.logIn(this.props.match.params.userName).then(res => {
