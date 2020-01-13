@@ -60,13 +60,13 @@
   
 
   #tbtn{
-    background: whitesmoke;
+    background: rgb(226, 226, 226);
     padding: 8px 40px;
     border-radius: 15px;
     color: black;
     margin-top: 25px;
     margin-left:45px;
-    margin-right: 45px;
+    margin-right: 80px;
     font-size: 13px
 
   }

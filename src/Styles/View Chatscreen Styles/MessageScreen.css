@@ -8,3 +8,9 @@
     background:rgb(236, 236, 236);
 
 }
+.messagescreen .noroom{
+    padding-top:25%;
+    text-align: center;
+    font-size: 100%; 
+    font-weight: 900;
+}

@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
 import '../Styles/View Chatscreen Styles/Sidebar.css';
 
-const Sidebar=({joinedRooms, subscribeToRoom})=> {
-    const orderedJoinedRooms = [...joinedRooms].sort((a, b) => a.id > b.id);
+class Sidebar extends React.Component{
+    render(){
+    const orderedJoinedRooms = [...this.props.joinedRooms].sort((a, b) => a.id > b.id);
+       
         return ( 
-
             <div className="sidebar">
-            
             <h3>Your rooms:</h3>
-         
-        {orderedJoinedRooms.map(room=>  <li key={room.id}className="room">
-                                <a href='#' onClick={() => subscribeToRoom(room.id)}>
+         <div>
+        {orderedJoinedRooms.map(room=> 
+        {  const active = this.props.currentroomID === room.id ? "active" : "";
+        return(
+                         <div className ={"roombackground " +active }
+                         onClick={() => this.props.subscribeToRoom(room.id)} >
+                              <div key={room.id}className="room" >
+                                 <div id="roomname" >
                                      {room.name}
-                                </a>
-                            </li>)}
+                                  </div>
+                              </div>              
+        </div>)})}
            
-            <Link to={"/photos"}>
-                <div  className="room">Photos</div>
-            </Link>
+           
+          
+             
             </div>
-         );
+            
+     </div>
+     
+         );}
 }
  
 export default Sidebar; 

@@ -23,7 +23,7 @@ class Home extends Component {
                 <div className= "outerbox">
                     <div className= "innerbox">
                         <div className ="imageholder">
-                            <img  width="140" src={ require('../images/icon.png') } />
+                            <img  width="140" src={ require('../images/loginicon.png') } />
                         </div>
                         <form className ="username" onSubmit={this.handleSubmit}>
                             <input  onChange ={this.handlechange} 

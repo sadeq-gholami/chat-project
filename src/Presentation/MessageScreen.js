@@ -9,7 +9,7 @@ class MessageScreen extends React.Component{
 
     componentWillUpdate(){
         const position = ReactDOM.findDOMNode(this)
-        this.ToBottom = position.scrollTop + position.clientHeight +100 >= position.scrollHeight
+        this.ToBottom = position.scrollTop + position.clientHeight +300 >= position.scrollHeight
     }
     
     componentDidUpdate(){
@@ -27,7 +27,7 @@ render(){
             <div className= "messagescreen" >
                 {this.props.messages.map((message,index)=>{
                     return (
-                        <Message key={index} message ={message}/>
+                        <Message currentUser={this.props.currentuser}key={index} message ={message}/>
                         )
                 })
             }
@@ -35,7 +35,7 @@ render(){
         );
     }else{
         return(<div className= "messagescreen">
-            Please select a room
+            <div className ="noroom">Please select a room</div>
         </div>);
     }        
  }

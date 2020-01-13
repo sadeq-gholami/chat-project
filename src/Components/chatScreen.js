@@ -54,18 +54,20 @@ class ChatScreen extends Component {
     }
     
     leaveroomID(){
+        this.sendMsg(`${this.state.currentUser.name} left the group112`)
         this.state.currentUser.leaveRoom({ roomId: this.state.currentRoomId })
         .then(room => {
             this.setState({
                 joinedRooms:this.state.currentUser.rooms,
                 messages:[]
-            });
+            })
+            
             console.log(`Left room with ID: ${room.id}`);
-        })
-        .catch(err => {
+             })
+         .catch(err => {
             console.log(`Error leaving room ${this.state.currentRoomId}: ${err}`)
-        })
-    }
+            })
+      }
 
     deleteRoom(){
         this.state.currentUser.deleteRoom({ roomId: this.state.currentRoomId })
@@ -81,6 +83,8 @@ class ChatScreen extends Component {
         this.state.currentUser.addUserToRoom({
             userId: userName,
             roomId: this.state.currentRoomId
+          }).then(()=>{
+            this.sendMsg(`${this.state.currentUser.name} added ${userName}112`)
           })
             .then(() => {
               console.log(`Added User to room ${this.state.currentRoomId}`)
@@ -89,6 +93,7 @@ class ChatScreen extends Component {
               console.log(`Error adding User to room 123: ${this.state.currentRoomId} ${err}`)
             })
     }
+    
     removeUserFromRoom=(userName)=>{
         this.state.currentUser.removeUserFromRoom({
             userId: userName,
@@ -96,7 +101,9 @@ class ChatScreen extends Component {
           })
             .then(() => {
               console.log(`Removed User to room ${this.state.currentRoomId}`)
-            })
+            }).then(()=>{
+                this.sendMsg(`${this.state.currentUser} has removed ${userName} Joined room112`)
+              })
             .catch(err => {
               console.log(`Error Removing User from room: ${this.state.currentRoomId} ${err}`)
             })
@@ -132,6 +139,7 @@ class ChatScreen extends Component {
         })
         .catch(err => console.log('error on subscribing: ', err))
     }
+    
     fileSelectedHandlar = event=>{
         this.setState({
             selectedImage: event.target.files[0]
@@ -169,16 +177,18 @@ class ChatScreen extends Component {
     render() { 
         return ( 
             <div className="app">
-                <MessageScreen messages = {this.state.messages} imageId={this.state.imageId}/>
-                <Sidebar joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
+                <MessageScreen currentuser={this.state.currentUser} messages = {this.state.messages} imageId={this.state.imageId}/>
+                <Sidebar currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup}/>
-                <Group createRoom={name =>this.createRoom(name)}/>
-                <Header />
+              
+                <Header displayPopup={this.displayPopup}/>
+
+
                 <div className={"bg-modal"}>
                     <div className={"modal-pop-up"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <img className={"add-image-icon-form"}
-                            src ={ require('../images/imageIcon.png')} 
+                            src ={ require('../images/bluecamera.png')} 
                             alt ={"could not load image"}/>
                         <input  className={"btn"} type="file"
                                 onChange={this.fileSelectedHandlar}/>
@@ -189,6 +199,8 @@ class ChatScreen extends Component {
                                     </button>   
                     </div>
                 </div>
+                
+                
 
                 <Roomsettings leaveRoom={roomId=>this.leaveroomID()} 
                                 deleteRoom = {roomId=> this.deleteRoom()} 

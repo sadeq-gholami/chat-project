@@ -40,7 +40,7 @@ class Roomsettings extends Component{
         render(){
             return(
                 
-    <div className="RoomSettings">
+           <div className="RoomSettings">
            
            <form className ="123" onSubmit={this.handleSubmitToAdd}>
             <input  onChange ={this.handlechangeadd} 

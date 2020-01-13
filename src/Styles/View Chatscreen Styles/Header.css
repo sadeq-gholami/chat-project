@@ -1,13 +1,47 @@
 .header{
-
+  box-sizing: border-box;
   background:#F9F9F9;
   border-bottom: 2px;
-  text-align: center;
-  font-weight: 900;
-  padding-top: 15px;
   font-size: large;
   background: #F9F9F9;
   border-bottom-style:solid;
   border-color:rgba(146, 120, 109, 0.199) ;
   border-width: 2px 2px 2px 2px;
+}
+ .title{
+  padding-top: 15px;
+  text-align: center;
+  font-weight: 900;
+}
+.settingicon{
+  padding-right: 10px;
+ float: right;
+}
+.settingicon .tooltiptext {
+  visibility: hidden;
+  font-weight: 30;
+  font-size: 12px;
+  width: 60px;
+  height:15px ;
+  opacity: 0.4;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  margin-left: -65px;
+  
+}
+
+.settingicon:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tabicon{
+  padding-left: 10px;
+  float: left;
 }
