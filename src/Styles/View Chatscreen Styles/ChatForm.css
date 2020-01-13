@@ -1,5 +1,5 @@
 .chatform  {
-  background: rgb(236, 236, 236);
+  background: white;
   display: flex;
 }
 .chatform input::placeholder {
@@ -11,7 +11,8 @@
   margin: 0;
   border-style: none;
   background: rgb(245, 245, 245);
-  font-weight: 300;
+  font-weight: 400;
+  font-size: medium;
   border-radius: 35px;
 
 }
@@ -24,4 +25,70 @@
   color: #2195F6;
   border: none;
   border-radius: 35px;
+}
+
+.allpicture .test{
+  visibility: hidden;
+  font-weight: 30;
+  font-size: 12px;
+  width: 60px;
+  height:15px ;
+  opacity: 0.4;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 65px;
+  margin-left: -60px;
+}
+.allpicture .test::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+.allpicture:hover .test {
+  visibility: visible;
+}
+
+.takephoto .test{
+  visibility: hidden;
+  font-weight: 30;
+  font-size: 12px;
+  width: 80px;
+  height:15px ;
+  opacity: 0.4;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 65px;
+  margin-left: -65px;
+}
+.takephoto .test::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+.takephoto:hover .test {
+  visibility: visible;
 }

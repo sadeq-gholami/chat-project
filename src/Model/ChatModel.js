@@ -48,9 +48,11 @@ export default class ChatModel extends Observable {
     return chatManager.connect()
     .then(currentUser => {
         return currentUser
-        })           
+        })         
     .catch(err => console.log('Failed to connect: ', err))
 }
+
+   
 
 setImages(messages){
     messages.map(message => {

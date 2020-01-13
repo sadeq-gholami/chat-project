@@ -1,35 +1,43 @@
 .sidebar {
   box-sizing: border-box;
-  padding: 10px;
+
   background: #F9F9F9;
   border-right-style:solid;
   border-color:rgba(146, 120, 109, 0.247) ;
   border-width: 2px 2px 2px 2px;
- 
-
   overflow: scroll;
-  
+cursor: pointer;
+
   height: 100%;
 }
 
 
-.sidebar .room  {
-  background-color: rgba(114, 114, 114, 0.568);
+.sidebar .room{
+  
+  color: rgba(114, 114, 114, 0.568);
   border-color:rgba(146, 120, 109, 0.603);
-  opacity: 0.9;
+  opacity: 0.6;
   font-weight: 900;
-  text-decoration: none;
+
   border-bottom:solid;
   border-width: 1px 1px 1px 1px;
   padding: 20px 0px;
   margin: 10px;
   cursor: pointer;
 
+
 }
-
-
-.sidebar .room :active  {
-  background-color: #2195F6;
-  opacity: 0.8;
+.sidebar .roombackground.active {
+  background-color:#2195F6;
+  padding-right: 10px ;
+  border-radius: 3px;
+  opacity: 1;
   
 }
+.sidebar .room #roomname{
+  color: black ;
+  font-family: arial;
+  padding-left: 11px;
+}
+
+

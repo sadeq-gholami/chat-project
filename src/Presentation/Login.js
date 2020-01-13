@@ -5,7 +5,7 @@ const Login= ({username, password, authorized, handleSubmit, handleUsernameChang
                 <div>
                     <div className= "innerbox">
                         <div className ="imageholder">
-                            <img  width="140" src={ require('../images/icon.png') } />
+                            <img  width="140" src={ require('../images/loginicon.png') } />
                         </div>
                         <form className ="username" onSubmit={handleSubmit}>
                             <input  onChange ={handleUsernameChange} 
