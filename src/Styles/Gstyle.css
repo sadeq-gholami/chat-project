@@ -5,14 +5,16 @@ html, body {
     font-family: system-ui;
     font-weight: 200;
     color: 	#3e5869; 
-    background-color: rgba(187, 179, 179, 0.432);
+    background-color: rgb(236, 236, 236);
   }
   
   #root {
     height: 100%;
   }
   .root1 {
-    height: 100%;
+  width:100%;
+  height: 100%;
+  background-color:rgb(236, 236, 236);
   }
   /**********Home Grid**********/
   .app1{
@@ -104,6 +106,7 @@ html, body {
   top:0;
   right: 14px;
   font-size: 42px;
+  padding: 10px;
   transform: rotate(45deg);
   cursor: pointer;
 }
@@ -133,18 +136,6 @@ html, body {
     background: white;
   }
 
-.roomSettingsButton{
-  width: 100%;
-  height: 50px;
-}
-
-.RoomSettings{
-  width:100%;
-  height: 100%;
-  background-color: wheat;
-  position: absolute;
-  top:0;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
+  .btn-input{
+    cursor: auto;
+  }

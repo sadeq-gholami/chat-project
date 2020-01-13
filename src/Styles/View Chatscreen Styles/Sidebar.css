@@ -14,7 +14,7 @@
 
 
 .sidebar .room  {
-  color: rgba(114, 114, 114, 0.568);
+  background-color: rgba(114, 114, 114, 0.568);
   border-color:rgba(146, 120, 109, 0.603);
   opacity: 0.9;
   font-weight: 900;
@@ -22,12 +22,14 @@
   border-bottom:solid;
   border-width: 1px 1px 1px 1px;
   padding: 20px 0px;
+  margin: 10px;
+  cursor: pointer;
 
 }
 
 
-.sidebar .room :focus  {
-  color: #2195F6;
+.sidebar .room :active  {
+  background-color: #2195F6;
   opacity: 0.8;
   
 }

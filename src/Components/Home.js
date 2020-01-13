@@ -1,47 +1,127 @@
 import React, { Component } from 'react';
+import Login from '../Presentation/Login'
+import ReactDOM from 'react-dom';
 import {Link} from "react-router-dom";
 import '../Styles/View Home Styles/Home.css';
+import SignupPopup from '../Presentation/signupPopup';
 class Home extends Component {
     constructor(){
         super();
         this.state= {
-            userName: ""
+            username: "",
+            password:"",
+            authorized:true,
+            avatarURl:"",
+            selectedImage:null
         };
     }
     
-    handlechange=(e)=>{
-        this.setState({userName:e.target.value});
-       // console.log(this.state.userName);
+    handleUsernameChange=(e)=>{
+        this.setState({username:e.target.value});
+        console.log(this.state.username)
     }
-    handleSubmit=(e)=>{
+
+    handlePasswordChange=(e)=>{
+        this.setState({password:e.target.value});
+    }
+    handleSubmit= async(e)=>{
         e.preventDefault();
-        this.props.setUserName(this.state.userName.toLowerCase());
+        this.props.model.setUsername(this.state.username.toLowerCase());
+        this.props.model.setPassword(this.state.password);
+        sessionStorage.setItem("username", this.state.username.toLowerCase());
+        sessionStorage.setItem("password", this.state.password);
+        const response = await this.props.model.login()
+        .then(res=> res)
+        .catch(err=>{
+            if(err.status===401)
+            console.log(err)}
+            );
+        if(response){
+            this.setState({authorized:true})
+            this.props.history.push(`/chatScreen/${this.state.username.toLowerCase()}`);
+        }else{
+            this.setState({authorized:false})
+        }
     }
+
+    fileSelectedHandlar = event=>{
+        this.setState({
+            selectedImage: event.target.files[0]
+        });
+        console.log(this.state.selectedImage)
+    }
+
+    imageUploadHandler= async (event)=>{
+        event.preventDefault();
+        let avatarUrl="";
+        if (this.state.selectedImage){
+            let data = new FormData();
+            data.append('name', this.state.selectedImage.name);
+            data.append('imgUrl', this.state.selectedImage);
+            avatarUrl= await fetch('https://chat-application-api.herokuapp.com/pictures', {
+                    method: 'POST',
+                    body: data
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data=>{
+                        return "http://localhost:3001/" + data.createdPicture.imgUrl
+                })
+                .catch(error => console.error('error', error));
+        }
+
+        this.props.model.setUsername(this.state.username.toLowerCase());
+        this.props.model.setPassword(this.state.password);
+        sessionStorage.setItem("username", this.state.username.toLowerCase());
+        sessionStorage.setItem("password", this.state.password);
+        this.props.model.setAvatarUrl(avatarUrl);
+        this.props.model.signup().then(res=>{
+            console.log(res)
+            if(res.status===500){
+                alert("username already taken :( try a different one")
+            }else{
+                alert("congratulations! you have successfully created acount! you can now log in")
+            }
+            //this.closePopup();
+        }).catch(err=> {
+            console.log(err);
+            alert("could not signup try again")
+        });   
+    }
+
+    displayPopup=event=>{
+        const node = ReactDOM.findDOMNode(this);
+        console.log(node);
+        node.querySelector('.bg-modal').style.display= 'flex';
+    }
+
+    closePopup = event =>{
+        const node = ReactDOM.findDOMNode(this);
+        node.querySelector('.bg-modal').style.display= 'none';
+    }
+
     render() { 
         return ( 
-            <div className= "app1"> 
-                <div className= "outerbox">
-                    <div className= "innerbox">
-                        <div className ="imageholder">
-                            <img  width="140" src={ require('../images/icon.png') } />
-                        </div>
-                        <form className ="username" onSubmit={this.handleSubmit}>
-                            <input  onChange ={this.handlechange} 
-                                value={this.state.userName}
-                                placeholder="Enter username..."
-                                type="text"/>
-                            <div>
-                                <Link to ={`/chatScreen/${this.state.userName.toLowerCase()}`}>
-                                    <div id = "tbtn">Sign in
-                                    </div> 
-                        
-                                </Link>
-                            </div>
-                        </form>
-                    </div>
+            <div>
+                <Login username={this.state.username}
+                        password={this.state.password}
+                        authorized={this.state.authorized}
+                        handleSubmit={this.handleSubmit}
+                        handleUsernameChange={this.handleUsernameChange}
+                        handlePasswordChange={this.handlePasswordChange}
+                        displayPopup={this.displayPopup}
+                />
+                <SignupPopup username={this.state.username}
+                            password={this.state.password}
+                            imageUploadHandler={this.imageUploadHandler}
+                            fileSelectedHandlar={this.fileSelectedHandlar}
+                            closePopup={this.closePopup}
+                            handleUsernameChange={this.handleUsernameChange}
+                            handlePasswordChange={this.handlePasswordChange}
 
-                </div>
-            </div>  
+                />
+            </div>
         );
     }
 }

@@ -25,7 +25,7 @@ class App extends React.Component{
      <Router>
         <div className="root1">
           <Route path ="/" exact render={(props)=>{
-                return <Home {...props}  setUserName={userName=> this.setUserName(userName)}/>
+                return <Home {...props}  setUserName={userName=> this.setUserName(userName)} model ={this.state.model}/>
                }}/>
            <Route path="/chatScreen/:userName" render= {(props)=>{
                  return <ChatScreen  {...props}model = {this.state.model}/>

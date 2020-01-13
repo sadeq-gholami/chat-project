@@ -26,24 +26,17 @@ class ChatScreen extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.userName)
-        this.props.model.logIn(this.props.match.params.userName).then(res => {
-            this.start();
-        });
-    }
-
-    start = () => {
-        this.props.model.connectToAPI(this.props.match.params.userName).then(
-            currentUser => {
+        this.props.model.login()
+        .then(currentUser =>{ 
+                console.log(currentUser)
                 this.setState({
-                    currentUser: currentUser,
-                    joinedRooms: currentUser.rooms
+                    currentUser:currentUser,
+                    joinedRooms:currentUser.rooms
                 })
             })
             .catch(err => console.log('error on subscribing: ', err));
     }
-
-    sendMsg = (text) => {
+    sendMsg=(text)=>{
         this.props.model.sendMessage(text, this.state.currentUser);
     };
 
