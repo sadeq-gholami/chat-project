@@ -165,6 +165,24 @@ class ChatScreen extends Component {
         const node = ReactDOM.findDOMNode(this);
         node.querySelector('.bg-modal').style.display= 'none';
     }
+     collapseRoomsettings = (e)=>{
+        e.target.classList.toggle("active");
+            let content = document.getElementById("RoomSettings")
+            if (content.style.maxWidth){
+                content.style.maxWidth = null;
+            } else {
+                content.style.maxWidth = content.scrollWidth + "px";
+            }
+    }
+    collapseSidebar = (e)=>{
+        e.target.classList.toggle("active");
+            let content = document.getElementById("sidebar")
+            if (content.style.maxWidth){
+                content.style.maxWidth = null;
+            } else {
+                content.style.maxWidth = content.scrollWidth + "px";
+            }
+    }
 
     render() { 
         return ( 
@@ -173,7 +191,7 @@ class ChatScreen extends Component {
                 <Sidebar currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup}/>
               
-                <Header displayPopup={this.displayPopup}/>
+                <Header displayPopup={this.collapseRoomsettings} collapseSidebar={this.collapseSidebar}/>
 
 
                 <div className={"bg-modal"}>
@@ -194,7 +212,8 @@ class ChatScreen extends Component {
                 
                 
 
-                <Roomsettings leaveRoom={roomId=>this.leaveroomID()} 
+                <Roomsettings 
+                               leaveRoom={roomId=>this.leaveroomID()} 
                                 deleteRoom = {roomId=> this.deleteRoom()} 
                                 addusertoroom={user=>this.addusertoroom(user)}
                                 removeUserFromRoom={user=>this.removeUserFromRoom(user)}/>

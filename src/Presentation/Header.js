@@ -16,7 +16,8 @@ class Header extends Component {
                             </div>
 
                         <div className="tabicon">
-                        <img  width="30" src={ require('../images/tabicon.png') } />
+                        <img  width="30" src={ require('../images/tabicon.png') } 
+                            onClick={this.props.collapseSidebar}/>
                     </div>
                     </div>
                     </div>

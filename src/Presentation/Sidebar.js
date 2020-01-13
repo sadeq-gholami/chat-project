@@ -6,7 +6,7 @@ class Sidebar extends React.Component{
     const orderedJoinedRooms = [...this.props.joinedRooms].sort((a, b) => a.id > b.id);
        
         return ( 
-            <div className="sidebar">
+            <div id ="sidebar"className="sidebar, content">
             <h3>Your rooms:</h3>
          <div>
         {orderedJoinedRooms.map(room=> 
