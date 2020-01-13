@@ -1,56 +1,54 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import MessageScreen from '../Presentation/MessageScreen';
 import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import Group from '../Presentation/Group';
-import Roomsettings from '../Presentation/Roomsettings'; 
+import RoomSettings from '../Presentation/RoomSettings';
 
 class ChatScreen extends Component {
-    constructor(props){
+
+    constructor(props) {
         super(props);
-        this.state={
-            currentUser:null,
-            messages:[],
-            currentRoomId:null,
-            selectedImage:null,
+        this.state = {
+            currentUser: null,
+            messages: [],
+            currentRoomId: null,
+            selectedImage: null,
             imageId: null,
-            joinedRooms:[],
-            currentRoom:null
+            joinedRooms: [],
+            currentRoom: null
         }
     }
-    update(){
-        
-    }
-    componentDidMount() {
-        console.log(this.props.match.params.userName)
-        this.props.model.logIn(this.props.match.params.userName).then(res=>{
-            this.start();
-        });
-        
-    }
-    start=()=>{
-        this.props.model.connectToAPI(this.props.match.params.userName).then(
-            currentUser =>{ 
-                this.setState({
 
+    update() {
+    }
+
+    componentDidMount() {
+        this.props.model.login()
+        .then(currentUser =>{ 
+                console.log(currentUser)
+                this.setState({
                     currentUser:currentUser,
                     joinedRooms:currentUser.rooms
                 })
             })
-            .catch(err => console.log('error on subscribing: ', err));   
+            .catch(err => console.log('error on subscribing: ', err));
     }
-    
     sendMsg=(text)=>{
         this.props.model.sendMessage(text, this.state.currentUser);
     };
-    createRoom=(name)=> {
+
+    createRoom = (name) => {
         this.state.currentUser.createRoom({
             name
         })
-        .then(room => this.subscribeToRoom(room.id))
-        .catch(err => console.log(err))
+            .then(room => {
+                this.subscribeToRoom(room.id);
+                this.setState({joinedRooms: this.state.currentUser.rooms})
+            })
+            .catch(err => console.log(err))
     }
     
     leaveroomID(){
@@ -69,8 +67,8 @@ class ChatScreen extends Component {
             })
       }
 
-    deleteRoom(){
-        this.state.currentUser.deleteRoom({ roomId: this.state.currentRoomId })
+    deleteRoom() {
+        this.state.currentUser.deleteRoom({roomId: this.state.currentRoomId})
             .then(() => {
                 console.log(`Deleted room with ID: ${this.state.currentRoomId}`)
             })
@@ -79,7 +77,7 @@ class ChatScreen extends Component {
             })
     }
 
-    addusertoroom=(userName)=>{
+    addusertoroom = (userName) => {
         this.state.currentUser.addUserToRoom({
             userId: userName,
             roomId: this.state.currentRoomId
@@ -110,7 +108,7 @@ class ChatScreen extends Component {
     }
 
     subscribeToRoom(roomId) {
-        this.state.messages=[];
+        this.state.messages = [];
         this.props.model.setCurrentRoomId(roomId);
         this.state.currentUser.subscribeToRoom({
             roomId: roomId,
@@ -123,92 +121,107 @@ class ChatScreen extends Component {
                 }
             }
         })
-        .then(currentRoom => {
-            this.setState({
-                currentRoomId: currentRoom.id,
-                currentRoom:currentRoom
-            })
-            console.log(this.state.currentRoom.users)
-            return this.state.currentUser.getJoinableRooms()
-            .then(joinableRooms => {
+            .then(currentRoom => {
                 this.setState({
-                    availableRooms:joinableRooms,
-                    takenRooms: this.state.currentUser.rooms
+                    currentRoomId: currentRoom.id,
+                    currentRoom: currentRoom
                 })
+                console.log(this.state.currentRoom.users)
+                return this.state.currentUser.getJoinableRooms()
+                    .then(joinableRooms => {
+                        this.setState({
+                            availableRooms: joinableRooms,
+                            takenRooms: this.state.currentUser.rooms
+                        })
+                    })
             })
-        })
-        .catch(err => console.log('error on subscribing: ', err))
+            .catch(err => console.log('error on subscribing: ', err))
     }
-    
-    fileSelectedHandlar = event=>{
+
+    fileSelectedHandlar = event => {
         this.setState({
             selectedImage: event.target.files[0]
         });
-        
-    }
-    imageUploadHandler= event=>{
+    };
+
+    imageUploadHandler = event => {
         let data = new FormData();
         data.append('name', this.state.selectedImage.name);
         data.append('imgUrl', this.state.selectedImage);
         fetch('https://chat-application-api.herokuapp.com/pictures', {
-        method: 'POST',
-        body: data
-       })
-       .then(response => {
-          return response.json();
-       })
-       .then(data=>{
-           this.sendMsg("10101" + data.createdPicture.imgUrl);
-           this.closePopup();
-       })
-     .catch(error => console.error('error', error));
+            method: 'POST',
+            body: data
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                this.sendMsg("10101" + data.createdPicture.imgUrl);
+                this.closePopup();
+            })
+            .catch(error => console.error('error', error));
     }
 
-    displayPopup=event=>{
+    displayPopup = event => {
         const node = ReactDOM.findDOMNode(this);
-        node.querySelector('.bg-modal').style.display= 'flex';
+        node.querySelector('.bg-modal').style.display = 'flex';
     }
 
-    closePopup = event =>{
+    displayRoomSettings = event => {
         const node = ReactDOM.findDOMNode(this);
-        node.querySelector('.bg-modal').style.display= 'none';
+        if (node.querySelector('.RoomSettings') != null) {
+            node.querySelector('.RoomSettings').style.display = 'flex';
+        }
     }
 
-    render() { 
-        return ( 
+    closePopup = event => {
+        const node = ReactDOM.findDOMNode(this);
+        node.querySelector('.popup').style.display = 'none';
+    }
+
+    render() {
+        return (
             <div className="app">
-                <MessageScreen currentuser={this.state.currentUser} messages = {this.state.messages} imageId={this.state.imageId}/>
-                <Sidebar currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
-                <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup}/>
               
                 <Header displayPopup={this.displayPopup}/>
-
-
-                <div className={"bg-modal"}>
+                <MessageScreen currentuser={this.state.currentUser} messages={this.state.messages} imageId={this.state.imageId}/>
+                <Sidebar joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId => this.subscribeToRoom(roomId)}/>
+                <ChatForm sendMsg={msg => this.sendMsg(msg)} displayPopup={this.displayPopup}/>
+                <Group createRoom={name => this.createRoom(name)}/>
+                <Header/>
+                <div className={"bg-modal popup"}>
                     <div className={"modal-pop-up"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <img className={"add-image-icon-form"}
-                            src ={ require('../images/bluecamera.png')} 
-                            alt ={"could not load image"}/>
-                        <input  className={"btn"} type="file"
-                                onChange={this.fileSelectedHandlar}/>
+                             src={require('../images/bluecamera.png')}
+                             alt={"could not load image"}/>
+                        <input className={"btn"} type="file"
+                               onChange={this.fileSelectedHandlar}/>
 
-                        <button  className={"btn"} 
+                        <button className={"btn"}
                                 onClick={this.imageUploadHandler}>
-                                    upload
-                                    </button>   
+                            upload
+                        </button>
                     </div>
                 </div>
                 
                 
 
-                <Roomsettings leaveRoom={roomId=>this.leaveroomID()} 
-                                deleteRoom = {roomId=> this.deleteRoom()} 
-                                addusertoroom={user=>this.addusertoroom(user)}
-                                removeUserFromRoom={user=>this.removeUserFromRoom(user)}/>
+                {this.state.currentRoom == null ? '' :
+                <button className="roomSettingsButton" onClick={this.displayRoomSettings} type="button">Room settings</button>
+                }
+
+                {this.state.currentRoom == null ? '' :
+                    <RoomSettings leaveRoom={roomId => this.leaveroomID()}
+                                  deleteRoom={roomId => this.deleteRoom()}
+                                  addusertoroom={user => this.addusertoroom(user)}
+                                  removeUserFromRoom={user => this.removeUserFromRoom(user)}
+                                  users={this.state.currentRoom.users}
+                                  room ={this.state.currentRoom}/>
+                }
             </div>
-         );
+        );
     }
 }
- 
+
 export default ChatScreen;

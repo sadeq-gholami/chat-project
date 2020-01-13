@@ -22,6 +22,8 @@ cursor: pointer;
   border-bottom:solid;
   border-width: 1px 1px 1px 1px;
   padding: 20px 0px;
+  margin: 10px;
+  cursor: pointer;
 
 
 }

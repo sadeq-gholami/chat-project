@@ -21,3 +21,6 @@ config.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+chat-project.iml
+/.idea/

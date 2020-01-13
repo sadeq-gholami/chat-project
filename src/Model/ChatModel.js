@@ -8,20 +8,24 @@ export default class ChatModel extends Observable {
        super();
        this.messages =[];
        this.currentRoomId=  null;
-       this.currentUser = null;  //contains functions for interacting with the API
        this.availableRooms= [];
        this.takenRooms = [];
-       this.userName="";
        this.images=[]; 
+       this.username= sessionStorage.getItem("username");
+       this.password= sessionStorage.getItem("password");
+       this.avatarUrl="";
    }
-   logIn(username){
-
+   signup(){
     return fetch('https://chat-application-api.herokuapp.com/chatkit/users', {
         method: 'POST',
         headers: {
        'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username }),
+        body: JSON.stringify({
+              username:this.username,
+              password:this.password,
+              avatarURL:this.avatarUrl||"uploads/IMG_1587.JPG"
+            })
        })
        .then(response => {
           return response;
@@ -29,12 +33,16 @@ export default class ChatModel extends Observable {
      .catch(error => console.error('error', error))
    }
   
-   connectToAPI(user){
+   login(){
     const chatManager = new Chatkit.ChatManager({
             instanceLocator,
-            userId: user,
+            userId: this.username,
             tokenProvider: new Chatkit.TokenProvider({
-                 url: 'https://chat-application-api.herokuapp.com/chatkit/authenticate'
+                 url: 'https://chat-application-api.herokuapp.com/chatkit/users/login',
+                 headers: {
+                    username:this.username,
+                    password:this.password
+                  }
         })
     })
     return chatManager.connect()
@@ -59,19 +67,36 @@ roomStatus(currentUser){
                 return availableRooms;
             })
 }
+
 setCurrentRoomId(id){
     this.currentRoomId= id;
 }
 getCurrentRoomId(){
    return this.currentRoomId;
 }
-setCurrentUser(currentUser){
-    this.currentUser = currentUser;
-    this.notifyObservers(currentUser);
+
+setUsername(username){
+    this.username = username;
 }
-getCurrentUser(){
-    return this.currentUser;
+getUsername(){
+    return this.username;
 }
+
+setPassword(password){
+    this.password = password;
+}
+getPassword(){
+    return this.password;
+}
+
+setAvatarUrl(avatarUrl){
+    this.avatarUrl = avatarUrl;
+    console.log(this.avatarUrl);
+}
+getAvatarUrl(){
+    return this.avatarUrl
+}
+
 getMessages(){
     return this.messages;
 }

@@ -16,9 +16,8 @@ class MessageScreen extends React.Component{
             if(this.ToBottom){
                 const position = ReactDOM.findDOMNode(this)
                 position.scrollTop= position.scrollHeight
-        
-            }
-        } 
+        }
+    } 
 
 
 render(){
