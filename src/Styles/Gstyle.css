@@ -145,7 +145,6 @@ html,body {
   margin-right: 0px;
   max-width: 0;
   overflow: hidden;
-  transition: max-width 0.2s ease-out;
   background-color: #f1f1f1;
 }
 .room-setting-form{

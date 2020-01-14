@@ -17,7 +17,7 @@ class ChatScreen extends Component {
             selectedImage:null,
             imageId: null,
             joinedRooms:[],
-            currentRoom:null
+            users:[]
         }
     }
     update(){
@@ -26,7 +26,6 @@ class ChatScreen extends Component {
     componentDidMount() {
         this.props.model.login()
         .then(currentUser =>{ 
-                console.log(currentUser)
                 this.setState({
                     currentUser:currentUser,
                     joinedRooms:currentUser.rooms
@@ -53,7 +52,6 @@ class ChatScreen extends Component {
                 joinedRooms:this.state.currentUser.rooms,
                 messages:[]
             })
-            
             console.log(`Left room with ID: ${room.id}`);
              })
          .catch(err => {
@@ -118,9 +116,8 @@ class ChatScreen extends Component {
         .then(currentRoom => {
             this.setState({
                 currentRoomId: currentRoom.id,
-                currentRoom:currentRoom
+                users:currentRoom.users
             })
-            console.log(this.state.currentRoom.users)
             return this.state.currentUser.getJoinableRooms()
             .then(joinableRooms => {
                 this.setState({
@@ -165,7 +162,8 @@ class ChatScreen extends Component {
         const node = ReactDOM.findDOMNode(this);
         node.querySelector('.bg-modal').style.display= 'none';
     }
-     collapseRoomsettings = (e)=>{
+
+    collapseRoomsettings = (e)=>{
         const node = ReactDOM.findDOMNode(this);
         e.target.classList.toggle("active");
         let contentRoomSettings = node.querySelector(".content-room-settings");
@@ -184,6 +182,7 @@ class ChatScreen extends Component {
             node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }
+
     collapseSidebar = (e)=>{
         const node = ReactDOM.findDOMNode(this);
         e.target.classList.toggle("active");
@@ -211,7 +210,7 @@ class ChatScreen extends Component {
                 <Sidebar currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup}/>
               
-                <Header displayPopup={this.collapseRoomsettings} collapseSidebar={this.collapseSidebar}/>
+                <Header curentRoom={this.state.currentRoom} displayPopup={this.collapseRoomsettings} collapseSidebar={this.collapseSidebar}/>
 
 
                 <div className={"bg-modal"}>
@@ -233,15 +232,13 @@ class ChatScreen extends Component {
                                     </button>   
                     </div>
                 </div>
-                
-                
-
-                <Roomsettings 
-                               leaveRoom={roomId=>this.leaveroomID()} 
+                <Roomsettings   leaveRoom={roomId=>this.leaveroomID()} 
                                 deleteRoom = {roomId=> this.deleteRoom()} 
                                 addusertoroom={user=>this.addusertoroom(user)}
-                                removeUserFromRoom={user=>this.removeUserFromRoom(user)}/>
+                                removeUserFromRoom={user=>this.removeUserFromRoom(user)}
+                                users={this.state.users}/>
             </div>
+                
          );
     }
 }

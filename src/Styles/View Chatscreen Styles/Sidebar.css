@@ -22,7 +22,6 @@ cursor: pointer;
   height: 100%;
   max-width: 0;
   overflow: hidden;
-  transition: max-width 0.2s ease-out;
   background-color: #f1f1f1;
 }
 .content-sidebar .room{

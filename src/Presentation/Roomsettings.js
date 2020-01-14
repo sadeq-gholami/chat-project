@@ -42,27 +42,38 @@ class Roomsettings extends Component{
                 
            <div className="content-room-settings">
            
-           <form className ="room-settings-form" onSubmit={this.handleSubmitToAdd}>
-            <input  onChange ={this.handlechangeadd} 
-                    value={this.state.usernameToadd}
-                    placeholder="Enter Text"
-                    type="text"/>
-            </form>
+                <form className ="room-settings-form" onSubmit={this.handleSubmitToAdd}>
+                    <input  onChange ={this.handlechangeadd} 
+                            value={this.state.usernameToadd}
+                            placeholder="add user to group"
+                            type="text"/>
+                    </form>
 
-            <form className ="room-settings-form" onSubmit={this.handleSubmitToRemove}>
-            <input  onChange ={this.handlechangeremove} 
-                    value={this.state.usernameToremove}
-                    placeholder="Enter Text"
-                    type="text"/>
-            </form>
+                    <form className ="room-settings-form" onSubmit={this.handleSubmitToRemove}>
+                    <input  onChange ={this.handlechangeremove} 
+                            value={this.state.usernameToremove}
+                            placeholder="remove user from group"
+                            type="text"/>
+                    </form>
 
-                 <button id = "addusertoroom" onClick={this.props.leaveRoom} 
-                 type="button" >Leave room
-                 </button> 
+                    <button id = "addusertoroom" className="btn" onClick={this.props.leaveRoom} 
+                    type="button" >Leave room
+                    </button> 
 
-                 <button id = "addusertoroom" onClick={this.props.deleteRoom} 
-                 type="button" >Delete room
-                 </button> 
+                    <button id = "addusertoroom" className="btn" onClick={this.props.deleteRoom} 
+                    type="button" >Delete room
+                    </button> 
+                    <h3>users</h3>
+                    <div>
+                        {this.props.users.map(user=>{
+                        return (
+                            <div className = "message-name">
+                                <img src ={user.avatarURL} alt ={"no image"} style={{width:"30px", borderRadius:"50px"}}/>
+                                <div>{user.name +" " + user.presence.state}</div>
+                            </div>
+                        )
+                        })}
+                    </div>
             </div>
          
 
