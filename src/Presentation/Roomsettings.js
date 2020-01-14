@@ -40,16 +40,16 @@ class Roomsettings extends Component{
         render(){
             return(
                 
-           <div id="RoomSettings" className="content">
+           <div className="content-room-settings">
            
-           <form className ="123" onSubmit={this.handleSubmitToAdd}>
+           <form className ="room-settings-form" onSubmit={this.handleSubmitToAdd}>
             <input  onChange ={this.handlechangeadd} 
                     value={this.state.usernameToadd}
                     placeholder="Enter Text"
                     type="text"/>
             </form>
 
-                 <form className ="123" onSubmit={this.handleSubmitToRemove}>
+            <form className ="room-settings-form" onSubmit={this.handleSubmitToRemove}>
             <input  onChange ={this.handlechangeremove} 
                     value={this.state.usernameToremove}
                     placeholder="Enter Text"

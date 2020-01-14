@@ -1,6 +1,5 @@
 .sidebar {
   box-sizing: border-box;
-
   background: #F9F9F9;
   border-right-style:solid;
   border-color:rgba(146, 120, 109, 0.247) ;
@@ -11,8 +10,22 @@ cursor: pointer;
   height: 100%;
 }
 
-
-.sidebar .room{
+.content-sidebar{
+  grid-area: sidebar;
+  box-sizing: border-box;
+  background: #F9F9F9;
+  border-right-style:solid;
+  border-color:rgba(146, 120, 109, 0.247) ;
+  border-width: 2px 2px 2px 2px;
+  overflow: scroll;
+  cursor: pointer;
+  height: 100%;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+.content-sidebar .room{
   
   color: rgba(114, 114, 114, 0.568);
   border-color:rgba(146, 120, 109, 0.603);
@@ -27,7 +40,7 @@ cursor: pointer;
 
 
 }
-.sidebar .roombackground.active {
+.content-sidebar .roombackground.active {
   background-color:#2195F6;
   padding-right: 10px ;
   border-radius: 3px;

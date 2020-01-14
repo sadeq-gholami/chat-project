@@ -32,7 +32,7 @@ html,body {
   .app {
     display: grid;
     height: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 0.6fr;
+    grid-template-columns: minmax(min-content, max-content) 1fr 1fr 1fr minmax(min-content, max-content);
     grid-template-rows: 0.3fr 1fr 1fr 1fr 20px;
     grid-template-areas: 
     " header  header     header     header     header      "
@@ -40,7 +40,7 @@ html,body {
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
-    " sidebar chatform   chatform   chatform   chatform    ";
+    " chatform chatform   chatform   chatform   chatform    ";
   }
   .creategroupe {
     grid-area: groupe;
@@ -49,12 +49,10 @@ html,body {
   .header{
     grid-area: header;
   }
-  .sidebar {
-    grid-area: sidebar;
-  }
   
   .messagescreen {
     grid-area: chatscreen;
+    grid-column: 1/-1;
   }
   
   .chatform {
@@ -141,10 +139,15 @@ html,body {
 }
 
 
-.content {
-  height: 100%;
+.content-room-settings{
+  grid-area: Roomsetting;
+  margin-left: auto;
+  margin-right: 0px;
   max-width: 0;
   overflow: hidden;
   transition: max-width 0.2s ease-out;
   background-color: #f1f1f1;
+}
+.room-setting-form{
+  width: 200px;
 }
