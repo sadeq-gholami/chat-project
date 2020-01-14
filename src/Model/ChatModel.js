@@ -24,7 +24,7 @@ export default class ChatModel extends Observable {
         body: JSON.stringify({
               username:this.username,
               password:this.password,
-              avatarURL:this.avatarUrl||"uploads/IMG_1587.JPG"
+              avatarURL:this.avatarUrl
             })
        })
        .then(response => {
@@ -91,7 +91,6 @@ getPassword(){
 
 setAvatarUrl(avatarUrl){
     this.avatarUrl = avatarUrl;
-    console.log(this.avatarUrl);
 }
 getAvatarUrl(){
     return this.avatarUrl

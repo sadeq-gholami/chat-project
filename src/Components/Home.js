@@ -18,7 +18,6 @@ class Home extends Component {
     
     handleUsernameChange=(e)=>{
         this.setState({username:e.target.value});
-        console.log(this.state.username)
     }
 
     handlePasswordChange=(e)=>{
@@ -48,12 +47,12 @@ class Home extends Component {
         this.setState({
             selectedImage: event.target.files[0]
         });
-        console.log(this.state.selectedImage)
     }
 
     imageUploadHandler= async (event)=>{
         event.preventDefault();
         let avatarUrl="";
+        console.log(this.state.selectedImage)
         if (this.state.selectedImage){
             let data = new FormData();
             data.append('name', this.state.selectedImage.name);
@@ -66,7 +65,7 @@ class Home extends Component {
                     return response.json();
                 })
                 .then(data=>{
-                        return "http://localhost:3001/" + data.createdPicture.imgUrl
+                        return "https://chat-application-api.herokuapp.com/" + data.createdPicture.imgUrl
                 })
                 .catch(error => console.error('error', error));
         }
@@ -75,13 +74,19 @@ class Home extends Component {
         this.props.model.setPassword(this.state.password);
         sessionStorage.setItem("username", this.state.username.toLowerCase());
         sessionStorage.setItem("password", this.state.password);
-        this.props.model.setAvatarUrl(avatarUrl);
-        this.props.model.signup().then(res=>{
+        if (avatarUrl!==""){
+            this.props.model.setAvatarUrl(avatarUrl);
+        }else{
+            this.props.model.setAvatarUrl("https://chat-application-api.herokuapp.com/uploads/BST.png");
+        }
+
+        await this.props.model.signup().then(res=>{
             console.log(res)
             if(res.status===500){
                 alert("username already taken :( try a different one")
             }else{
                 alert("congratulations! you have successfully created acount! you can now log in")
+                this.closePopup();
             }
             //this.closePopup();
         }).catch(err=> {
@@ -92,7 +97,6 @@ class Home extends Component {
 
     displayPopup=event=>{
         const node = ReactDOM.findDOMNode(this);
-        console.log(node);
         node.querySelector('.bg-modal').style.display= 'flex';
     }
 

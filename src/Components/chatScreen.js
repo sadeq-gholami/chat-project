@@ -220,9 +220,13 @@ class ChatScreen extends Component {
                         <img className={"add-image-icon-form"}
                             src ={ require('../images/bluecamera.png')} 
                             alt ={"could not load image"}/>
-                        <input  className={"btn"} type="file"
-                                onChange={this.fileSelectedHandlar}/>
-
+                        <div>
+                    <label for="files" className={"btn"}>Select JPG/png Image to send</label>
+                    <input   type="file"
+                             style={{visibility:"hidden"}}
+                             id="files"
+                             onChange={this.fileSelectedHandlar}/>
+                    </div>
                         <button  className={"btn"} 
                                 onClick={this.imageUploadHandler}>
                                     upload

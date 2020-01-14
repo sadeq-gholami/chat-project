@@ -15,9 +15,13 @@ const SignupPopup = ({username, password, imageUploadHandler, fileSelectedHandla
                         value={password}
                         placeholder="passowrd..."
                         type="password"/>
-                    <input  className={"btn"} type="file"
-                            placeholder="select avatar..."
+                    <div>
+                    <label for="files" className={"btn"}>Select Avatar Image</label>
+                    <input   type="file"
+                             style={{visibility:"hidden"}}
+                             id="files"
                         onChange={fileSelectedHandlar}/>
+                    </div>
 
                     <button  className={"btn"} 
                         onClick={imageUploadHandler}>
