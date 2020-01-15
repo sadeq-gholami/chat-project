@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../Styles/View Chatscreen Styles/Message.css';
 const Message = ({message,currentUser})=> {
-  console.log(message)
   if (message.text.includes(112)){
     return (
       <div className="event-message">
@@ -14,7 +13,7 @@ const Message = ({message,currentUser})=> {
     return(
       <div className="userMessage">
         <div className = "message-name">
-          <img src ={message.sender.avatarURL} alt ={"no image"} style={{width:"30px", borderRadius:"50px"}}/>
+          <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            {message.sender.name}
            <img  width="8 " src={ require('../images/online.png') } />
            </div>
@@ -34,7 +33,7 @@ const Message = ({message,currentUser})=> {
       <div className="userMessage">
        
         <div className = "message-name">
-        <img src ={message.sender.avatarURL} alt ={"no image"} style={{width:"30px", borderRadius:"50px"}}/>
+        <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            {message.sender.name}
            <img  width="8 " src={ require('../images/online.png') } />
            </div>
@@ -52,7 +51,7 @@ const Message = ({message,currentUser})=> {
     return(
       <div className="Message">
          <div className = "message-name">
-         <img src ={message.sender.avatarURL} alt ={"no image"} style={{width:"30px", borderRadius:"50px"}}/>
+         <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            {message.sender.name}
            <img  width="8 " src={ require('../images/online.png') } />
            </div>
@@ -73,7 +72,7 @@ const Message = ({message,currentUser})=> {
       <div className="Message">
        
         <div className = "message-name">
-        <img src ={message.sender.avatarURL} alt ={"no image"} style={{width:"30px", borderRadius:"50px"}}/>
+        <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            {message.sender.name}
            <img  width="8 " src={ require('../images/online.png') } />
            </div>
@@ -93,7 +92,7 @@ const Message = ({message,currentUser})=> {
     return (
       <div className="Message">
        <div className = "message-name">
-       <img src ={message.sender.avatarURL} alt ={"no image"} style={{width:"30px", borderRadius:"50px"}}/>
+       <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            {message.sender.name}
            </div>
            <div className = "message-time">

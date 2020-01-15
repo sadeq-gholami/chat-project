@@ -26,26 +26,28 @@ class ChatScreen extends Component {
     componentDidMount() {
         this.props.model.login()
         .then(currentUser =>{ 
-                this.setState({
-                    currentUser:currentUser,
-                    joinedRooms:currentUser.rooms
-                })
+            this.setState({
+                currentUser:currentUser,
+                joinedRooms:currentUser.rooms
             })
-            .catch(err => console.log('error on subscribing: ', err));
+        })
+        .catch(err => console.log('error on subscribing: ', err));
     }
+
     sendMsg=(text)=>{
         this.props.model.sendMessage(text, this.state.currentUser);
     };
+
     createRoom=(name)=> {
         this.state.currentUser.createRoom({
             name
         })
         .then(room => this.subscribeToRoom(room.id))
-        .catch(err => console.log(err))
-    }
+        .catch(err => console.log(err));
+    };
     
     leaveroomID(){
-        this.sendMsg(`${this.state.currentUser.name} left the group112`)
+        this.sendMsg(`${this.state.currentUser.name} left the group112`);
         this.state.currentUser.leaveRoom({ roomId: this.state.currentRoomId })
         .then(room => {
             this.setState({
@@ -176,9 +178,11 @@ class ChatScreen extends Component {
             node.querySelector('.messagescreen').style.gridColumn="2/-1";
         }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
             contentRoomSettings.style.maxWidth = "200px";
+            contentSidebar.style.maxWidth= null;
             node.querySelector('.messagescreen').style.gridColumn="1/-2";
         }else{
             contentRoomSettings.style.maxWidth = "200px";
+            contentSidebar.style.maxWidth= null;
             node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }
@@ -196,9 +200,11 @@ class ChatScreen extends Component {
             node.querySelector('.messagescreen').style.gridColumn="1/-2";
         }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
             contentSidebar.style.maxWidth = "200px";
+            contentRoomSettings.style.maxWidth = null;
             node.querySelector('.messagescreen').style.gridColumn="2/-1";
         }else {
             contentSidebar.style.maxWidth = "200px";
+            contentRoomSettings.style.maxWidth = null;
             node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }

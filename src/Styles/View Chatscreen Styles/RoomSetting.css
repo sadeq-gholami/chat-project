@@ -55,3 +55,11 @@
     margin:10px;
     font-size: 13px
   }
+  .content-room-settings{
+    grid-area: Roomsetting;
+    margin-left: auto;
+    margin-right: 0px;
+    max-width: 0;
+    overflow: scroll;
+    background-color: #f1f1f1;
+  }

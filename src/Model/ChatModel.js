@@ -55,6 +55,7 @@ export default class ChatModel extends Observable {
    
 
 setImages(messages){
+    this.images=[];
     messages.map(message => {
         if(message.text.includes(10101)){
             this.images.push("https://chat-application-api.herokuapp.com/" + message.text.substr(5))

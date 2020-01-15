@@ -40,7 +40,19 @@ html,body {
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
-    " chatform chatform   chatform   chatform   chatform    ";
+    " sidebar chatform   chatform   chatform   chatform    ";
+  }
+  @media only screen and (max-width: 600px){
+    .app{
+      grid-template-columns: minmax(min-content, max-content) 1fr 1fr 1fr minmax(min-content, max-content);
+      grid-template-areas: 
+      " header  header     header     header     header      "
+      " sidebar chatscreen chatscreen chatscreen Roomsetting "
+      " sidebar chatscreen chatscreen chatscreen Roomsetting "
+      " sidebar chatscreen chatscreen chatscreen Roomsetting "
+      " sidebar chatscreen chatscreen chatscreen Roomsetting "
+      " chatform chatform   chatform   chatform   chatform    ";
+    }
   }
   .creategroupe {
     grid-area: groupe;
@@ -134,19 +146,5 @@ html,body {
   .btn-input{
     cursor: auto;
   }
-.room-setting-collapse{
-  grid-area: null;
-}
 
 
-.content-room-settings{
-  grid-area: Roomsetting;
-  margin-left: auto;
-  margin-right: 0px;
-  max-width: 0;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-.room-setting-form{
-  width: 200px;
-}

@@ -42,18 +42,17 @@ class Roomsettings extends Component{
             return(
                 
            <div className="content-room-settings">
-           
                 <form className ="room-setting-form" onSubmit={this.handleSubmitToAdd}>
                     <input  onChange ={this.handlechangeadd} 
                             value={this.state.usernameToadd}
-                            placeholder="add user to room"
+                            placeholder="add user"
                             type="text"/>
                     </form>
 
                     <form className ="room-setting-form" onSubmit={this.handleSubmitToRemove}>
                     <input  onChange ={this.handlechangeremove} 
                             value={this.state.usernameToremove}
-                            placeholder="remove user from room"
+                            placeholder="remove user"
                             type="text"/>
                     </form>
 
@@ -69,13 +68,13 @@ class Roomsettings extends Component{
                     </Link>
                     <h3>users</h3>
                     <div className="users-box">
-                        {this.props.users.map(user=>{
+                        {this.props.users.map((user, i)=>{
                         return (
-                            <div className="user-box">
-                                <img className= "user-image" src ={user.avatarURL} alt ={"no image"}/>
-                                <div className="user-name">{user.name}</div>
+                            <div key={i}className="user-box">
+                                <img key = {i}className= "user-image" src ={user.avatarURL} alt ={"no image"}/>
+                                <div key ={i}className="user-name">{user.name}</div>
                                 { user.presence.state==='online'?
-                                <img className="status-image" width="8 " src={ require('../images/online.png') } />:""}
+                                <img key={i} className="status-image" width="8 " src={ require('../images/online.png') } />:""}
                                 
                             </div>
                         )
