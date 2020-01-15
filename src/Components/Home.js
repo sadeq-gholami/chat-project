@@ -77,7 +77,7 @@ class Home extends Component {
         if (avatarUrl!==""){
             this.props.model.setAvatarUrl(avatarUrl);
         }else{
-            this.props.model.setAvatarUrl("https://chat-application-api.herokuapp.com/uploads/BST.png");
+            this.props.model.setAvatarUrl("https://chat-application-api.herokuapp.com/uploads/black.jpg");
         }
 
         await this.props.model.signup().then(res=>{

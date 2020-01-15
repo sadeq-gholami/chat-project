@@ -46,6 +46,10 @@ cursor: pointer;
   opacity: 1;
   
 }
+ h3{
+  padding: 20px;
+  text-align: center;
+}
 .sidebar .room #roomname{
   color: black ;
   font-family: arial;
