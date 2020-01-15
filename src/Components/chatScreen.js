@@ -177,12 +177,10 @@ class ChatScreen extends Component {
             contentRoomSettings.style.maxWidth = null;
             node.querySelector('.messagescreen').style.gridColumn="2/-1";
         }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
-            contentRoomSettings.style.maxWidth = "200px";
-            contentSidebar.style.maxWidth= null;
+            contentRoomSettings.style.maxWidth = "250px";
             node.querySelector('.messagescreen').style.gridColumn="1/-2";
         }else{
-            contentRoomSettings.style.maxWidth = "200px";
-            contentSidebar.style.maxWidth= null;
+            contentRoomSettings.style.maxWidth = "250px";
             node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }
@@ -199,12 +197,10 @@ class ChatScreen extends Component {
             contentSidebar.style.maxWidth = null;
             node.querySelector('.messagescreen').style.gridColumn="1/-2";
         }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
-            contentSidebar.style.maxWidth = "200px";
-            contentRoomSettings.style.maxWidth = null;
+            contentSidebar.style.maxWidth = "300px";
             node.querySelector('.messagescreen').style.gridColumn="2/-1";
         }else {
-            contentSidebar.style.maxWidth = "200px";
-            contentRoomSettings.style.maxWidth = null;
+            contentSidebar.style.maxWidth = "300px";
             node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }

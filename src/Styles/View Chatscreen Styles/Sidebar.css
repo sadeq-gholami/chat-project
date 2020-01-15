@@ -1,19 +1,19 @@
 .sidebar {
   box-sizing: border-box;
+
   background: #F9F9F9;
   border-right-style:solid;
   border-color:rgba(146, 120, 109, 0.247) ;
   border-width: 2px 2px 2px 2px;
   overflow: scroll;
-cursor: pointer;
-
+  cursor: pointer;
   height: 100%;
 }
 
 .content-sidebar{
   grid-area: sidebar;
   box-sizing: border-box;
-  background: #F9F9F9;
+  background-color: #F9F9F9;
   border-right-style:solid;
   border-color:rgba(146, 120, 109, 0.247) ;
   border-width: 2px 2px 2px 2px;
@@ -21,21 +21,17 @@ cursor: pointer;
   cursor: pointer;
   height: 100%;
   max-width: 0;
-  background-color: #f1f1f1;
 }
 .content-sidebar .room{
-  
-  color: rgba(114, 114, 114, 0.568);
   border-color:rgba(146, 120, 109, 0.603);
-  opacity: 0.6;
-  font-weight: 900;
-
   border-bottom:solid;
   border-width: 1px 1px 1px 1px;
-  padding: 20px 0px;
-  margin: 10px;
+  padding: 20px;
   cursor: pointer;
-
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 30px;
+  padding-right: 100px;
 
 }
 .content-sidebar .roombackground.active {
@@ -46,7 +42,6 @@ cursor: pointer;
   
 }
  h3{
-  padding: 20px;
   text-align: center;
 }
 .sidebar .room #roomname{
