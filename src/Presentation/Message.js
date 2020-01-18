@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../Styles/View Chatscreen Styles/Message.css';
 import * as PropTypes from "prop-types";
 import no_profile_picture from '../images/no_profile_picture.png'
+import image_not_loaded from '../images/image_no_loaded.png'
 import ImageWithDefault from "./ImageWithDefault";
 
 class Message extends Component {
@@ -25,7 +26,7 @@ class Message extends Component {
                     <div className="message-name">
                         <ImageWithDefault source={message.sender.avatarURL} default={no_profile_picture} className="user-image"/>
                         {message.sender.name}
-                        <img width="8 " src={require('../images/online.png')}/>
+                        <img width="8 " src={require('../images/online.png')} alt={"no picture"}/>
                     </div>
                     <div className="message-time">{message.createdAt.slice(0, -4)}</div>
                     <a href={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} target="blank">
@@ -62,7 +63,8 @@ class Message extends Component {
                     </div>
                     <div className="message-time"> {message.createdAt.slice(0, -4)} </div>
                     <a href={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} target="blank">
-                        <img src={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)}
+                        <ImageWithDefault source={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)}
+                                          default={image_not_loaded}
                              alt={"could not load image"}
                              className="sent-image"/>
                     </a>

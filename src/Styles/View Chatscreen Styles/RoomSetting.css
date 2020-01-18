@@ -1,35 +1,40 @@
-.users-box{
-    margin-left: 10px ;
+.users-box {
+    margin-left: 10px;
 }
-.user-box{
+
+.user-box {
     display: flex;
-    margin-top:10px ;
+    margin-top: 10px;
     justify-content: center;
-     align-items: center;
+    align-items: center;
 }
-.status-image{
+
+.status-image {
     margin-left: auto;
     margin-right: 0px;
     padding: 10px;
 }
 
-.user-name{
+.user-name {
     padding-left: 10px;
     padding-right: 10px;
 }
-.user-image{
+
+.user-image {
     width: 40px;
     height: 40px;
     border-radius: 50px;
 }
-.room-setting-form{
+
+.room-setting-form {
     background: transparent;
     border: 0;
     border-bottom: 1px solid white;
     opacity: .6;
     padding: 10px;
-  }
-  .room-setting-form input{
+}
+
+.room-setting-form input {
     background-color: black;
     opacity: .6;
     width: 50%;
@@ -37,25 +42,28 @@
     border: none;
     margin-top: 10px;
     border-radius: 15px;
-  }
-  .room-setting-form input {
-    color: whitesmoke;
-  }
+}
 
-  .room-setting-form input::placeholder {
+.room-setting-form input {
+    color: whitesmoke;
+}
+
+.room-setting-form input::placeholder {
     text-align: center;
     color: rgba(255, 255, 255, 0.692);
-  }
-  .room-setting-btn{
-    background: whitesmoke;
+}
+
+.room-setting-btn {
+    background-color: #ff6b6b;
     cursor: pointer;
     padding: 8px 40px;
     border-radius: 15px;
     color: black;
-    margin:10px;
+    margin: 10px;
     font-size: 13px
-  }
-  .content-room-settings{
+}
+
+.content-room-settings {
     grid-area: Roomsetting;
     margin-left: auto;
     margin-right: 0px;
@@ -63,4 +71,11 @@
     overflow: scroll;
     background-color: #f1f1f1;
     text-align: center;
-  }
+}
+
+.roomSettingButtons {
+    position: absolute;
+    bottom: 75px;
+}
+
+

@@ -11,17 +11,17 @@ class RoomSettings extends Component {
     constructor() {
         super();
         this.state = {
-            usernameToadd: "",
-            usernameToremove: ""
+            usernameToAdd: "",
+            usernameToRemove: ""
         };
     }
 
 
     handlechangeadd = (e) => {
-        this.setState({usernameToadd: e.target.value})
+        this.setState({usernameToAdd: e.target.value})
     }
     handlechangeremove = (e) => {
-        this.setState({usernameToremove: e.target.value})
+        this.setState({usernameToRemove: e.target.value})
     }
 
 
@@ -34,9 +34,9 @@ class RoomSettings extends Component {
     }
     handleSubmitToRemove = (e) => {
         e.preventDefault();
-        this.props.removeUserFromRoom(this.state.usernameToremove)
+        this.props.removeUserFromRoom(this.state.usernameToRemove)
         this.setState({
-            usernameToremove: ""
+            usernameToRemove: ""
         })
     }
 
@@ -59,21 +59,12 @@ class RoomSettings extends Component {
                            type="text"/>
                 </form>
 
-                <button id="addusertoroom" className="room-setting-btn" onClick={this.props.leaveRoom}
-                        type="button">Leave room
-                </button>
 
-                <button id="addusertoroom" className="room-setting-btn" onClick={this.props.deleteRoom}
-                        type="button">Delete room
-                </button>
-                <Link to="/">
-                    <button className="room-setting-btn" type="button">sign out</button>
-                </Link>
                 <h3>users</h3>
 
                 <div key={uuid()} className="user-box">
                     <table>
-                        <thead><th/><th/><th/></thead>
+                        <thead><tr><th/><th/><th/></tr></thead>
                         <tbody>
                         {this.props.users.map((user) => {
                             return (
@@ -96,6 +87,22 @@ class RoomSettings extends Component {
                         </tbody>
                     </table>
                 </div>
+
+                <div className={"roomSettingButtons"} >
+                    <button id="addusertoroom" className="room-setting-btn" onClick={this.props.leaveRoom}
+                            type="button">Leave room
+                    </button>
+
+                    <button id="addusertoroom" className="room-setting-btn" onClick={this.props.deleteRoom}
+                            type="button">Delete room
+                    </button>
+                    <Link to="/">
+                        <button className="room-setting-btn" type="button">sign out</button>
+                    </Link>
+
+                </div>
+
+
             </div>
 
         );
