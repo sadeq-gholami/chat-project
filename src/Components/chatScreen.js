@@ -5,7 +5,9 @@ import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import Group from '../Presentation/Group';
-import Roomsettings from '../Presentation/Roomsettings'; 
+import RoomSettings from '../Presentation/Roomsettings';
+import uuid from 'react-uuid'
+
 
 class ChatScreen extends Component {
     constructor(props){
@@ -234,7 +236,7 @@ class ChatScreen extends Component {
                                     </button>   
                     </div>
                 </div>
-                <Roomsettings   leaveRoom={roomId=>this.leaveroomID()} 
+                <RoomSettings   leaveRoom={roomId=>this.leaveroomID()}
                                 deleteRoom = {roomId=> this.deleteRoom()} 
                                 addusertoroom={user=>this.addusertoroom(user)}
                                 removeUserFromRoom={user=>this.removeUserFromRoom(user)}

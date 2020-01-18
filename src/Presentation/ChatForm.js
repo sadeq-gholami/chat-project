@@ -47,16 +47,12 @@ class ChatForm extends React.Component {
                     value={this.state.message}
                     placeholder="Enter Text"
                     type="text"/>
-                
-
                   <Link to={"/photos"}>
                 <div  className="allpicture">   
                 <img  width="60" src={ require('../images/pictureicon.png') } />
                 <span class="test">Photos</span>
                 </div>
             </Link>
-
-
             <button id = "Sbtn" onClick={e=>this.handleSubmitbtn()} type="button" >Send</button> 
             </form>
          );
