@@ -4,7 +4,8 @@ import MessageScreen from '../Presentation/MessageScreen';
 import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
-import RoomSettings from '../Presentation/Roomsettings';
+import UsersSideBar from '../Presentation/UsersSideBar';
+import RoomSettings from "../Presentation/RoomSettings";
 
 
 class ChatScreen extends Component {
@@ -49,7 +50,7 @@ class ChatScreen extends Component {
     };
 
     leaveroomID() {
-        this.sendMsg(`${this.state.currentUser.name} left the group112`);
+        this.sendMsg(`${this.state.currentUser.name} left the group`);
         this.state.currentUser.leaveRoom({roomId: this.state.currentRoomId})
             .then(room => {
                 this.setState({
@@ -66,42 +67,39 @@ class ChatScreen extends Component {
     deleteRoom() {
         this.state.currentUser.deleteRoom({roomId: this.state.currentRoomId})
             .then(() => {
-                console.log(`Deleted room with ID: ${this.state.currentRoomId}`)
-            })
+                console.log(`Deleted room with ID: ${this.state.currentRoomId}`)})
             .catch(err => {
                 console.log(`Error deleted room ${this.state.currentRoomId}: ${err}`)
             })
     }
 
-    addusertoroom = (userName) => {
+    addUserToRoom = (userName) => {
         this.state.currentUser.addUserToRoom({
             userId: userName,
             roomId: this.state.currentRoomId
         }).then(() => {
-            this.sendMsg(`${this.state.currentUser.name} added ${userName}112`)
+            this.sendMsg(`${this.state.currentUser.name} added ${userName} to room.112`)
+            this.setState({users: this.state.users.filter(value => value.id !== userName)});
+        }).then(() => {
+            console.log(`Added User to room ${this.state.currentRoomId}`)
+        }).catch(err => {
+            console.log(`Error adding User to room 123: ${this.state.currentRoomId} ${err}`)
         })
-            .then(() => {
-                console.log(`Added User to room ${this.state.currentRoomId}`)
-            })
-            .catch(err => {
-                console.log(`Error adding User to room 123: ${this.state.currentRoomId} ${err}`)
-            })
     }
 
     removeUserFromRoom = (userName) => {
         this.state.currentUser.removeUserFromRoom({
             userId: userName,
             roomId: this.state.currentRoomId
+        }).then(() => {
+            console.log(`Removed User from room ${this.state.currentRoomId}`)
+        }).then(() => {
+            this.sendMsg(`${this.state.currentUser.id} has removed ${userName} from room.112`)
+            this.setState({users: this.state.users.filter(value => value.id !== userName)});
+        }).catch(err => {
+            console.log(`Error Removing User from room: ${this.state.currentRoomId} ${err}`)
         })
-            .then(() => {
-                console.log(`Removed User to room ${this.state.currentRoomId}`)
-            }).then(() => {
-            this.sendMsg(`${this.state.currentUser} has removed ${userName} Joined room112`)
-        })
-            .catch(err => {
-                console.log(`Error Removing User from room: ${this.state.currentRoomId} ${err}`)
-            })
-    }
+    };
 
     subscribeToRoom(roomId) {
         this.state.messages = [];
@@ -116,21 +114,19 @@ class ChatScreen extends Component {
                     this.props.model.setImages(this.state.messages);
                 }
             }
-        })
-            .then(currentRoom => {
-                this.setState({
-                    currentRoomId: currentRoom.id,
-                    users: currentRoom.users
-                })
-                return this.state.currentUser.getJoinableRooms()
-                    .then(joinableRooms => {
-                        this.setState({
-                            availableRooms: joinableRooms,
-                            takenRooms: this.state.currentUser.rooms
-                        })
-                    })
+        }).then(currentRoom => {
+            this.setState({
+                currentRoomId: currentRoom.id,
+                users: currentRoom.users
             })
-            .catch(err => console.log('error on subscribing: ', err))
+            return this.state.currentUser.getJoinableRooms()
+                .then(joinableRooms => {
+                    this.setState({
+                        availableRooms: joinableRooms,
+                        takenRooms: this.state.currentUser.rooms
+                    })
+                })
+        }).catch(err => console.log('error on subscribing: ', err))
     }
 
     fileSelectedHandlar = event => {
@@ -147,15 +143,12 @@ class ChatScreen extends Component {
         fetch('https://chat-application-api.herokuapp.com/pictures', {
             method: 'POST',
             body: data
-        })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                this.sendMsg("10101" + data.createdPicture.imgUrl);
-                this.closePopup();
-            })
-            .catch(error => console.error('error', error));
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            this.sendMsg("10101" + data.createdPicture.imgUrl);
+            this.closePopup();
+        }).catch(error => console.error('error', error));
     }
 
     displayPopup = event => {
@@ -168,10 +161,15 @@ class ChatScreen extends Component {
         node.querySelector('.bg-modal').style.display = 'none';
     }
 
+    popupRoomSettings = event => {
+        const node = ReactDOM.findDOMNode(this);
+        node.querySelector('.bg-modal2').style.display = 'flex';
+    }
+
     collapseRoomsettings = (e) => {
         const node = ReactDOM.findDOMNode(this);
         e.target.classList.toggle("active");
-        let contentRoomSettings = node.querySelector(".content-room-settings");
+        let contentRoomSettings = node.querySelector(".user-side-bar");
         let contentSidebar = node.querySelector(".content-sidebar");
         if (!contentSidebar.style.maxWidth && contentRoomSettings.style.maxWidth) {
             contentRoomSettings.style.maxWidth = null;
@@ -191,7 +189,7 @@ class ChatScreen extends Component {
     collapseSidebar = (e) => {
         const node = ReactDOM.findDOMNode(this);
         e.target.classList.toggle("active");
-        let contentRoomSettings = node.querySelector(".content-room-settings");
+        let contentRoomSettings = node.querySelector(".user-side-bar");
         let contentSidebar = node.querySelector(".content-sidebar");
         if (contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth) {
             contentSidebar.style.maxWidth = null;
@@ -216,11 +214,9 @@ class ChatScreen extends Component {
                 <Sidebar currentroomID={this.state.currentRoomId} joinedRooms={this.state.joinedRooms}
                          subscribeToRoom={roomId => this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg={msg => this.sendMsg(msg)} displayPopup={this.displayPopup}/>
-
                 <Header curentRoom={this.state.currentRoom} displayPopup={this.collapseRoomsettings}
+                        popupRoomSettings={this.popupRoomSettings}
                         collapseSidebar={this.collapseSidebar}/>
-
-
                 <div className={"bg-modal"}>
                     <div className={"modal-pop-up"}>
                         <div className="close" onClick={this.closePopup}>+</div>
@@ -240,13 +236,13 @@ class ChatScreen extends Component {
                         </button>
                     </div>
                 </div>
-                <RoomSettings leaveRoom={roomId => this.leaveroomID()}
-                              deleteRoom={roomId => this.deleteRoom()}
-                              addusertoroom={user => this.addusertoroom(user)}
-                              removeUserFromRoom={user => this.removeUserFromRoom(user)}
-                              users={this.state.users}/>
+                <RoomSettings
+                    leaveRoom={roomId => this.leaveroomID()}
+                    deleteRoom={roomId => this.deleteRoom()}
+                    addUserToRoom={user => this.addUserToRoom(user)}
+                    removeUserFromRoom={user => this.removeUserFromRoom(user)}/>
+                <UsersSideBar users={this.state.users}/>
             </div>
-
         );
     }
 }

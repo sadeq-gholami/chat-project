@@ -54,7 +54,6 @@
 }
 
 .room-setting-btn {
-    background-color: #ff6b6b;
     cursor: pointer;
     padding: 8px 40px;
     border-radius: 15px;
@@ -63,7 +62,19 @@
     font-size: 13px
 }
 
-.content-room-settings {
+.green-btn  {
+    background-color: #51ff60;
+}
+
+.red-btn  {
+    background-color: #ff6b6b;
+}
+
+tr.border_bottom td {
+    border-bottom:1pt solid black;
+}
+
+.user-side-bar {
     grid-area: Roomsetting;
     margin-left: auto;
     margin-right: 0px;

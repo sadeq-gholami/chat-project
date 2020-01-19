@@ -7,16 +7,19 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-
                 <div className="title"> Messages
+                    <div className="settingicon">
+                        <img width="30" className={"settingicon"}
+                             src={require('../images/users.png')}
+                             alt={"could not load image"}
+                             onClick={this.props.displayPopup}/>
+                    </div>
                     <div className="settingicon">
                         <img width="30" className={"settingicon"}
                              src={require('../images/settingicon.png')}
                              alt={"could not load image"}
-                             onClick={this.props.displayPopup}/>
-                        <span class="tooltiptext">Settings</span>
+                             onClick={this.props.popupRoomSettings}/>
                     </div>
-
                     <div className="tabicon">
                         <img width="30" src={require('../images/tabicon.png')}
                              onClick={this.props.collapseSidebar}/>
