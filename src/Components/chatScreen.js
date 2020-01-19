@@ -79,7 +79,7 @@ class ChatScreen extends Component {
             roomId: this.state.currentRoomId
         }).then(() => {
             this.sendMsg(`${this.state.currentUser.name} added ${userName} to room.112`)
-            this.setState({users: this.state.users.filter(value => value.id !== userName)});
+            this.subscribeToRoom(this.state.currentRoomId);
         }).then(() => {
             console.log(`Added User to room ${this.state.currentRoomId}`)
         }).catch(err => {
@@ -95,7 +95,7 @@ class ChatScreen extends Component {
             console.log(`Removed User from room ${this.state.currentRoomId}`)
         }).then(() => {
             this.sendMsg(`${this.state.currentUser.id} has removed ${userName} from room.112`)
-            this.setState({users: this.state.users.filter(value => value.id !== userName)});
+            this.subscribeToRoom(this.state.currentRoomId);
         }).catch(err => {
             console.log(`Error Removing User from room: ${this.state.currentRoomId} ${err}`)
         })
