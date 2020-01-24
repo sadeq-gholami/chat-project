@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../Styles/View Chatscreen Styles/ChatForm.css';
 
-import {Link} from "react-router-dom";
+
 
 
 
@@ -49,13 +49,7 @@ class ChatForm extends React.Component {
                     type="text"/>
                 
 
-                  <Link to={"/photos"}>
-                <div  className="allpicture">   
-                <img  width="60" src={ require('../images/pictureicon.png') } />
-                <span class="test">Photos</span>
-                </div>
-            </Link>
-
+                  
 
             <button id = "Sbtn" onClick={e=>this.handleSubmitbtn()} type="button" >Send</button> 
             </form>

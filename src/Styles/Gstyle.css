@@ -70,6 +70,9 @@ html,body {
   .chatform {
     grid-area: chatform;
   }
+  .addroom{
+    
+  }
 
 .add-image-icon{
   padding-top: 10px;
@@ -92,6 +95,49 @@ html,body {
   align-items: center;
   display: none;
 }
+.bg-modal2{
+  width:100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.7);
+  position: absolute;
+  top:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.modal-pop-up2{
+  width:400px;
+  height: 100px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+.bg-modal1{
+  width:100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.7);
+  position: absolute;
+  top:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-pop-up1{
+  width:600px;
+  height: 300px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  overflow: scroll;
+ 
+}
 .modal-pop-up{
   width:500px;
   height: 300px;
@@ -100,6 +146,7 @@ html,body {
   text-align: center;
   padding: 20px;
   position: relative;
+
 }
 .btn{
   font-size: 1rem;
@@ -119,7 +166,29 @@ html,body {
   transform: rotate(45deg);
   cursor: pointer;
 }
+.invlink{
+margin-top: 5%;
+}
+.createinvinput{
 
+  background-color: grey;
+  padding: 8px;
+  border-radius: 3px;
+  border: none;
+}
+.createinvinput::placeholder{
+  color: white;
+}
+#copybtn{
+ 
+  margin-left: 2px;
+  background-color: #2195F6;
+  color: white;
+  padding-top:8px;
+  padding-bottom:8px;
+  border-radius: 3px;
+  border: none;
+}
 
   .popup {
     position: fixed;

@@ -58,7 +58,7 @@ setImages(messages){
     this.images=[];
     messages.map(message => {
         if(message.text.includes(10101)){
-            this.images.push("https://chat-application-api.herokuapp.com/" + message.text.substr(5))
+            this.images.push(message.text.substr(5))
         }
     });
 }

@@ -17,9 +17,9 @@ const Login= ({username, password, authorized, handleSubmit, handleUsernameChang
                                 placeholder="Enter passowrd..."
                                 type="password"/>
                             <div>
-                                <button className = "tbtn" onClick={handleSubmit}>Sign in</button> 
+                                <button className = "tbtn" onClick={handleSubmit}>SIGN IN</button> 
                             </div>
-                            <button className="tbtn" onClick={displayPopup}>sign up</button>
+                            <button className="tbtn" onClick={displayPopup}>SIGN UP</button>
                             <div>
                                 {authorized
                                     ? <div/>

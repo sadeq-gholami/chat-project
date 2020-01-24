@@ -7,7 +7,7 @@ class Sidebar extends React.Component{
        
         return ( 
             <div className="content-sidebar">
-            <h3>Your rooms:</h3>
+            <h5>Your rooms</h5>
          <div>
         {orderedJoinedRooms.map(room=> 
         {  const active = this.props.currentroomID === room.id ? "active" : "";
@@ -19,12 +19,17 @@ class Sidebar extends React.Component{
                                      {room.name}
                                   </div>
                               </div>              
-        </div>)})}
+        </div>
+        
+        )})}
            
-           
-          
              
             </div>
+
+            <div className="addroom" 
+             onClick={this.props.displayPopup} >
+            <div id="roomname" >Add rooms</div>
+                              </div> 
             
      </div>
      

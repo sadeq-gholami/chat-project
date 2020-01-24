@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Login from '../Presentation/Login'
 import ReactDOM from 'react-dom';
-import {Link} from "react-router-dom";
 import '../Styles/View Home Styles/Home.css';
 import SignupPopup from '../Presentation/signupPopup';
 class Home extends Component {
@@ -65,7 +64,7 @@ class Home extends Component {
                     return response.json();
                 })
                 .then(data=>{
-                        return "https://chat-application-api.herokuapp.com/" + data.createdPicture.imgUrl
+                        return data.url
                 })
                 .catch(error => console.error('error', error));
         }
@@ -76,10 +75,7 @@ class Home extends Component {
         sessionStorage.setItem("password", this.state.password);
         if (avatarUrl!==""){
             this.props.model.setAvatarUrl(avatarUrl);
-        }else{
-            this.props.model.setAvatarUrl("https://chat-application-api.herokuapp.com/uploads/black.jpg");
         }
-
         await this.props.model.signup().then(res=>{
             console.log(res)
             if(res.status===500){

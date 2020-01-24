@@ -8,7 +8,8 @@ class Roomsettings extends Component{
         super();
         this.state= {
             usernameToadd: "",
-            usernameToremove:""
+            usernameToremove:"",
+            roomtojoin:""
         };
     }
 
@@ -19,8 +20,17 @@ class Roomsettings extends Component{
     handlechangeremove=(e)=>{
         this.setState({usernameToremove:e.target.value})
     }
+    handlechangejoin=(e)=>{
+        this.setState({roomtojoin:e.target.value})
+    }
 
-
+    handleSubmitTojoin=(e)=>{
+        e.preventDefault();
+        this.props.joinroom(this.state.roomtojoin)
+        this.setState({
+            roomtojoin:""
+        })
+    }
     
     handleSubmitToAdd=(e)=>{
         e.preventDefault();
@@ -60,9 +70,6 @@ class Roomsettings extends Component{
                     type="button" >Leave room
                     </button> 
 
-                    <button id = "addusertoroom" className="room-setting-btn" onClick={this.props.deleteRoom} 
-                    type="button" >Delete room
-                    </button> 
                     <Link to ="/">
                     <button className="room-setting-btn" type="button" >sign out</button> 
                     </Link>

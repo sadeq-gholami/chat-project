@@ -6,7 +6,7 @@ import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import Group from '../Presentation/Group';
 import Roomsettings from '../Presentation/Roomsettings'; 
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 class ChatScreen extends Component {
     constructor(props){
         super(props);
@@ -17,7 +17,7 @@ class ChatScreen extends Component {
             selectedImage:null,
             imageId: null,
             joinedRooms:[],
-            users:[]
+            users:[] 
         }
     }
     update(){
@@ -60,15 +60,14 @@ class ChatScreen extends Component {
             console.log(`Error leaving room ${this.state.currentRoomId}: ${err}`)
             })
       }
-
-    deleteRoom(){
-        this.state.currentUser.deleteRoom({ roomId: this.state.currentRoomId })
-            .then(() => {
-                console.log(`Deleted room with ID: ${this.state.currentRoomId}`)
-            })
-            .catch(err => {
-                console.log(`Error deleted room ${this.state.currentRoomId}: ${err}`)
-            })
+    joinaroom(roomid){
+     this.state.currentUser.joinRoom({ roomId:roomid})
+    .then(room => {
+        console.log(`Joined room with ID: ${room.id}`)
+      })
+      .catch(err => {
+        console.log(`Error joining room ${roomid}: ${err}`)
+      })
     }
 
     addusertoroom=(userName)=>{
@@ -94,12 +93,14 @@ class ChatScreen extends Component {
             .then(() => {
               console.log(`Removed User to room ${this.state.currentRoomId}`)
             }).then(()=>{
-                this.sendMsg(`${this.state.currentUser} has removed ${userName} Joined room112`)
+                this.sendMsg(`${this.state.currentUser.name} has removed ${userName}112`)
               })
             .catch(err => {
               console.log(`Error Removing User from room: ${this.state.currentRoomId} ${err}`)
             })
     }
+
+   
 
     subscribeToRoom(roomId) {
         this.state.messages=[];
@@ -137,6 +138,7 @@ class ChatScreen extends Component {
         });
         
     }
+   
     imageUploadHandler= event=>{
         let data = new FormData();
         data.append('name', this.state.selectedImage.name);
@@ -149,7 +151,7 @@ class ChatScreen extends Component {
           return response.json();
        })
        .then(data=>{
-           this.sendMsg("10101" + data.createdPicture.imgUrl);
+           this.sendMsg("10101" + data.url);
            this.closePopup();
        })
      .catch(error => console.error('error', error));
@@ -163,6 +165,25 @@ class ChatScreen extends Component {
     closePopup = event =>{
         const node = ReactDOM.findDOMNode(this);
         node.querySelector('.bg-modal').style.display= 'none';
+    }
+
+    displayPopup1=event=>{
+        const node = ReactDOM.findDOMNode(this);
+        node.querySelector('.bg-modal1').style.display= 'flex';
+    }
+
+    closePopup1= event =>{
+        const node = ReactDOM.findDOMNode(this);
+        node.querySelector('.bg-modal1').style.display= 'none';
+    }
+    displayPopup2=event=>{
+        const node = ReactDOM.findDOMNode(this);
+        node.querySelector('.bg-modal2').style.display= 'flex';
+    }
+
+    closePopup2= event =>{
+        const node = ReactDOM.findDOMNode(this);
+        node.querySelector('.bg-modal2').style.display= 'none';
     }
 
     collapseRoomsettings = (e)=>{
@@ -208,21 +229,22 @@ class ChatScreen extends Component {
     render() { 
         return ( 
             <div className="app">
-                <MessageScreen currentuser={this.state.currentUser} messages = {this.state.messages} imageId={this.state.imageId}/>
-                <Sidebar currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
+                <MessageScreen
+                currentuser={this.state.currentUser} messages = {this.state.messages} imageId={this.state.imageId}/>
+                <Sidebar displayPopup={e=>this.displayPopup1()} currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup}/>
-              
-                <Header curentRoom={this.state.currentRoom} displayPopup={this.collapseRoomsettings} collapseSidebar={this.collapseSidebar}/>
+                
+                <Header  currentroomID={this.state.currentRoomId}displayPopup1={this.displayPopup2} displayPopup={this.collapseRoomsettings} collapseSidebar={this.collapseSidebar}/>
 
 
                 <div className={"bg-modal"}>
                     <div className={"modal-pop-up"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <img className={"add-image-icon-form"}
-                            src ={ require('../images/bluecamera.png')} 
+                            src ={ require('../images/attachment.png')} 
                             alt ={"could not load image"}/>
                         <div>
-                    <label for="files" className={"btn"}>Select JPG/png Image to send</label>
+                    <label for="files" className={"btn"}>Select file to send</label>
                     <input   type="file"
                              style={{visibility:"hidden"}}
                              id="files"
@@ -234,8 +256,30 @@ class ChatScreen extends Component {
                                     </button>   
                     </div>
                 </div>
+
+
+                <div className={"bg-modal1"}>
+                    <div className={"modal-pop-up1"}>
+                    <div className="close" onClick={this.closePopup1}>+</div>
+                    <Group closepop={this.closePopup1} joinaroom={roomid=>this.joinaroom(roomid)} currentUser={this.state.currentUser} createRoom={name=>this.createRoom(name)}/>
+                    </div>
+                </div>
+
+                <div className={"bg-modal2"}>
+                    <div className={"modal-pop-up2"}>
+                    <div className="close" onClick={this.closePopup2}>+</div>
+                    <div className="invlink">
+                        <p>Copy link and send to friend!</p>
+                    <input className="createinvinput"type="text"placeholder="Enter room first!" value={this.state.currentRoomId}/>
+                    <CopyToClipboard text={this.state.currentRoomId}>
+                    <button id="copybtn">Copy</button>
+                  </CopyToClipboard>
+                    </div>
+                    </div>
+                </div>
+
                 <Roomsettings   leaveRoom={roomId=>this.leaveroomID()} 
-                                deleteRoom = {roomId=> this.deleteRoom()} 
+                                joinroom={roomId=>this.joinaroom(roomId)}
                                 addusertoroom={user=>this.addusertoroom(user)}
                                 removeUserFromRoom={user=>this.removeUserFromRoom(user)}
                                 users={this.state.users}/>

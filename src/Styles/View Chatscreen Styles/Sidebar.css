@@ -7,6 +7,7 @@
   border-width: 2px 2px 2px 2px;
   overflow: scroll;
   cursor: pointer;
+
   height: 100%;
 }
 
@@ -23,29 +24,53 @@
   max-width: 0;
 }
 .content-sidebar .room{
-  border-color:rgba(146, 120, 109, 0.603);
+  color: rgba(114, 114, 114, 0.568);
   border-bottom:solid;
   border-width: 1px 1px 1px 1px;
   padding: 20px;
+
   cursor: pointer;
-  margin-left: 20px;
-  margin-right: 20px;
   padding-left: 30px;
   padding-right: 100px;
+  font-weight: 900;
+  opacity: 0.6;
 
 }
 .content-sidebar .roombackground.active {
-  background-color:#2195F6;
-  padding-right: 10px ;
-  border-radius: 3px;
   opacity: 1;
-  
+  background-color:#2195F6;
+  border-radius: 3px;
 }
- h3{
+ h5{
   text-align: center;
 }
-.sidebar .room #roomname{
+.content-sidebar .room #roomname{
   color: black ;
+  font-family: arial;
+  padding-left: 11px;
+}
+
+.content-sidebar .addroom{
+
+  border-bottom:none;
+  border-width: 1px 1px 1px 1px;
+  background-color: grey;
+  padding: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding-left: 30px;
+  padding-right: 100px;
+  font-weight: 900;
+  opacity: 0.6;
+}
+
+.content-sidebar .addroom:hover{
+background-color: #2195F6;
+opacity: 0.4;
+}
+
+.content-sidebar .addroom #roomname{
+  color: white ;
   font-family: arial;
   padding-left: 11px;
 }
