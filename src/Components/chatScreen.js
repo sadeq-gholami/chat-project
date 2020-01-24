@@ -289,6 +289,7 @@ class ChatScreen extends Component {
                         displaySettings={this.displaySettings}
                         displayRoomSettings={this.collapseRoomsettings}
                         collapseSidebar={this.collapseSidebar}
+                        currentroomName={this.state.currentroomName}
                         displayPopupInvite={this.displayPopupInvite}/>
                 <div className={"bg-modal"}>
                     <div className={"modal-pop-up"}>
@@ -325,7 +326,7 @@ class ChatScreen extends Component {
             <div className={"groupbody-model"}>
                     <div className={"groupbody"}>
                     <div className="close" onClick={this.closePopupGroup}>+</div>
-                    <Group closepop={this.closePopup1} joinaroom={roomid=>this.joinaroom(roomid)} currentUser={this.state.currentUser} createRoom={name=>this.createRoom(name)}/>
+                    <Group closepop={this.closePopupGroup} joinaroom={roomid=>this.joinaroom(roomid)} currentUser={this.state.currentUser} createRoom={name=>this.createRoom(name)}/>
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@
   border-bottom-style:solid;
   border-color:rgba(146, 120, 109, 0.199) ;
   border-width: 2px 2px 2px 2px;
-  height: 90px;
+  height: 70px;
 }
 .crown-height{
   height: 30px; 
@@ -16,17 +16,27 @@
   margin-right: auto;
 }
  .title{
-  padding-top: 5px;
+  padding-top: 20px;
   text-align: center;
   font-weight: 900;
+  font-size: x-large;
+  color: black;
+  text-transform: uppercase;
 }
 .settingicon{
   padding-right: 10px;
+
+ float: right;
+}
+.settingicon2{
+  padding-right: 10px;
+
  float: right;
 }
 
 .allpicture{
   float:right;
+  padding-right: 10px;
 }
 
 
@@ -63,7 +73,7 @@
 }
 .createinvicon{
   float: right;
-  padding-right: 1px;
+  padding-right: 10px;
 }
 .createinvicon .tooltiptext {
   visibility: hidden;

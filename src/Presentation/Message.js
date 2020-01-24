@@ -74,7 +74,7 @@ const Message = ({message,currentUser})=> {
            <div className = "message-time">
            {message.createdAt.slice(0, -4)}
         </div>
-        <a href={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} target="blank">
+        <a href={message.text.substr(5)} target="blank">
           <img src={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} 
                 alt ={"could not load image"}
                 className="sent-image"/>

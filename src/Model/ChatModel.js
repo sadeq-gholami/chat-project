@@ -46,7 +46,7 @@ export default class ChatModel extends Observable {
                 tokenProvider: new Chatkit.TokenProvider({
                     url: 'https://chat-application-api.herokuapp.com/chatkit/users/login',
                     headers: {
-                        username:this.username,
+                        userId:this.userId,
                         password:this.password
                     }
             })

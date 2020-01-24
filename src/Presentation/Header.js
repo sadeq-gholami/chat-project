@@ -11,9 +11,6 @@ class Header extends Component {
         return ( 
            
         <div className="header">
-                    <img  width="50" className="crown-height"
-                    src ={ require('../images/crown12.png')}
-                    alt ={"could not load image"}/>
                     <div className="title"> 
                     {this.props.currentroomName} 
                     <div className="settingicon">
@@ -23,7 +20,7 @@ class Header extends Component {
                         onClick={this.props.displaySettings}/>
                         <span class="tooltiptext">Settings</span>
                         </div>
-                    <div className="settingicon">
+                    <div className="settingicon2">
                         <img width="30" className={"settingicon"}
                              src={require('../images/users.png')}
                              alt={"could not load image"}
@@ -40,7 +37,7 @@ class Header extends Component {
 
                     <Link to={"/photos"}>
                         <div  className="allpicture">   
-                        <img  width="40" src={ require('../images/pictureicon.png') } />
+                        <img  width="40" src={ require('../images/photos.png') } />
                         <span class="photoicon">Photos</span>
                         </div>
                     </Link>
