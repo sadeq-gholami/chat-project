@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import '../Styles/Gstyle.css';
 import '../Styles/View Chatscreen Styles/RoomSetting.css'
+import uuid from "react-uuid"
+import ImageWithDefault from "./ImageWithDefault";
+import no_profile_picture from "../images/no_profile_picture.png";
 import {Link} from 'react-router-dom';
 
 class Roomsettings extends Component{
@@ -8,8 +11,8 @@ class Roomsettings extends Component{
         super();
         this.state= {
             usernameToadd: "",
-            usernameToremove:""
-        };
+            usernameToremove:"",
+        }
     }
 
 
@@ -57,28 +60,47 @@ class Roomsettings extends Component{
                     </form>
 
                     <button id = "addusertoroom" className="room-setting-btn" onClick={this.props.leaveRoom} 
-                    type="button" >Leave room
-                    </button> 
-
-                    <button id = "addusertoroom" className="room-setting-btn" onClick={this.props.deleteRoom} 
-                    type="button" >Delete room
+                    type="button" >Leave room <img className="leave" width ="20" src= {require('../images/leave room.png')}/>
                     </button> 
                     <Link to ="/">
-                    <button className="room-setting-btn" type="button" >sign out</button> 
+                    <button className="room-setting-btn" type="button" >Sign out <img className="sign-out" width ="15" src= {require('../images/signout.png')}/></button> 
                     </Link>
                     <h3>users</h3>
-                    <div className="users-box">
-                        {this.props.users.map((user, i)=>{
+                    <div key={uuid()} className="user-box">
+                        <table > 
+                            <thead><tr><th/><th/><th/></tr></thead>
+                            <tbody>
+                            {this.props.users.map((user) => {
                         return (
-                            <div key={i}className="user-box">
-                                <img key = {i}className= "user-image" src ={user.avatarURL} alt ={"no image"}/>
-                                <div key ={i}className="user-name">{user.name}</div>
-                                { user.presence.state==='online'?
-                                <img key={i} className="status-image" width="8 " src={ require('../images/online.png') } />:""}
+                        <tr key={uuid()}>
+                            
+                            <td><ImageWithDefault source={user.avatarURL} default={no_profile_picture}
+                                          className="user-image"/>
+                            </td>
+                            <div className="content">
+                            <td>
                                 
+                            <div key={uuid()} className="user-name">{user.name}</div>
+                            </td>
+                            
+                            <span className="content-toolcard">
+                                <ImageWithDefault source={user.avatarURL} default={no_profile_picture} className="user-pic"/>
+                                 <div className="user-info">{user.name}
+                                  <div className="user-id"> #{user.id}</div>
+                                  </div>
+                                  </span>
                             </div>
-                        )
-                        })}
+                            <td>{user.presence.state === 'online' ?
+                            <img key={uuid()} className="status-image" width="8"
+                                src={require('../images/online.png')}/> :
+                            <img key={uuid()} className="status-image" width="8"
+                                src={require('../images/offline.png')}/>}
+                            </td>
+                            </tr>
+            )
+        })}
+                            </tbody>
+                        </table>
                     </div>
             </div>
          

@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
+import '../Styles/View PhotoScreen/Photos.css';
 class Phtotos extends Component {
+    state= {}
     render() { 
         if (this.props.model.images.length>0){
             return ( 
-                <div>
+                <div className ="Photos">
+                    <div className="app-name">
+                   {this.props.model.currentRoomName}
+                    <img  width="100" className="right"
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/>
+                    <img  width="100" className="left"
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/>
+                            </div>
+                    
                     {
                         this.props.model.images.map((img) => {
                                 return(
-                                    <div>
-                                        <img 
+                                    <div className= "image-len">
+                                        <img className ="image"
                                         src={img} 
-                                        style={{width:"200px"}} 
-                                        alt={"coule not load image"}/>
+                                        alt={"could not load image"}/>
                                     </div>
                             )
                         })
                     }
+                      
                 </div> 
             );
         }else{
             return(
-                <div>no images in current room please slect another room</div>
+                <div className="Photos">
+                   <div className="app-name"> {this.props.model.currentRoomName}</div>
+                <div className ="no-images">no images in current room please select another room</div>
+                </div>
             )
         }
     }

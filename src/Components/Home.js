@@ -107,7 +107,47 @@ class Home extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className ="content-home">
+                <div className ="logo">
+                <img  width="500" className="logo-style"
+                            src ={ require('../images/logo.png')}
+                            alt ={"could not load image"}/>
+                    </div>
+                
+                <ul className="flying-boxes">
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                </ul>
+               
+               
                 <Login username={this.state.username}
                         password={this.state.password}
                         authorized={this.state.authorized}

@@ -5,7 +5,7 @@ const Login= ({username, password, authorized, handleSubmit, handleUsernameChang
                 <div>
                     <div className= "innerbox">
                         <div className ="imageholder">
-                            <img  width="140" src={ require('../images/loginicon.png') } />
+                            <img  width="140" src={ require('../images/user1.png') } />
                         </div>
                         <form className ="username" onSubmit={handleSubmit}>
                             <input  onChange ={handleUsernameChange} 
@@ -19,11 +19,11 @@ const Login= ({username, password, authorized, handleSubmit, handleUsernameChang
                             <div>
                                 <button className = "tbtn" onClick={handleSubmit}>Sign in</button> 
                             </div>
-                            <button className="tbtn" onClick={displayPopup}>sign up</button>
+                            <button className="tbtn" onClick={displayPopup}>Sign up</button>
                             <div>
                                 {authorized
                                     ? <div/>
-                                    : <div>wrong passowrd! try again!</div>
+                                    : <div className="wrong"><b>Wrong password or username! Try again!</b></div>
                                 }
                             </div>
                             

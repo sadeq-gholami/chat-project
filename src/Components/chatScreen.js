@@ -13,8 +13,9 @@ class ChatScreen extends Component {
         this.state={
             currentUser:null,
             messages:[],
-            currentRoomId:null,
+            currentRoomId:this.props.currentRoomId,
             selectedImage:null,
+            currentroomName: this.props.currentRoomName,
             imageId: null,
             joinedRooms:[],
             users:[]
@@ -118,8 +119,10 @@ class ChatScreen extends Component {
         .then(currentRoom => {
             this.setState({
                 currentRoomId: currentRoom.id,
-                users:currentRoom.users
+                users:currentRoom.users,
+                currentroomName :currentRoom.name
             })
+            sessionStorage.setItem("currentroomName", this.state.currentroomName);
             return this.state.currentUser.getJoinableRooms()
             .then(joinableRooms => {
                 this.setState({
@@ -177,10 +180,10 @@ class ChatScreen extends Component {
             contentRoomSettings.style.maxWidth = null;
             node.querySelector('.messagescreen').style.gridColumn="2/-1";
         }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
-            contentRoomSettings.style.maxWidth = "250px";
+            contentRoomSettings.style.maxWidth = "inherit";
             node.querySelector('.messagescreen').style.gridColumn="1/-2";
         }else{
-            contentRoomSettings.style.maxWidth = "250px";
+            contentRoomSettings.style.maxWidth = "inherit";
             node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }
@@ -197,10 +200,10 @@ class ChatScreen extends Component {
             contentSidebar.style.maxWidth = null;
             node.querySelector('.messagescreen').style.gridColumn="1/-2";
         }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
-            contentSidebar.style.maxWidth = "300px";
+            contentSidebar.style.maxWidth = "inherit";
             node.querySelector('.messagescreen').style.gridColumn="2/-1";
         }else {
-            contentSidebar.style.maxWidth = "300px";
+            contentSidebar.style.maxWidth = "inherit";
             node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }
@@ -208,12 +211,10 @@ class ChatScreen extends Component {
     render() { 
         return ( 
             <div className="app">
-                <MessageScreen currentuser={this.state.currentUser} messages = {this.state.messages} imageId={this.state.imageId}/>
-                <Sidebar currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
-                <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup}/>
-              
-                <Header curentRoom={this.state.currentRoom} displayPopup={this.collapseRoomsettings} collapseSidebar={this.collapseSidebar}/>
-
+                <MessageScreen currentuser={this.state.currentUser} messages = {this.state.messages} imageId={this.state.imageId} displayPopup={this.displayPopup}/>
+                <Sidebar currentroomID={this.state.currentRoomId}joinedRooms={this.state.joinedRooms} subscribeToRoom={roomId=>this.subscribeToRoom(roomId)} createRoom={name =>this.createRoom(name)}/>
+                <ChatForm sendMsg = {msg => this.sendMsg (msg)} displayPopup={this.displayPopup} currrentRoom={this.state.currentRoom} currentroomName={this.state.currentroomName}/>
+                <Header curentRoom={this.state.currentRoom} currentroomName={this.state.currentroomName}  displayPopup={this.collapseRoomsettings} collapseSidebar={this.collapseSidebar}/>
 
                 <div className={"bg-modal"}>
                     <div className={"modal-pop-up"}>
@@ -239,6 +240,7 @@ class ChatScreen extends Component {
                                 addusertoroom={user=>this.addusertoroom(user)}
                                 removeUserFromRoom={user=>this.removeUserFromRoom(user)}
                                 users={this.state.users}/>
+                
             </div>
                 
          );

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import '../Styles/View Chatscreen Styles/Sidebar.css';
 
 class Sidebar extends React.Component{
+    
     render(){
     const orderedJoinedRooms = [...this.props.joinedRooms].sort((a, b) => a.id > b.id);
        
         return ( 
             <div className="content-sidebar">
-            <h3>Your rooms:</h3>
+            <h2>Your rooms</h2>
+            
          <div>
         {orderedJoinedRooms.map(room=> 
         {  const active = this.props.currentroomID === room.id ? "active" : "";
@@ -20,15 +22,14 @@ class Sidebar extends React.Component{
                                   </div>
                               </div>              
         </div>)})}
-           
-           
-          
              
             </div>
             
      </div>
      
-         );}
+         );
+        }
+         
 }
  
 export default Sidebar; 

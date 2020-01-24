@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../Styles/View Chatscreen Styles/Message.css';
+
 const Message = ({message,currentUser})=> {
   if (message.text.includes(112)){
     return (
@@ -12,8 +13,9 @@ const Message = ({message,currentUser})=> {
   if (message.text.includes(10101)&&message.sender.name===currentUser.name){
     return(
       <div className="userMessage">
+       
         <div className = "message-name">
-          <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+        <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            {message.sender.name}
            <img  width="8 " src={ require('../images/online.png') } />
            </div>
@@ -25,6 +27,13 @@ const Message = ({message,currentUser})=> {
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
   }
@@ -43,6 +52,13 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
   }
@@ -63,6 +79,13 @@ const Message = ({message,currentUser})=> {
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
   }
@@ -82,6 +105,13 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
 
@@ -101,6 +131,13 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
 }

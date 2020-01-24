@@ -26,7 +26,7 @@ render(){
             <div className= "messagescreen" >
                 {this.props.messages.map((message,index)=>{
                     return (
-                        <Message currentUser={this.props.currentuser}key={index} message ={message}/>
+                        <Message currentUser={this.props.currentuser}key={index} message ={message} displayPopup= {this.props.displayPopup}/>
                         )
                 })
             }
