@@ -55,7 +55,8 @@ padding-right: 10px;
   border-radius: 6px;
   position: absolute;
   z-index: 1;
-  margin-right: -200px;
+  margin-left: -230px;
+  margin-top: -20px;
   transition: opacity 0.3s;
 }
 .content:hover .content-toolcard {

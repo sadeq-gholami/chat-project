@@ -58,7 +58,7 @@ class Group extends Component {
                     value={this.state.roomtojoin}
                     placeholder="Enter Invite"
                     type="text"/>
-         <button id = "groupbtn" onClick={this.handleSubmit} type="button" >Connect to a Room</button> 
+         <button id = "groupbtn" onClick={this.handleSubmitTojoin} type="button" >Connect to a Room</button> 
             </form>
             </div>
             </div>
