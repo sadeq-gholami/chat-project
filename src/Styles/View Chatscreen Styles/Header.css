@@ -24,6 +24,71 @@
   padding-right: 10px;
  float: right;
 }
+
+.allpicture{
+  float:right;
+}
+
+
+.allpicture .photoicon{
+  visibility: hidden;
+  font-weight: 30;
+  font-size: 12px;
+  width: 60px;
+  height:15px ;
+  opacity: 0.4;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: 52px;
+  margin-left: -49px;
+}
+.allpicture .photoicon::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 80%;
+  margin-left: -5px;
+  border-width: 5px;
+ 
+}
+.allpicture:hover .photoicon {
+  visibility: visible;
+}
+.createinvicon{
+  float: right;
+  padding-right: 1px;
+}
+.createinvicon .tooltiptext {
+  visibility: hidden;
+  font-weight: 30;
+  font-size: 12px;
+  width: 90px;
+  height:15px ;
+  opacity: 0.4;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: 52px;
+  margin-left: -30px;
+  
+}
+.createinvicon:hover .tooltiptext {
+  visibility: visible;
+}
+
 .settingicon .tooltiptext {
   visibility: hidden;
   font-weight: 30;
@@ -40,7 +105,8 @@
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
-  margin-left: -65px;
+  top: 52px;
+  margin-left: -15px;
   
 }
 

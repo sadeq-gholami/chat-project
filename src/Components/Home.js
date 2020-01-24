@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Login from '../Presentation/Login'
 import ReactDOM from 'react-dom';
-import {Link} from "react-router-dom";
 import '../Styles/View Home Styles/Home.css';
 import SignupPopup from '../Presentation/signupPopup';
 class Home extends Component {
     constructor(){
         super();
         this.state= {
+            userId:"",
             username: "",
             password:"",
             authorized:true,
@@ -15,7 +15,12 @@ class Home extends Component {
             selectedImage:null
         };
     }
-    
+
+
+    handleUserIdChange=(e)=>{
+        this.setState({userId:e.target.value});
+    }
+
     handleUsernameChange=(e)=>{
         this.setState({username:e.target.value});
     }
@@ -23,11 +28,14 @@ class Home extends Component {
     handlePasswordChange=(e)=>{
         this.setState({password:e.target.value});
     }
+
+
     handleSubmit= async(e)=>{
         e.preventDefault();
-        this.props.model.setUsername(this.state.username.toLowerCase());
+        this.props.model.setUserId(this.state.userId.toLowerCase());
         this.props.model.setPassword(this.state.password);
-        sessionStorage.setItem("username", this.state.username.toLowerCase());
+
+        sessionStorage.setItem("userId", this.state.userId.toLowerCase());
         sessionStorage.setItem("password", this.state.password);
         const response = await this.props.model.login()
         .then(res=> res)
@@ -37,7 +45,7 @@ class Home extends Component {
             );
         if(response){
             this.setState({authorized:true})
-            this.props.history.push(`/chatScreen/${this.state.username.toLowerCase()}`);
+            this.props.history.push(`/chatScreen/${this.state.userId.toLowerCase()}`);
         }else{
             this.setState({authorized:false})
         }
@@ -65,20 +73,18 @@ class Home extends Component {
                     return response.json();
                 })
                 .then(data=>{
-                        return "https://chat-application-api.herokuapp.com/" + data.createdPicture.imgUrl
+                        return data.url;
                 })
                 .catch(error => console.error('error', error));
         }
 
         this.props.model.setUsername(this.state.username.toLowerCase());
+        this.props.model.setUserId(this.state.userId.toLowerCase());
         this.props.model.setPassword(this.state.password);
         sessionStorage.setItem("username", this.state.username.toLowerCase());
+        sessionStorage.setItem("userId", this.state.userId.toLowerCase());
         sessionStorage.setItem("password", this.state.password);
-        if (avatarUrl!==""){
-            this.props.model.setAvatarUrl(avatarUrl);
-        }else{
-            this.props.model.setAvatarUrl("https://chat-application-api.herokuapp.com/uploads/black.jpg");
-        }
+        this.props.model.setAvatarUrl(avatarUrl);
 
         await this.props.model.signup().then(res=>{
             console.log(res)
@@ -96,6 +102,7 @@ class Home extends Component {
     }
 
     displayPopup=event=>{
+        event.preventDefault();
         const node = ReactDOM.findDOMNode(this);
         node.querySelector('.bg-modal').style.display= 'flex';
     }
@@ -147,22 +154,26 @@ class Home extends Component {
                             alt ={"could not load image"}/></li>
                 </ul>
                
-               
-                <Login username={this.state.username}
-                        password={this.state.password}
-                        authorized={this.state.authorized}
-                        handleSubmit={this.handleSubmit}
-                        handleUsernameChange={this.handleUsernameChange}
-                        handlePasswordChange={this.handlePasswordChange}
-                        displayPopup={this.displayPopup}
+ 
+                <Login 
+                    userId={this.state.userId}
+                    password={this.state.password}
+                    authorized={this.state.authorized}
+                    handleSubmit={this.handleSubmit}
+                    handleUserIdChange={this.handleUserIdChange}
+                    handlePasswordChange={this.handlePasswordChange}
+                    displayPopup={this.displayPopup}
                 />
-                <SignupPopup username={this.state.username}
-                            password={this.state.password}
-                            imageUploadHandler={this.imageUploadHandler}
-                            fileSelectedHandlar={this.fileSelectedHandlar}
-                            closePopup={this.closePopup}
-                            handleUsernameChange={this.handleUsernameChange}
-                            handlePasswordChange={this.handlePasswordChange}
+                <SignupPopup 
+                    userId={this.state.userId}
+                    username={this.state.username}
+                    password={this.state.password}
+                    imageUploadHandler={this.imageUploadHandler}
+                    fileSelectedHandlar={this.fileSelectedHandlar}
+                    closePopup={this.closePopup}
+                    handleUsernameChange={this.handleUsernameChange}
+                    handlePasswordChange={this.handlePasswordChange}
+                    handleUserIdChange={this.handleUserIdChange}
 
                 />
             </div>

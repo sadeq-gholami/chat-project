@@ -1,19 +1,28 @@
-.creategroupe{
-    background: rgb(236, 236, 236);
-    display: flex;
-  }
-  .creategroupe input{
-    background-color: rgb(245, 245, 245);
-    border-right-style:solid;
-    border-bottom-style: none;
-    border-left-style: none;
-    border-color:rgba(146, 120, 109, 0.247) ;
-    border-width: 2px 2px 2px 2px;
-    width: 98%;
-    height: 100%;
-    border-radius: 35px;
-  
-  }
-  .creategroupe input::placeholder{
-    color: rgba(0, 0, 0, 0.692);
-  }
+
+.group{
+  margin-top: 10%;
+}
+.group .joingroup{
+  float: left;
+}
+.group .addgroup{
+  float: right;
+}
+.group-form input{
+  background-color: grey;
+  padding: 8px;
+  border-radius: 3px;
+  border: none;
+}
+.group-form input::placeholder{
+  color: white;
+}
+#groupbtn{
+  margin-left: 2px;
+  background-color: #2195F6;
+  color: white;
+  padding-top:8px;
+  padding-bottom:8px;
+  border-radius: 3px;
+  border: none;
+}
