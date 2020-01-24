@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Login= ({username, password, authorized, handleSubmit, handleUsernameChange, handlePasswordChange, displayPopup})=>{
+const Login= ({userId, password, authorized, handleSubmit, handleUserIdChange, handlePasswordChange, displayPopup})=>{
     return(
                 <div>
                     <div className= "innerbox">
@@ -8,9 +8,9 @@ const Login= ({username, password, authorized, handleSubmit, handleUsernameChang
                             <img  width="140" src={ require('../images/loginicon.png') } />
                         </div>
                         <form className ="username" onSubmit={handleSubmit}>
-                            <input  onChange ={handleUsernameChange} 
-                                value={username}
-                                placeholder="Enter username..."
+                            <input  onChange ={handleUserIdChange} 
+                                value={userId}
+                                placeholder="Enter user id"
                                 type="text"/>
                             <input  onChange ={handlePasswordChange} 
                                 value={password}

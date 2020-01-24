@@ -75,10 +75,9 @@ tr.border_bottom td {
 }
 
 .user-side-bar {
-    grid-area: Roomsetting;
     margin-left: auto;
     margin-right: 0px;
-    max-width: 0;
+    width: 0;
     overflow: scroll;
     background-color: #f1f1f1;
     text-align: center;
@@ -88,5 +87,3 @@ tr.border_bottom td {
     position: absolute;
     bottom: 75px;
 }
-
-

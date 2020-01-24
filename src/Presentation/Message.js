@@ -29,8 +29,8 @@ class Message extends Component {
                         <img width="8 " src={require('../images/online.png')} alt={"no picture"}/>
                     </div>
                     <div className="message-time">{message.createdAt.slice(0, -4)}</div>
-                    <a href={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} target="blank">
-                        <img src={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)}
+                    <a href={message.text.substr(5)} target="blank">
+                        <img src={message.text.substr(5)}
                              alt={"could not load image"}
                              className="sent-image"/>
                     </a>
@@ -62,8 +62,8 @@ class Message extends Component {
                         <img width="8 " src={require('../images/online.png')}/>
                     </div>
                     <div className="message-time"> {message.createdAt.slice(0, -4)} </div>
-                    <a href={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} target="blank">
-                        <ImageWithDefault source={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)}
+                    <a href={message.text.substr(5)} target="blank">
+                        <ImageWithDefault source={message.text.substr(5)}
                                           default={image_not_loaded}
                              alt={"could not load image"}
                              className="sent-image"/>

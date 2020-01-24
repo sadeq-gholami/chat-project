@@ -5,7 +5,7 @@ import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import UsersSideBar from '../Presentation/UsersSideBar';
-import RoomSettings from "../Presentation/RoomSettings";
+import RoomSettings from "../Presentation/Roomsettings";
 
 
 class ChatScreen extends Component {
@@ -18,23 +18,40 @@ class ChatScreen extends Component {
             selectedImage: null,
             imageId: null,
             joinedRooms: [],
-            users: []
+            users: [],
+            hideNav: false
         }
     }
 
-    update() {
-
-    }
 
     componentDidMount() {
         this.props.model.login()
-            .then(currentUser => {
-                this.setState({
-                    currentUser: currentUser,
-                    joinedRooms: currentUser.rooms
-                })
+        .then(currentUser => {
+            this.setState({
+                currentUser: currentUser,
+                joinedRooms: currentUser.rooms
             })
-            .catch(err => console.log('error on subscribing: ', err));
+        })
+        .catch(err => console.log('error on subscribing: ', err));
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+
+    resize() {
+        const node = ReactDOM.findDOMNode(this);
+        let contentSidebar = node.querySelector(".content-sidebar");
+        let contentRoomSettings = node.querySelector(".user-side-bar");
+        let currentHideNav = (window.innerWidth <= 760);
+        if (currentHideNav !== this.state.hideNav) {
+            this.setState({hideNav: currentHideNav});
+            contentSidebar.style.gridArea="2/1/-1/-1";
+            contentRoomSettings.style.gridArea="2/1/-1/-1";
+            contentSidebar.style.width = "null";
+        }else{
+            contentSidebar.style.gridArea="sidebar";
+            contentRoomSettings.style.gridArea="Roomsetting"
+            node.querySelector('.messagescreen').style.gridColumn = "2/-1";
+        }
     }
 
     sendMsg = (text) => {
@@ -146,7 +163,7 @@ class ChatScreen extends Component {
         }).then(response => {
             return response.json();
         }).then(data => {
-            this.sendMsg("10101" + data.createdPicture.imgUrl);
+            this.sendMsg("10101" + data.url);
             this.closePopup();
         }).catch(error => console.error('error', error));
     }
@@ -168,41 +185,51 @@ class ChatScreen extends Component {
 
     collapseRoomsettings = (e) => {
         const node = ReactDOM.findDOMNode(this);
-        e.target.classList.toggle("active");
         let contentRoomSettings = node.querySelector(".user-side-bar");
         let contentSidebar = node.querySelector(".content-sidebar");
-        if (!contentSidebar.style.maxWidth && contentRoomSettings.style.maxWidth) {
-            contentRoomSettings.style.maxWidth = null;
-            node.querySelector('.messagescreen').style.gridColumn = "1/-1";
-        } else if (contentSidebar.style.maxWidth && contentRoomSettings.style.maxWidth) {
-            contentRoomSettings.style.maxWidth = null;
-            node.querySelector('.messagescreen').style.gridColumn = "2/-1";
-        } else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth) {
-            contentRoomSettings.style.maxWidth = "250px";
-            node.querySelector('.messagescreen').style.gridColumn = "1/-2";
-        } else {
-            contentRoomSettings.style.maxWidth = "250px";
-            node.querySelector('.messagescreen').style.gridColumn = "2/-2"
+        if (this.state.hideNav){
+            e.target.classList.toggle("active");
+            if (contentRoomSettings.style.width) {
+                contentRoomSettings.style.width = null;
+                contentSidebar.maxWidth=null;
+                node.querySelector('.messagescreen').style.gridColumn = "1/-1";
+                node.querySelector('.messagescreen').style.width = "inherit";
+            
+            } else{
+                contentRoomSettings.style.gridArea="2/1/-1/-1";
+                contentSidebar.width=null;
+                contentRoomSettings.style.width = "100%";
+                node.querySelector('.messagescreen').style.width = "0px";
+            } 
+        }else{
+            if (contentRoomSettings.style.width) {
+                contentRoomSettings.style.width = null;
+                node.querySelector('.messagescreen').style.gridColumn = "2/-1";
+            }else {
+                contentRoomSettings.style.width= "250px";
+
+                node.querySelector('.messagescreen').style.gridColumn = "2/-2"
+            }
         }
     };
 
     collapseSidebar = (e) => {
         const node = ReactDOM.findDOMNode(this);
-        e.target.classList.toggle("active");
         let contentRoomSettings = node.querySelector(".user-side-bar");
         let contentSidebar = node.querySelector(".content-sidebar");
-        if (contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth) {
-            contentSidebar.style.maxWidth = null;
-            node.querySelector('.messagescreen').style.gridColumn = "1/-1";
-        } else if (contentSidebar.style.maxWidth && contentRoomSettings.style.maxWidth) {
-            contentSidebar.style.maxWidth = null;
-            node.querySelector('.messagescreen').style.gridColumn = "1/-2";
-        } else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth) {
-            contentSidebar.style.maxWidth = "300px";
-            node.querySelector('.messagescreen').style.gridColumn = "2/-1";
-        } else {
-            contentSidebar.style.maxWidth = "300px";
-            node.querySelector('.messagescreen').style.gridColumn = "2/-2"
+        if (this.state.hideNav){
+            e.target.classList.toggle("active");
+            if (contentSidebar.style.width) {
+                contentSidebar.style.width = null;
+                contentRoomSettings.style.width=null;
+                node.querySelector('.messagescreen').style.gridColumn = "1/-1";
+                node.querySelector('.messagescreen').style.width = "inherit";
+            } else{
+                contentSidebar.style.gridArea="2/1/-1/-1";
+                contentRoomSettings.style.width=null;
+                contentSidebar.style.width = "100%";
+                node.querySelector('.messagescreen').style.width = "0px";
+            }
         }
     }
 
@@ -211,8 +238,6 @@ class ChatScreen extends Component {
             <div className="app">
                 <MessageScreen currentuser={this.state.currentUser} messages={this.state.messages}
                                imageId={this.state.imageId}/>
-                <Sidebar currentroomID={this.state.currentRoomId} joinedRooms={this.state.joinedRooms}
-                         subscribeToRoom={roomId => this.subscribeToRoom(roomId)}/>
                 <ChatForm sendMsg={msg => this.sendMsg(msg)} displayPopup={this.displayPopup}/>
                 <Header curentRoom={this.state.currentRoom} displayPopup={this.collapseRoomsettings}
                         popupRoomSettings={this.popupRoomSettings}
@@ -242,6 +267,8 @@ class ChatScreen extends Component {
                     addUserToRoom={user => this.addUserToRoom(user)}
                     removeUserFromRoom={user => this.removeUserFromRoom(user)}/>
                 <UsersSideBar users={this.state.users}/>
+                <Sidebar currentroomID={this.state.currentRoomId} joinedRooms={this.state.joinedRooms}
+                         subscribeToRoom={roomId => this.subscribeToRoom(roomId)}/>
             </div>
         );
     }
