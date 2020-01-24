@@ -55,7 +55,6 @@ html,body {
   .chatform {
     grid-area: chatform;
   }
-
 .add-image-icon{
   padding-top: 10px;
   height: 40px;
@@ -77,6 +76,10 @@ html,body {
   align-items: center;
   display: none;
 }
+
+
+
+
 .modal-pop-up{
   width:500px;
   height: 300px;
@@ -85,34 +88,8 @@ html,body {
   text-align: center;
   padding: 20px;
   position: relative;
+
 }
-
-.bg-modal2{
-  width:100%;
-  height: 100%;
-  background-color:rgba(0,0,0,0.7);
-  position: absolute;
-  top:0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
-
-
-
-.modal-pop-up2{
-  width:500px;
-  height: 300px;
-  background-color: white;
-  border-radius: 4px;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
 
 .btn{
   font-size: 1rem;
@@ -132,7 +109,29 @@ html,body {
   transform: rotate(45deg);
   cursor: pointer;
 }
+.invlink{
+margin-top: 5%;
+}
+.createinvinput{
 
+  background-color: grey;
+  padding: 8px;
+  border-radius: 3px;
+  border: none;
+}
+.createinvinput::placeholder{
+  color: white;
+}
+#copybtn{
+ 
+  margin-left: 2px;
+  background-color: #2195F6;
+  color: white;
+  padding-top:8px;
+  padding-bottom:8px;
+  border-radius: 3px;
+  border: none;
+}
 
   .popup {
     position: fixed;
@@ -161,3 +160,68 @@ html,body {
   }
 
 
+  .invitebody-model{
+    width:100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.7);
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  .invitebody{
+    width:400px;
+    height: 100px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+  .groupbody-model{
+    width:100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.7);
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  
+  .groupbody{
+    width:600px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: scroll;  
+  }
+
+  .bg-settings{
+    width:100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.7);
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  .settings-popup{
+    width:500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }

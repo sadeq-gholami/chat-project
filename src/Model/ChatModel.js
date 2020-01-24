@@ -19,7 +19,7 @@ export default class ChatModel extends Observable {
 
 
     signup(){
-        return fetch('http://localhost:3001/chatkit/users', {
+        return fetch('https://chat-application-api.herokuapp.com/chatkit/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export default class ChatModel extends Observable {
                 instanceLocator,
                 userId: this.userId,
                 tokenProvider: new Chatkit.TokenProvider({
-                    url: 'http://localhost:3001/chatkit/users/login',
+                    url: 'https://chat-application-api.herokuapp.com/chatkit/users/login',
                     headers: {
                         username:this.username,
                         password:this.password

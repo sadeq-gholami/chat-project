@@ -17,7 +17,7 @@ class RoomSettings extends Component {
 
     closePopup = event => {
         const node = ReactDOM.findDOMNode(this);
-        node.querySelector('.bg-modal2').style.display = 'none';
+        node.querySelector('.bg-settings').style.display = 'none';
     };
 
     handleSubmitToAdd = (e) => {
@@ -33,8 +33,8 @@ class RoomSettings extends Component {
     render() {
         return (
             <div className={"room-settings"}>
-                <div className={"bg-modal2"}>
-                    <div className={"modal-pop-up2"}>
+                <div className={"bg-settings"}>
+                    <div className={"settings-popup"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <table>
                             <thead>
