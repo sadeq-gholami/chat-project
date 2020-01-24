@@ -88,8 +88,8 @@
 
 }
 .userMessage .message-text{
-  background:#2195F6;
-  color: white;
+  background:rgb(247, 212, 138);
+  color: black;
     display: inline;
     padding: 3px 10px;
     border-radius: 9px;
