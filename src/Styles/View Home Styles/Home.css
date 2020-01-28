@@ -1,58 +1,164 @@
-.innerbox {
-  width: 300px;
-  height: 450px;
-  margin-left: 35%;
-  margin-top: 10%;
-  border-radius: 15px;
-  box-shadow: 0 0 4px gray; 
-  background-color: rgb(236, 236, 236);
-}
-.username{
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid white;
-  opacity: .6;
-  padding-bottom: 15px;
-  padding-left: 50px;
-}
-.username input{
-  background-color: black;
-  opacity: .6;
-  width: 50%;
-  padding: 8px 40px;
-  border: none;
+  .content-home{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #a36009, #e9df5a);
+  }
+  .logo{
+    text-align: center;  
+  }
+  .logo-style{   
+    margin-top: 75px;
+    height: 150px;
+  }
+  .flying-boxes{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .flying-boxes li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 20s linear infinite;
+    bottom: -150px;
+  }
+  .flying-boxes li:nth-child(1){
+    left: 85%;
+    animation-delay: 0s;
+  }
+  .flying-boxes li:nth-child(2){
+    left: 26%;
+    animation-delay: 2s;
+    animation-duration: 10s;
+  }
+  .flying-boxes li:nth-child(3){
+    left: 50%;
+    animation-delay: 6s;
+  }
+  .flying-boxes li:nth-child(4){
+    left: 60%;
+    animation-delay: 0s;
+    animation-duration: 15s;
+  }
+  .flying-boxes li:nth-child(5){
+    left: 70%;
+    animation-delay: 0s;
+  }
+  .flying-boxes li:nth-child(6){
+    left: 20%;
+    animation-delay: 4s;
+  }
+  .flying-boxes li:nth-child(7){
+    left: 70%;
+    animation-delay: 0s;
+    animation-duration: 15s;
+  }
+  .flying-boxes li:nth-child(8){
+    left: 90%;
+    animation-delay: 2s;
+  }
+  .flying-boxes li:nth-child(9){
+    left: 70%;
+    animation-delay: 0s;
+    animation-duration: 10s;
+  }
+  .flying-boxes li:nth-child(10){
+    left: 12%;
+    animation-delay: 1s;
+  }
+
+  @keyframes animate{
+    0%{
+      transform: translateY(-2000px) rotate(0deg) ;
+      opacity: 1;
+    }
+    100%{
+      transform: translateY(0) rotate(360deg) ;
+      opacity: 0;
+
+    }
+  }
+  .crown{
+    height: 200px;
+  }
+  .innerbox {
+    width: 300px;
+    height: 450px;
+    margin-left: 41.5%;
+    margin-top: 5%;
+    border-radius: 15px;
+    box-shadow:0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: rgb(219, 208, 208);
+  }
+  .username{
+    background: transparent;
+    border: 0;
+    opacity: .6;
+    text-align: center;
+    padding-bottom: 15px;
+  }
+  .username input{
+    background-color: black;
+    opacity: .6;
+    width: 38%;
+    padding: 8px 40px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 15px;
+  }
+  .username input {
+    color: whitesmoke;
+  }
+
+  .username input::placeholder {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.692);
+  }
+  .imageholder{
+    text-align: center;
+    padding-top: 40px;
+  }
+.wrong{
+  color: red;
   margin-top: 10px;
-  border-radius: 15px;
 }
-.username input {
-  color: whitesmoke;
-}
-
-.username input::placeholder {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.692);
-}
-.imageholder{
-  text-align: center;
-  padding-top: 40px;
-}
-
-
-
 .tbtn{
-  background: whitesmoke;
-  cursor: pointer;
-  padding: 8px 40px;
-  border-radius: 15px;
+    background: whitesmoke;
+    cursor: pointer;
+    padding: 8px 40px;
+    border-radius: 15px;
+    color: black;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+.tbtn:hover{
+  background-color: rgba(240, 241, 237, 0.89); 
   color: black;
-  margin-top: 10px;
-  margin-left:45px;
-  margin-right: 45px;
-  font-size: 13px
-
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-.tbtn:hover{background-color:#2195F6;}
-
+  
 .tbtn:focus{
-  background-color:rgb(0, 191, 255);
+    background-color:rgb(221, 215, 215);
+  }
+@media only screen and (max-width: 600px){
+  .innerbox {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    margin-top: 5%;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+.logo-style{
+  height: 75px;
+  width: 200px;
+}
+
 }

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../Styles/View Chatscreen Styles/Message.css';
+
 const Message = ({message,currentUser})=> {
   if (message.text.includes(112)){
     return (
@@ -14,17 +15,24 @@ const Message = ({message,currentUser})=> {
       <div className="userMessage">
        
         <div className = "message-name">
-           {message.sender.name}
-           <img  width="8 " src={ require('../images/online.png') } />
+        {message.sender.name}
+          <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            </div>
            <div className = "message-time">
            {message.createdAt.slice(0, -4)}
         </div>
-        <a href={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} target="blank">
-          <img src={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} 
+        <a href={ message.text.substr(5)} target="blank">
+          <img src={message.text.substr(5)} 
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
   }
@@ -33,8 +41,8 @@ const Message = ({message,currentUser})=> {
       <div className="userMessage">
        
         <div className = "message-name">
-           {message.sender.name}
-           <img  width="8 " src={ require('../images/online.png') } />
+            {message.sender.name}
+        <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
            </div>
            <div className = "message-time">
            {message.createdAt.slice(0, -4)}
@@ -42,6 +50,13 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
   }
@@ -50,45 +65,35 @@ const Message = ({message,currentUser})=> {
     return(
       <div className="Message">
          <div className = "message-name">
+         <img src ={message.sender.avatarURL} 
+         alt ={"no image"} 
+         className="user-image" />    
+         
            {message.sender.name}
-           <img  width="8 " src={ require('../images/online.png') } />
            </div>
            <div className = "message-time">
            {message.createdAt.slice(0, -4)}
         </div>
-        <a href={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} target="blank">
+        <a href={message.text.substr(5)} target="blank">
           <img src={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} 
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
   }
-
-  if (message.sender.presence.state==="online"){
-    return (
-      <div className="Message">
-       
-        <div className = "message-name">
-           {message.sender.name}
-           <img  width="8 " src={ require('../images/online.png') } />
-           </div>
-           <div className = "message-time">
-           {message.createdAt.slice(0, -4)}
-        </div>
-        <div className = "message-text"> 
-          {message.text}
-        </div>
-      </div>
-    );
-
-  }
-  
-
-    
-    return (
+  return (
       <div className="Message">
        <div className = "message-name">
+       <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"
+         />
            {message.sender.name}
            </div>
            <div className = "message-time">
@@ -97,6 +102,13 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
 }

@@ -21,6 +21,11 @@ config.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 
 chat-project.iml
 /.idea/
+=======
+/.idea/
+/chat-project.iml
+>>>>>>> users

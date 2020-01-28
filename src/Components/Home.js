@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Login from '../Presentation/Login'
 import ReactDOM from 'react-dom';
-import {Link} from "react-router-dom";
 import '../Styles/View Home Styles/Home.css';
 import SignupPopup from '../Presentation/signupPopup';
 class Home extends Component {
     constructor(){
         super();
         this.state= {
+            userId:"",
             username: "",
             password:"",
             authorized:true,
@@ -15,20 +15,27 @@ class Home extends Component {
             selectedImage:null
         };
     }
-    
+
+
+    handleUserIdChange=(e)=>{
+        this.setState({userId:e.target.value});
+    }
+
     handleUsernameChange=(e)=>{
         this.setState({username:e.target.value});
-        console.log(this.state.username)
     }
 
     handlePasswordChange=(e)=>{
         this.setState({password:e.target.value});
     }
+
+
     handleSubmit= async(e)=>{
         e.preventDefault();
-        this.props.model.setUsername(this.state.username.toLowerCase());
+        this.props.model.setUserId(this.state.userId.toLowerCase());
         this.props.model.setPassword(this.state.password);
-        sessionStorage.setItem("username", this.state.username.toLowerCase());
+
+        sessionStorage.setItem("userId", this.state.userId.toLowerCase());
         sessionStorage.setItem("password", this.state.password);
         const response = await this.props.model.login()
         .then(res=> res)
@@ -38,7 +45,7 @@ class Home extends Component {
             );
         if(response){
             this.setState({authorized:true})
-            this.props.history.push(`/chatScreen/${this.state.username.toLowerCase()}`);
+            this.props.history.push(`/chatScreen/${this.state.userId.toLowerCase()}`);
         }else{
             this.setState({authorized:false})
         }
@@ -48,12 +55,12 @@ class Home extends Component {
         this.setState({
             selectedImage: event.target.files[0]
         });
-        console.log(this.state.selectedImage)
     }
 
     imageUploadHandler= async (event)=>{
         event.preventDefault();
         let avatarUrl="";
+        console.log(this.state.selectedImage)
         if (this.state.selectedImage){
             let data = new FormData();
             data.append('name', this.state.selectedImage.name);
@@ -66,22 +73,26 @@ class Home extends Component {
                     return response.json();
                 })
                 .then(data=>{
-                        return "http://localhost:3001/" + data.createdPicture.imgUrl
+                        return data.url;
                 })
                 .catch(error => console.error('error', error));
         }
 
         this.props.model.setUsername(this.state.username.toLowerCase());
+        this.props.model.setUserId(this.state.userId.toLowerCase());
         this.props.model.setPassword(this.state.password);
         sessionStorage.setItem("username", this.state.username.toLowerCase());
+        sessionStorage.setItem("userId", this.state.userId.toLowerCase());
         sessionStorage.setItem("password", this.state.password);
         this.props.model.setAvatarUrl(avatarUrl);
-        this.props.model.signup().then(res=>{
+
+        await this.props.model.signup().then(res=>{
             console.log(res)
             if(res.status===500){
                 alert("username already taken :( try a different one")
             }else{
                 alert("congratulations! you have successfully created acount! you can now log in")
+                this.closePopup();
             }
             //this.closePopup();
         }).catch(err=> {
@@ -91,8 +102,8 @@ class Home extends Component {
     }
 
     displayPopup=event=>{
+        event.preventDefault();
         const node = ReactDOM.findDOMNode(this);
-        console.log(node);
         node.querySelector('.bg-modal').style.display= 'flex';
     }
 
@@ -103,22 +114,66 @@ class Home extends Component {
 
     render() { 
         return ( 
-            <div>
-                <Login username={this.state.username}
-                        password={this.state.password}
-                        authorized={this.state.authorized}
-                        handleSubmit={this.handleSubmit}
-                        handleUsernameChange={this.handleUsernameChange}
-                        handlePasswordChange={this.handlePasswordChange}
-                        displayPopup={this.displayPopup}
+            <div className ="content-home">
+                <div className ="logo">
+                <img  width="500" className="logo-style"
+                            src ={ require('../images/logo.png')}
+                            alt ={"could not load image"}/>
+                    </div>
+                
+                <ul className="flying-boxes">
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                    <li> <img  width="150" 
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/></li>
+                </ul>
+               
+ 
+                <Login 
+                    userId={this.state.userId}
+                    password={this.state.password}
+                    authorized={this.state.authorized}
+                    handleSubmit={this.handleSubmit}
+                    handleUserIdChange={this.handleUserIdChange}
+                    handlePasswordChange={this.handlePasswordChange}
+                    displayPopup={this.displayPopup}
                 />
-                <SignupPopup username={this.state.username}
-                            password={this.state.password}
-                            imageUploadHandler={this.imageUploadHandler}
-                            fileSelectedHandlar={this.fileSelectedHandlar}
-                            closePopup={this.closePopup}
-                            handleUsernameChange={this.handleUsernameChange}
-                            handlePasswordChange={this.handlePasswordChange}
+                <SignupPopup 
+                    userId={this.state.userId}
+                    username={this.state.username}
+                    password={this.state.password}
+                    imageUploadHandler={this.imageUploadHandler}
+                    fileSelectedHandlar={this.fileSelectedHandlar}
+                    closePopup={this.closePopup}
+                    handleUsernameChange={this.handleUsernameChange}
+                    handlePasswordChange={this.handlePasswordChange}
+                    handleUserIdChange={this.handleUserIdChange}
 
                 />
             </div>

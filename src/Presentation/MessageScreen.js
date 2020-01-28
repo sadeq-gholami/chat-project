@@ -16,8 +16,8 @@ class MessageScreen extends React.Component{
             if(this.ToBottom){
                 const position = ReactDOM.findDOMNode(this)
                 position.scrollTop= position.scrollHeight
-        }
-    } 
+        } 
+    }
 
 
 render(){
@@ -26,7 +26,7 @@ render(){
             <div className= "messagescreen" >
                 {this.props.messages.map((message,index)=>{
                     return (
-                        <Message currentUser={this.props.currentuser}key={index} message ={message}/>
+                        <Message currentUser={this.props.currentuser}key={index} message ={message} displayPopup= {this.props.displayPopup}/>
                         )
                 })
             }

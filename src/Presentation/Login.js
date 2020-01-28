@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import '../Styles/View Home Styles/Home.css';
-const Login= ({username, password, authorized, handleSubmit, handleUsernameChange, handlePasswordChange, displayPopup})=>{
+
+const Login= ({userId, password, authorized, handleSubmit, handleUserIdChange, handlePasswordChange, displayPopup})=>{
     return(
                 <div>
                     <div className= "innerbox">
                         <div className ="imageholder">
-                            <img  width="140" src={ require('../images/loginicon.png') } />
+                            <img  width="140" src={ require('../images/user1.png') } />
                         </div>
                         <form className ="username" onSubmit={handleSubmit}>
-                            <input  onChange ={handleUsernameChange} 
-                                value={username}
-                                placeholder="Enter username..."
+                            <input  onChange ={handleUserIdChange} 
+                                value={userId}
+                                placeholder="Enter user id"
                                 type="text"/>
                             <input  onChange ={handlePasswordChange} 
                                 value={password}
                                 placeholder="Enter passowrd..."
                                 type="password"/>
                             <div>
-                                <button className = "tbtn" onClick={handleSubmit}>Sign in</button> 
+                                <button className = "tbtn" onClick={handleSubmit}>SIGN IN</button> 
                             </div>
-                            <button className="tbtn" onClick={displayPopup}>sign up</button>
+                            <button className="tbtn" onClick={displayPopup}>Sign up</button>
                             <div>
                                 {authorized
                                     ? <div/>
-                                    : <div>wrong passowrd! try again!</div>
+                                    : <div className="wrong"><b>Wrong password or username! Try again!</b></div>
                                 }
                             </div>
                             

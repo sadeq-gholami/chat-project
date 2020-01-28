@@ -1,11 +1,8 @@
 .messagescreen{
     
     box-sizing: border-box;
-    padding-left: 6px;
-    width: 100%;
-    height: 100%;
     overflow: scroll;
-    background:rgb(236, 236, 236);
+    position: relative;
 
 }
 .messagescreen .noroom{

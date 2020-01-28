@@ -1,43 +1,101 @@
-.sidebar {
-  box-sizing: border-box;
 
-  background: #F9F9F9;
-  border-right-style:solid;
+.content-sidebar{
+  grid-area: sidebar;
+  box-sizing: border-box;
+  background-color: rgb(238, 184, 68);
+  overflow: scroll;
   border-color:rgba(146, 120, 109, 0.247) ;
   border-width: 2px 2px 2px 2px;
-  overflow: scroll;
-cursor: pointer;
-
   height: 100%;
+  max-width: 0px;
+  padding: 30px 0;
 }
-
-
-.sidebar .room{
+.room{
+  padding-top: 20px;
+}
+.content-sidebar h2{
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+  margin: 0 20px 0 20px;
+}
+@media screen and (max-width: 600px){
+  .content-sidebar h2{
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+    margin: 0 100px 0 100px;
+  }
+}
+.content-sidebar .room{
   
-  color: rgba(114, 114, 114, 0.568);
-  border-color:rgba(146, 120, 109, 0.603);
-  opacity: 0.6;
-  font-weight: 900;
-
-  border-bottom:solid;
-  border-width: 1px 1px 1px 1px;
-  padding: 20px 0px;
-  margin: 10px;
+  padding: 20px;
+  font-family: "Georgia", serif;
   cursor: pointer;
-
-
+  padding-left: 30px;
+  padding-right: 100px;
+  color: rgba(252, 224, 181, 0.827);
+  display: block;
 }
-.sidebar .roombackground.active {
-  background-color:#2195F6;
+.content-sidebar .roombackground:hover{
+  background: #f5c187d3; 
+  color: black;
+}
+.room:hover{
+  color: #fff;
+}
+.content-sidebar .roombackground.active {
+  background-color:hsla(32, 70%, 77%, 0.827);
   padding-right: 10px ;
   border-radius: 3px;
-  opacity: 1;
-  
 }
 .sidebar .room #roomname{
   color: black ;
   font-family: arial;
   padding-left: 11px;
 }
+.creategroupe{
+  background: white;
+  border: 0;
+  border-bottom: 1px solid white;
+  opacity: .6;
+  padding: 5px;
+}
+.creategroupe input {
+  background-color: black;
+  opacity: .6;
+  width: 50%;
+  padding: 8px 40px;
+  border: none;
+  margin-top: 50px;
+  border-radius: 15px;
+}
+.creategroupe input::placeholder {
+  text-align: center;
+  color: black;
 
 
+  border-bottom:none;
+  border-width: 1px 1px 1px 1px;
+  background-color: grey;
+  padding: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding-left: 30px;
+  padding-right: 100px;
+  font-weight: 900;
+  opacity: 0.6;
+}
+
+.content-sidebar .addroom:hover{
+background-color: #2195F6;
+opacity: 0.4;
+}
+
+.content-sidebar .addroom #roomname{
+  color: white ;
+  font-family: arial;
+  padding-left: 11px;
+}

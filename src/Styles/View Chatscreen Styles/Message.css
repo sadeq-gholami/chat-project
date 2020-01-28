@@ -1,6 +1,7 @@
 .Message {
   margin: 15px 0;
   padding-bottom: 9px;
+  
 }
 .userMessage{
   text-align: right;
@@ -14,16 +15,46 @@
   
   margin-left: 5px;
   margin-top: 9px;
-
-
+}
+.user-pic{
+  width: 100%;
+  height: 50px;
+}
+.message-name:hover{
+  cursor: pointer;
+}
+.tooltip2{
+  padding-right: 50px;
+  float: right;
+}
+.tooltip2 .tooltip2text {
+  visibility: hidden;
+  font-weight: 30;
+  font-size: 12px;
+  width: 200px;
+  height:150px ;
+  opacity: 0.4;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  margin-left: -65px;
 }
 
+.tooltip2:hover .tooltip2text {
+  visibility: visible;
+}
   .Message .message-time{
     font-size: 8px;
     color: rgb(162, 163, 163);
     opacity: 0.9;
     margin-bottom: 9px;
-    margin-left: 5px;
+    margin-left: 45px;
     margin-top: 1px;
 
 }
@@ -33,6 +64,7 @@
     display: inline;
     padding: 3px 10px;
     border-radius: 9px;
+    margin-left: 45px;
 
 }
 /*****/
@@ -51,16 +83,17 @@
     color: rgb(162, 163, 163);
     opacity: 0.9;
     margin-bottom: 9px;
-    margin-right: 5px;
+    margin-right: 45px;
     margin-top: 1px;
 
 }
 .userMessage .message-text{
-  background:#2195F6;
-  color: white;
+  background:rgb(247, 212, 138);
+  color: black;
     display: inline;
     padding: 3px 10px;
     border-radius: 9px;
+    margin-right: 45px;
     
 }
 

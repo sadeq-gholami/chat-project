@@ -3,15 +3,16 @@ import React, { Component } from 'react';
 import ChatScreen from './Components/chatScreen';
 import Home from './Components/Home';
 import{BrowserRouter as Router, Route} from "react-router-dom";
-import Phtotos from './Components/photos';
+import Photos from './Components/photos';
 class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {  
       userName: "",
       model : new ChatModel()
-    }
-  }
+    }}
+  
+
   setUserName= username=>{
     console.log(username);
     this.state.model.logIn(username);
@@ -31,7 +32,7 @@ class App extends React.Component{
                  return <ChatScreen  {...props}model = {this.state.model}/>
                 }}/>
             <Route path="/photos" render= {(props)=>{
-                 return <Phtotos  {...props}model = {this.state.model}/>
+                 return <Photos  {...props}model = {this.state.model}/>
                 }}/>
           </div>
       </Router>   

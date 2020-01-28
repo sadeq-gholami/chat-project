@@ -1,0 +1,53 @@
+.Photos{
+    display:flex;
+    flex-wrap: wrap;   
+    overflow-y: auto;
+    height: 100%;
+    background: linear-gradient(#ffecd2,#fcb69f);
+}
+.left{
+    float: left;
+    padding-left: 10px;
+}
+.right{
+    padding-right: 10px;
+    float: right;
+}
+.app-name{
+    box-sizing: border-box;
+    width: 100%;
+    font-size: xx-large;
+    font-family: italic;
+    height: 90px;
+    padding-top: 5px;
+    text-align: center;
+    font-weight: 900;
+
+}
+
+.no-images{
+	grid-column: 1 /-1;
+	grid-row:1/-1;
+    padding: 25em;
+    text-align : center;
+    font-family: italic;
+    background: linear-gradient(#ffecd2,#fcb69f);
+}
+.image{
+    opacity: 1;
+    width: 350px;
+    height: 250px;
+    border-radius: 20px;
+    text-align: left;
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+.image-len{
+    max-height: 250px;
+}
+.image:hover{
+    background-color: #fcb69f ; 
+    color: black;
+    cursor: pointer;
+    opacity: 0.3;
+}
