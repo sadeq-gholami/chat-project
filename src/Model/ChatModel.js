@@ -1,6 +1,6 @@
 import Chatkit from '@pusher/chatkit-client'
 import Observable from "./Observable";
-import {tokenUrl, instanceLocator} from "../config.js"
+import {tokenUrl, instanceLocator} from "./config.js"
 
 
 export default class ChatModel extends Observable {

@@ -34,12 +34,12 @@ html,body {
     grid-template-columns: minmax(min-content, max-content) 1fr 1fr 1fr minmax(min-content, max-content);
     grid-template-rows: 0.3fr 1fr 1fr 1fr 20px;
     grid-template-areas: 
-    " sidebar header     header     header     header      "
+    " header header     header     header     header      "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
     " sidebar chatscreen chatscreen chatscreen Roomsetting "
-    " chatform chatform   chatform   chatform   chatform    ";
+    " sidebar chatform   chatform   chatform   Roomsetting   ";
   }
 
   .header{

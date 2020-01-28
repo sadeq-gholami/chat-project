@@ -44,19 +44,10 @@ class ChatScreen extends Component {
     }
 
     resize() {
-        const node = ReactDOM.findDOMNode(this);
-        let contentSidebar = node.querySelector(".content-sidebar");
-        let contentRoomSettings = node.querySelector(".user-side-bar");
         let currentHideNav = (window.innerWidth <= 760);
         if (currentHideNav !== this.state.hideNav) {
             this.setState({hideNav: currentHideNav});
-            contentSidebar.style.gridArea="2/1/-1/-1";
-            contentRoomSettings.style.gridArea="2/1/-1/-1";
-            contentSidebar.style.width = "null";
-        }else{
-            contentSidebar.style.gridArea="sidebar";
-            contentRoomSettings.style.gridArea="Roomsetting"
-            node.querySelector('.messagescreen').style.gridColumn = "2/-1";
+           
         }
     }
 
@@ -217,6 +208,7 @@ class ChatScreen extends Component {
         const node = ReactDOM.findDOMNode(this);
         node.querySelector('.invitebody-model').style.display= 'none';
     }
+
     displaySettings=event=>{
         const node = ReactDOM.findDOMNode(this);
         node.querySelector('.bg-settings').style.display= 'flex';
@@ -231,29 +223,20 @@ class ChatScreen extends Component {
         const node = ReactDOM.findDOMNode(this);
         let contentRoomSettings = node.querySelector(".user-side-bar");
         let contentSidebar = node.querySelector(".content-sidebar");
-        if (this.state.hideNav){
-            e.target.classList.toggle("active");
-            if (contentRoomSettings.style.width) {
-                contentRoomSettings.style.width = null;
-                contentSidebar.maxWidth=null;
-                node.querySelector('.messagescreen').style.gridColumn = "1/-1";
-                node.querySelector('.messagescreen').style.width = "inherit";
-            
-            } else{
-                contentRoomSettings.style.gridArea="2/1/-1/-1";
-                contentSidebar.width=null;
-                contentRoomSettings.style.width = "100%";
-                node.querySelector('.messagescreen').style.width = "0px";
-            } 
+        if (!contentSidebar.style.maxWidth && contentRoomSettings.style.maxWidth){
+            contentRoomSettings.style.maxWidth = null;
+            node.querySelector('.messagescreen').style.gridColumn="1/-1";
+        }else if (contentSidebar.style.maxWidth && contentRoomSettings.style.maxWidth){
+            contentRoomSettings.style.maxWidth = null;
+            node.querySelector('.messagescreen').style.gridColumn="2/-1";
+        }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
+            contentRoomSettings.style.maxWidth = "inherit";
+            contentSidebar.style.maxWidth= null;
+            node.querySelector('.messagescreen').style.gridColumn="1/-2";
         }else{
-            if (contentRoomSettings.style.width) {
-                contentRoomSettings.style.width = null;
-                node.querySelector('.messagescreen').style.gridColumn = "2/-1";
-            }else {
-                contentRoomSettings.style.width= "250px";
-
-                node.querySelector('.messagescreen').style.gridColumn = "2/-2"
-            }
+            contentRoomSettings.style.maxWidth = "inherit";
+            contentSidebar.style.maxWidth= null;
+            node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     };
 
@@ -261,19 +244,20 @@ class ChatScreen extends Component {
         const node = ReactDOM.findDOMNode(this);
         let contentRoomSettings = node.querySelector(".user-side-bar");
         let contentSidebar = node.querySelector(".content-sidebar");
-        if (this.state.hideNav){
-            e.target.classList.toggle("active");
-            if (contentSidebar.style.width) {
-                contentSidebar.style.width = null;
-                contentRoomSettings.style.width=null;
-                node.querySelector('.messagescreen').style.gridColumn = "1/-1";
-                node.querySelector('.messagescreen').style.width = "inherit";
-            } else{
-                contentSidebar.style.gridArea="2/1/-1/-1";
-                contentRoomSettings.style.width=null;
-                contentSidebar.style.width = "100%";
-                node.querySelector('.messagescreen').style.width = "0px";
-            }
+        if (contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
+            contentSidebar.style.maxWidth = null;
+            node.querySelector('.messagescreen').style.gridColumn="1/-1";
+        }else if (contentSidebar.style.maxWidth && contentRoomSettings.style.maxWidth){
+            contentSidebar.style.maxWidth = null;
+            node.querySelector('.messagescreen').style.gridColumn="1/-2";
+        }else if (!contentSidebar.style.maxWidth && !contentRoomSettings.style.maxWidth){
+            contentSidebar.style.maxWidth = "inherit";
+            contentRoomSettings.style.maxWidth = null;
+            node.querySelector('.messagescreen').style.gridColumn="2/-1";
+        }else {
+            contentSidebar.style.maxWidth = "inherit";
+            contentRoomSettings.style.maxWidth = null;
+            node.querySelector('.messagescreen').style.gridColumn="2/-2"
         }
     }
 

@@ -8,9 +8,10 @@
     overflow-y: auto;*/
 }
 .user-side-bar {
+  grid-area: Roomsetting;
   margin-left: auto;
   margin-right: 0px;
-  width: 0;
+  max-width: 0;
   overflow: scroll;
   background-color: #f1f1f1;
   text-align: center;
@@ -134,8 +135,12 @@ padding-right: 10px;
     background-color: #fff;
     text-align: center;
   }
- @media only screen and (max-width:600px){
-   .content-room-settings{
-     grid-column: 1/-1;
-   }
- }
+  h3{
+    margin: 0 50px 0 50px;
+  }
+
+  @media screen and (max-width: 600px){
+    h3{
+      margin: 0 150px 0 150px;
+    }
+  }

@@ -3,11 +3,11 @@
   grid-area: sidebar;
   box-sizing: border-box;
   background-color: rgb(238, 184, 68);
- overflow: scroll;
+  overflow: scroll;
   border-color:rgba(146, 120, 109, 0.247) ;
   border-width: 2px 2px 2px 2px;
   height: 100%;
- 
+  max-width: 0px;
   padding: 30px 0;
 }
 .room{
@@ -18,15 +18,15 @@
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 30px;
-
+  margin: 0 20px 0 20px;
 }
-@media only screen and (max-width: 600px){
-  .content-sidebar{
-    grid-column: 1/-1;
-    box-sizing: content-box;
-  }
-  .content-sidebar .room{
+@media screen and (max-width: 600px){
+  .content-sidebar h2{
+    color: #fff;
+    text-transform: uppercase;
     text-align: center;
+    margin-bottom: 30px;
+    margin: 0 100px 0 100px;
   }
 }
 .content-sidebar .room{
@@ -98,9 +98,4 @@ opacity: 0.4;
   color: white ;
   font-family: arial;
   padding-left: 11px;
-}
-@media only screen and (max-width: 760px) {
-  .content-sidebar{
-    width: 0px;
-  }
 }
