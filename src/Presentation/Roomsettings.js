@@ -3,8 +3,6 @@ import '../Styles/Gstyle.css';
 import '../Styles/View Chatscreen Styles/RoomSetting.css'
 import uuid from "react-uuid"
 import ReactDOM from 'react-dom'
-import ImageWithDefault from "./ImageWithDefault";
-import no_profile_picture from "../images/no_profile_picture.png";
 import {Link} from 'react-router-dom';
 
 class RoomSettings extends Component {
@@ -38,9 +36,6 @@ class RoomSettings extends Component {
                     <div className={"settings-popup"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <table>
-                            <thead>
-                            <th/>
-                            </thead>
                             <tbody>
                             <tr key={uuid()} >
                                 <td>
@@ -73,10 +68,6 @@ class RoomSettings extends Component {
                                     <button  key={uuid()} id="addUserToRoom" className="room-setting-btn red-btn"
                                             onClick={this.props.leaveRoom}
                                             type="button">Leave room
-                                    </button>
-                                    <button  key={uuid()} id="addUserToRoom" className="room-setting-btn red-btn"
-                                             onClick={this.props.deleteRoom}
-                                             type="button">Delete room
                                     </button>
                                 </td>
                             </tr>

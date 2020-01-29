@@ -18,7 +18,7 @@
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 30px;
-  margin: 0 20px 0 20px;
+  margin: 0 100px 0 100px;
 }
 @media screen and (max-width: 600px){
   .content-sidebar h2{
@@ -33,9 +33,9 @@
   
   padding: 20px;
   font-family: "Georgia", serif;
+  font-size: 1.5em;
   cursor: pointer;
-  padding-left: 30px;
-  padding-right: 100px;
+  text-align: center;
   color: rgba(252, 224, 181, 0.827);
   display: block;
 }

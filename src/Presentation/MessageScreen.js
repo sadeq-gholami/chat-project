@@ -21,11 +21,11 @@ class MessageScreen extends React.Component{
 
 
 render(){
-    if(this.props.messages.length>0){
+    if(this.props.currentRoom){
         return (  
             <div className= "messagescreen" >
                 {this.props.messages.map((message,index)=>{
-                    return (
+                    return(
                         <Message currentUser={this.props.currentuser}key={index} message ={message} displayPopup= {this.props.displayPopup}/>
                         )
                 })

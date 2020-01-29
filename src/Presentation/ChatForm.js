@@ -36,7 +36,7 @@ class ChatForm extends React.Component {
                  src ={ require('../images/attachment.png')}
                  alt ={"could not load image"}
                  onClick={this.props.displayPopup}/>
-                 <span class="test">Attach file</span>
+                 <span className="test">Attach file</span>
                  </div>
             <input  onChange ={this.handlechange} 
                     value={this.state.message}

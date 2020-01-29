@@ -1,15 +1,11 @@
 import Chatkit from '@pusher/chatkit-client'
 import Observable from "./Observable";
-import {tokenUrl, instanceLocator} from "./config.js"
-
-
+import {instanceLocator} from "./config";
 export default class ChatModel extends Observable {
     constructor(){
         super();
         this.messages =[];
         this.currentRoomId=  null;
-        this.availableRooms= [];
-        this.takenRooms = [];
         this.images=[]; 
         this.currentRoomName= sessionStorage.getItem("currentroomName");
         this.username= sessionStorage.getItem("username");
