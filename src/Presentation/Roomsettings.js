@@ -1,96 +1,76 @@
 import React, {Component} from 'react';
 import '../Styles/Gstyle.css';
-import '../Styles/View Chatscreen Styles/RoomSetting.css'
-import uuid from "react-uuid"
-import ReactDOM from 'react-dom'
-import ImageWithDefault from "./ImageWithDefault";
-import no_profile_picture from "../images/no_profile_picture.png";
-import {Link} from 'react-router-dom';
+import Members from "./Members";
+import ReactDOM from "react-dom";
+
+const  uuid = require('uuid/v1');
 
 class RoomSettings extends Component {
     constructor() {
         super();
         this.state = {
-            usernameToAdd: "",
-            usernameToRemove: ""
+            usernameToadd: "",
         };
     }
 
     closePopup = event => {
         const node = ReactDOM.findDOMNode(this);
-        node.querySelector('.bg-settings').style.display = 'none';
+        node.style.display = 'none';
     };
+
+
+    handleChangeAdd = (e) => {
+        this.setState({usernameToadd: e.target.value})
+    };
+
 
     handleSubmitToAdd = (e) => {
         e.preventDefault();
-        this.props.addUserToRoom(this.addUsername.value)
-    };
-
-    handleSubmitToRemove = (e) => {
-        e.preventDefault();
-        this.props.removeUserFromRoom(this.removeUsernameInput.value)
+        this.props.addusertoroom(this.state.usernameToadd);
+        this.setState({
+            usernameToadd: ""
+        })
     };
 
     render() {
         return (
-            <div className={"room-settings"}>
-                <div className={"bg-settings"}>
-                    <div className={"settings-popup"}>
-                        <div className="close" onClick={this.closePopup}>+</div>
-                        <table>
-                            <thead>
-                            <th/>
-                            </thead>
-                            <tbody>
-                            <tr key={uuid()} >
-                                <td>
-                                    <form onSubmit={this.handleSubmitToAdd}>
-                                        <input className={"room-setting-form"}
-                                            placeholder="add user"
-                                            type="text"
-                                            ref={(addUsernameInput) => this.addUsername  = addUsernameInput}/>
+            <div className="RoomSettings">
+                <div className="close" onClick={this.closePopup}>+</div>
+                <table>
+                    <tbody>
+                    <tr key={ uuid()}>
+                        <td key={uuid()}><p>room name: {this.props.room.name}</p></td>
+                    </tr>
+                    <tr key={ uuid()}>
+                        <td key={uuid()}><input onChange={this.handleChangeAdd}
+                               value={this.state.usernameToadd}
+                               placeholder="Username to add "
+                                   type="text"/></td>
+                        <td key={uuid()}>  <button onClick={this.handleSubmitToAdd}>
+                            <img key={ uuid()}
+                                 width="12"
+                                 height="12"
+                                 src="https://img.icons8.com/android/24/000000/plus.png"
+                                 alt={"+"}/>
+                        </button></td>
+                    </tr>
 
-                                        <button  type="submit"  key={uuid()} className="room-setting-btn green-btn">ADD
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr key={uuid()} class="border_bottom">
-                                <td key={uuid()} >
-                                    <form   onSubmit={this.handleSubmitToRemove}>
-                                        <input
-                                            className={"room-setting-form"}
-                                            placeholder="remove user"
-                                            type="text"
-                                            ref={(removeUsernameInput) => this.removeUsernameInput  = removeUsernameInput}/>
-                                        <button  type="submit"  key={uuid()} className="room-setting-btn red-btn">REMOVE
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr key={uuid()} >
-                                <td key={uuid()} >
-                                    <button  key={uuid()} id="addUserToRoom" className="room-setting-btn red-btn"
-                                            onClick={this.props.leaveRoom}
-                                            type="button">Leave room
-                                    </button>
-                                    <button  key={uuid()} id="addUserToRoom" className="room-setting-btn red-btn"
-                                             onClick={this.props.deleteRoom}
-                                             type="button">Delete room
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr key={uuid()}>
-                                <td>
-                                    <Link to="/">
-                                        <button className="room-setting-btn" type="button">sign out</button>
-                                    </Link>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                    <tr key={ uuid()}>
+                        <td key={uuid()}> <Members {...this.props} users={this.props.users}/></td>
+                    </tr>
+
+                    <tr key={ uuid()}>
+                        <td key={uuid()}> <button id="leaveroom" onClick={this.props.leaveRoom}
+                                type="button">Leave room
+                        </button></td>
+                            <td key={uuid()}> <button id="deleteroom" onClick={this.props.deleteRoom}
+                                type="button">Delete room
+                            </button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
             </div>
         );
     }
