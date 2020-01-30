@@ -291,7 +291,7 @@ class ChatScreen extends Component {
             <div className={"groupbody-model"}>
                     <div className={"groupbody"}>
                     <div className="close" onClick={this.closePopupGroup}>+</div>
-                    <Group closepop={this.closePopupGroup} joinaroom={roomid=>this.joinaroom(roomid)} currentUser={this.state.currentUser} createRoom={name=>this.createRoom(name)}/>
+                    <Group closepopgroup={this.closePopupGroup} joinaroom={roomid=>this.joinaroom(roomid)} currentUser={this.state.currentUser} createRoom={name=>this.createRoom(name)}/>
                     </div>
                 </div>
 

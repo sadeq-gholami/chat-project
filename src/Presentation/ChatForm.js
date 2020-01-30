@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../Styles/View Chatscreen Styles/ChatForm.css';
 
+
 class ChatForm extends React.Component {
     constructor(){
         super();
@@ -37,13 +38,19 @@ class ChatForm extends React.Component {
                  alt ={"could not load image"}
                  onClick={this.props.displayPopup}/>
                  <span className="test">Attach file</span>
-                 </div>
+                 </div> 
+            <form className ="something">      
             <input  onChange ={this.handlechange} 
                     value={this.state.message}
                     placeholder="Enter Text"
                     type="text"/>
-            <button id = "Sbtn" onClick={e=>this.handleSubmitbtn()} type="button" >Send</button> 
+                  <button onClick={e=>this.handleSubmitbtn()} className="send"> < img  width="28"
+                            src ={ require('../images/send.png')}
+                            alt ={"could not load"}
+                            />
+                </button>
             </form>
+            </form> 
          );
     }
 }

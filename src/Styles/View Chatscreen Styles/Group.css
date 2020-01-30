@@ -1,6 +1,9 @@
 
 .group{
   margin-top: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
 }
 .group .joingroup{
   float: left;
@@ -19,10 +22,29 @@
 }
 #groupbtn{
   margin-left: 2px;
-  background-color: #2195F6;
+  background-color: rgb(235, 173, 39);
   color: white;
   padding-top:8px;
   padding-bottom:8px;
   border-radius: 3px;
   border: none;
+  margin-right: 20px;
+}
+.groupbody{
+  width:650px;
+  height: 300px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  overflow: auto;  
+}
+@media screen and (max-width: 600px){
+  .groupbody{
+    width: 350px;
+  }
+  .group .joingroup{
+    padding-top: 20px;
+  }  
 }
