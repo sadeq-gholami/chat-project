@@ -6,7 +6,7 @@ export default class ChatModel extends Observable {
         super();
         this.messages =[];
         this.currentRoomId=  null;
-        this.images=[]; 
+        this.images= JSON.parse(sessionStorage.getItem("images"))
         this.currentRoomName= sessionStorage.getItem("currentroomName");
         this.username= sessionStorage.getItem("username");
         this.password= sessionStorage.getItem("password");
@@ -62,6 +62,7 @@ export default class ChatModel extends Observable {
                 this.images.push(message.text.substr(5))
             }
         });
+        sessionStorage.setItem("images",JSON.stringify(this.images));
     }
 
 

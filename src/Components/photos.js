@@ -3,7 +3,7 @@ import '../Styles/View PhotoScreen/Photos.css';
 class Phtotos extends Component {
     state= {}
     render() { 
-        if (this.props.model.images.length>0){
+        if (sessionStorage.getItem("images") && this.props.model.images.length>0){
             return ( 
                 <div className ="Photos">
                     <div className="app-name">

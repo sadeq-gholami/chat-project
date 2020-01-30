@@ -133,6 +133,7 @@ class ChatScreen extends Component {
 
             })
             sessionStorage.setItem("currentroomName", this.state.currentroomName);
+            this.props.model.setCurrentRoomName(this.state.currentroomName);
             return this.state.currentUser.getJoinableRooms()
                 .then(joinableRooms => {
                     this.setState({
