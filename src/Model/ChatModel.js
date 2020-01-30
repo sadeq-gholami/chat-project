@@ -1,6 +1,6 @@
 import Chatkit from '@pusher/chatkit-client'
 import Observable from "./Observable";
-import {instanceLocator} from "../config";
+import {instanceLocator} from "./config";
 export default class ChatModel extends Observable {
     constructor(){
         super();

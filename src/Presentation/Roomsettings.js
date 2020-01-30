@@ -9,34 +9,31 @@ class RoomSettings extends Component {
     constructor() {
         super();
         this.state = {
-            usernameToadd: "",
+            usernameToAdd: "",
+            usernameToRemove: ""
         };
     }
 
     closePopup = event => {
         const node = ReactDOM.findDOMNode(this);
-        node.style.display = 'none';
+        node.querySelector('.bg-settings').style.display = 'none';
     };
-
-
-    handleChangeAdd = (e) => {
-        this.setState({usernameToadd: e.target.value})
-    };
-
 
     handleSubmitToAdd = (e) => {
         e.preventDefault();
-        this.props.addusertoroom(this.state.usernameToadd);
-        this.setState({
-            usernameToadd: ""
-        })
+        this.props.addUserToRoom(this.addUsername.value)
+    };
+
+    handleSubmitToRemove = (e) => {
+        e.preventDefault();
+        this.props.removeUserFromRoom(this.removeUsernameInput.value)
     };
 
     render() {
         return (
             <div className={"room-settings"}>
                 <div className={"bg-settings"}>
-                    <div className={"settings-popup2"}>
+                    <div className={"settings-popup"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <table>
                             <tbody>

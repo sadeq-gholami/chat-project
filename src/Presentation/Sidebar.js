@@ -24,11 +24,9 @@ class Sidebar extends React.Component{
         </div>)})}
              
             </div>
-
-            <div className="addroom" 
-            onClick={this.props.displayPopupGroup} >
-            <button id="roomname"  className="btnside"><span>Add rooms</span></button>
-                              </div> 
+            
+            <button className="addroom"  id="roomname" onClick={this.props.displayPopupGroup}  className="btnside"><span>Add rooms</span></button>
+                              
 
      </div>
      
