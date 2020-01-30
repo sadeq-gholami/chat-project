@@ -35,18 +35,18 @@ render(){
         );
     }else if (!this.props.currentRoom && sessionStorage.getItem("currentRoomID")){
         return(
-        <div className= "messagescreen">
-            <div className="center-content">
-                <LoadingIndicator />
-            </div>
-        </div>);
+            <div className= "messagescreen">
+                <div className="center-content">
+                    <LoadingIndicator />
+                </div>
+            </div>);
     }else{
         return(
-        <div className= "messagescreen">
-            <div className="center-content">
-                Pease Select a room!!!
+            <div className= "messagescreen">
+                <div className="center-content">
+                    Please Select a room!!!
+                </div>
             </div>
-        </div>
         );
     }        
  }

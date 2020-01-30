@@ -10,7 +10,7 @@ const SignupPopup = (
             <div className={"modal-pop-up"}>
                 <div className="close"  onClick={closePopup}>+</div>
                 <form onSubmit={imageUploadHandler}>
-                <input className={"btn btn-input"}
+                    <input className={"btn btn-input"}
                         onChange ={handleUserIdChange} 
                         value={userId}
                         placeholder="user Id...."
@@ -35,7 +35,7 @@ const SignupPopup = (
                     <button  className={"btn"} 
                         onClick={imageUploadHandler}>
                             Sign Up
-                            </button>   
+                    </button>   
                 </form>
             </div>
         </div>

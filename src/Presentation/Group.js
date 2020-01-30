@@ -39,31 +39,30 @@ class Group extends Component {
     render() { 
         return ( 
         <div className="group">
-        <div className="addgroup">
-        <img  width="100" src={ require('../images/Createroom.png') } />
-        <h5>Create a new Room with Choosen name</h5>
-        <form className ="group-form" onSubmit={this.handleSubmit}>
-            <input  
-            onChange ={this.handlechange} 
-                    value={this.state.groupName}
-                    placeholder="Enter Name"
-                    type="text"
-                    maxLength={5}/>
-            <button id = "groupbtn" onClick={this.handleSubmit} type="button" >Create new Room</button> 
-            </form>
+            <div className="addgroup">
+                <img  width="100" src={ require('../images/Createroom.png') } />
+                <h5>Create a new Room with Choosen name</h5>
+                <form className ="group-form" onSubmit={this.handleSubmit}>
+                    <input  onChange ={this.handlechange} 
+                        value={this.state.groupName}
+                        placeholder="Enter Name"
+                        type="text"
+                        maxLength={5}/>
+                    <button id = "groupbtn" onClick={this.handleSubmit} type="button" >Create new Room</button> 
+                </form>
             </div>
             <div className="joingroup">
-            <img  width="100" src={ require('../images/Joinaroom.png') } />
-            <h5>Enter a Room with an Invite</h5>
-            <form className ="group-form" onSubmit={this.handleSubmitTojoin}>
-            <input  onChange ={this.handlechangejoin} 
-                    value={this.state.roomtojoin}
-                    placeholder="Enter Invite"
-                    type="text"/>
-         <button id = "groupbtn" onClick={this.handleSubmitTojoin} type="button" >Connect to a Room</button> 
-            </form>
+                <img  width="100" src={ require('../images/Joinaroom.png') } />
+                <h5>Enter a Room with an Invite</h5>
+                <form className ="group-form" onSubmit={this.handleSubmitTojoin}>
+                    <input  onChange ={this.handlechangejoin} 
+                        value={this.state.roomtojoin}
+                        placeholder="Enter Invite"
+                        type="text"/>
+                <button id = "groupbtn" onClick={this.handleSubmitTojoin} type="button" >Connect to a Room</button> 
+                </form>
             </div>
-            </div>
+        </div>
          );
     }
 }
