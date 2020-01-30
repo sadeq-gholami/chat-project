@@ -20,7 +20,7 @@ export default class ImageWithDefault extends React.Component {
         if(this.state.failed === false) {
             return (
                 <img key={uuid()} src={this.props.source} onError={this._onError} {...this.props}/>
-            );
+                    );
         } else {
             return (<img key={uuid()} src={this.props.default} {...this.props} />)
         }
