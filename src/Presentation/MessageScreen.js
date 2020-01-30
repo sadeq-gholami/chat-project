@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Message from './Message'
 import '../Styles/View Chatscreen Styles/MessageScreen.css';
+import LoadingIndicator from './LoadingIndicator';
 
 class MessageScreen extends React.Component{
 
@@ -32,10 +33,21 @@ render(){
             }
             </div>
         );
-    }else{
-        return(<div className= "messagescreen">
-            <div className ="noroom">Please select a room</div>
+    }else if (!this.props.currentRoom && sessionStorage.getItem("currentRoomID")){
+        return(
+        <div className= "messagescreen">
+            <div className="center-content">
+                <LoadingIndicator />
+            </div>
         </div>);
+    }else{
+        return(
+        <div className= "messagescreen">
+            <div className="center-content">
+                Pease Select a room!!!
+            </div>
+        </div>
+        );
     }        
  }
 }
