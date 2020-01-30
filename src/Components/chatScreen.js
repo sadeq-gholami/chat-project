@@ -5,7 +5,7 @@ import Sidebar from '../Presentation/Sidebar';
 import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import UsersSideBar from '../Presentation/UsersSideBar';
-import RoomSettings from "../Presentation/Roomsettings";
+import RoomSettings from "../Presentation/RoomSettings";
 import Group from '../Presentation/Group';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import SendPicPopUp from '../Presentation/SendPicPopUp';
