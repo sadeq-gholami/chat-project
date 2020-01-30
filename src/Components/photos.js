@@ -8,13 +8,7 @@ class Phtotos extends Component {
                 <div className ="Photos">
                     <div className="app-name">
                    {this.props.model.currentRoomName}
-                    <img  width="100" className="right"
-                            src ={ require('../images/crown12.png')}
-                            alt ={"could not load image"}/>
-                    <img  width="100" className="left"
-                            src ={ require('../images/crown12.png')}
-                            alt ={"could not load image"}/>
-                            </div>
+                    </div>
                     
                     {
                         this.props.model.images.map((img) => {
@@ -35,13 +29,8 @@ class Phtotos extends Component {
                 <div className="no-photos">
                     <div className="app-name">
                    {this.props.model.currentRoomName}
-                    <img  width="100" className="right"
-                            src ={ require('../images/crown12.png')}
-                            alt ={"could not load image"}/>
-                    <img  width="100" className="left"
-                            src ={ require('../images/crown12.png')}
-                            alt ={"could not load image"}/>
-                            </div>
+                 
+                    </div>
                      <div className="no-images">No images in current room please select another room!</div>
                 </div>
             )

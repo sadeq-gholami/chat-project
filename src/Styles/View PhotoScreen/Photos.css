@@ -1,7 +1,6 @@
 .Photos{
     display:flex;
     flex-wrap: wrap;   
-    overflow-y: auto;
     height: 100%;
     background: linear-gradient(#ffecd2,#fcb69f);
 }
@@ -9,14 +8,7 @@
     height: 100%;
     background: linear-gradient(#ffecd2,#fcb69f);
 }
-.left{
-    float: left;
-    padding-left: 10px;
-}
-.right{
-    padding-right: 10px;
-    float: right;
-}
+
 .app-name{
     box-sizing: border-box;
     width: 100%;
@@ -35,19 +27,26 @@
 }
 .image{
     opacity: 1;
-    width: 350px;
+    width: 300px;
+    height: 200px;
     border-radius: 20px;
     text-align: left;
-    margin-left: 50px;
-    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-bottom: 10px;
 }
 @media screen and (max-width: 600px){
     .image{
-        width: 200px;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+    .image-len{
+        height: 100px;
     }
 }
 .image-len{
-    max-height: 200px;
+    max-height: 150px;
 }
 .image:hover{
     color: black;
