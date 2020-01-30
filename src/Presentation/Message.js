@@ -27,7 +27,11 @@ const Message = ({message,currentUser})=> {
                 className="sent-image"/>
         </a>
         <div className ="tooltip2">
+<span className="tooltip2text" >
 
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
    </div>
       </div>
     );
@@ -46,7 +50,13 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
-  
+        <div className ="tooltip2">
+<span className="tooltip2text" >
+
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
+   </div>
       </div>
     );
   }
@@ -65,12 +75,16 @@ const Message = ({message,currentUser})=> {
            {message.createdAt.slice(0, -4)}
         </div>
         <a href={message.text.substr(5)} target="blank">
-          <img src={message.text.substr(5)} 
+          <img src={"https://chat-application-api.herokuapp.com/" + message.text.substr(5)} 
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
         <div className ="tooltip2">
+<span className="tooltip2text" >
 
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
    </div>
       </div>
     );
@@ -89,7 +103,11 @@ const Message = ({message,currentUser})=> {
           {message.text}
         </div>
         <div className ="tooltip2">
+<span className="tooltip2text" >
 
+<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+   {message.sender.name}
+   </span>
    </div>
       </div>
     );
