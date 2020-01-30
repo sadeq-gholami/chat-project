@@ -33,24 +33,24 @@ class ChatForm extends React.Component {
             
         <form className ="chatform" onSubmit={this.handleSubmit}>
             <div className="takephoto">
-                 <img className={"add-image-icon"}
-                 src ={ require('../images/attachment.png')}
-                 alt ={"could not load image"}
-                 onClick={this.props.displayPopup}/>
+                <img className={"add-image-icon"}
+                    src ={ require('../images/attachment.png')}
+                    alt ={"could not load image"}
+                    onClick={this.props.displayPopup}/>
                  <span className="test">Attach file</span>
-                 </div> 
+            </div> 
             <form className ="something">      
-            <input  onChange ={this.handlechange} 
+                <input  onChange ={this.handlechange} 
                     value={this.state.message}
                     placeholder="Enter Text"
                     type="text"/>
-                  <button onClick={e=>this.handleSubmitbtn()} className="send"> < img  width="28"
+                <button onClick={e=>this.handleSubmitbtn()} className="send"> 
+                    <img  width="28"
                             src ={ require('../images/send.png')}
-                            alt ={"could not load"}
-                            />
+                            alt ={"could not load"}/>
                 </button>
             </form>
-            </form> 
+        </form> 
          );
     }
 }
