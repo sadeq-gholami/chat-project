@@ -269,6 +269,14 @@ class ChatScreen extends Component {
                         displayRoomSettings={this.collapseRoomsettings}
                         currentroomName={this.state.currentroomName}
                         displayPopupInvite={this.displayPopupInvite}/>
+                
+                <UsersSideBar users={this.state.users}/>
+                <Sidebar 
+                    displayPopupGroup={e=>this.displayPopupGroup()}
+                    currentroomID={this.state.currentRoomId}
+                    joinedRooms={this.state.joinedRooms} 
+                    subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
+
                 <SendPicPopUp
                     closePopup={this.closePopup}
                     fileSelectedHandlar={this.fileSelectedHandlar}
@@ -280,14 +288,6 @@ class ChatScreen extends Component {
                     deleteRoom={roomId => this.deleteRoom()}
                     addUserToRoom={user => this.addUserToRoom(user)}
                     removeUserFromRoom={user => this.removeUserFromRoom(user)}/>
-                <UsersSideBar users={this.state.users}/>
-                <Sidebar 
-                    displayPopupGroup={e=>this.displayPopupGroup()}
-                    currentroomID={this.state.currentRoomId}
-                    joinedRooms={this.state.joinedRooms} 
-                    subscribeToRoom={roomId=>this.subscribeToRoom(roomId)}/>
-
-
             <div className={"groupbody-model"}>
                     <div className={"groupbody"}>
                     <div className="close" onClick={this.closePopupGroup}>+</div>
