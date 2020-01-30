@@ -6,23 +6,22 @@ const Message = ({message,currentUser})=> {
     return (
       <div className="event-message">
           {message.text.slice(0, -3)}
-        </div>
+      </div>
      
     );
   }
   if (message.text.includes(10101)&&message.sender.name===currentUser.name){
     return(
       <div className="userMessage">
-       
         <div className = "message-name">
-        {message.sender.name}
-          <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
-           </div>
-           <div className = "message-time">
+            {message.sender.name}
+            <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+        </div>
+        <div className = "message-time">
            {message.createdAt.slice(0, -4)}
         </div>
         <a href={ message.text.substr(5)} target="blank">
-          <img src={message.text.substr(5)} 
+            <img src={message.text.substr(5)} 
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
@@ -32,12 +31,11 @@ const Message = ({message,currentUser})=> {
   if(message.sender.name===currentUser.name){
     return (
       <div className="userMessage">
-       
         <div className = "message-name">
             {message.sender.name}
-        <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
-           </div>
-           <div className = "message-time">
+            <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+        </div>
+        <div className = "message-time">
            {message.createdAt.slice(0, -4)}
         </div>
         <div className = "message-text"> 
@@ -49,15 +47,14 @@ const Message = ({message,currentUser})=> {
 
   if (message.text.includes(10101)){
     return(
-      <div className="Message">
-         <div className = "message-name">
-         <img src ={message.sender.avatarURL} 
-         alt ={"no image"} 
-         className="user-image" />    
-         
-           {message.sender.name}
-           </div>
-           <div className = "message-time">
+    <div className="Message">
+        <div className = "message-name">
+          <img src ={message.sender.avatarURL} 
+            alt ={"no image"} 
+            className="user-image" />    
+          {message.sender.name}
+        </div>
+        <div className = "message-time">
            {message.createdAt.slice(0, -4)}
         </div>
         <a href={message.text.substr(5)} target="blank">
@@ -65,23 +62,22 @@ const Message = ({message,currentUser})=> {
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
-      </div>
+    </div>
     );
   }
   return (
-      <div className="Message">
-       <div className = "message-name">
-       <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"
-         />
-           {message.sender.name}
-           </div>
-           <div className = "message-time">
-           {message.createdAt.slice(0, -4)}
+    <div className="Message">
+        <div className = "message-name">
+          <img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
+            {message.sender.name}
+        </div>
+        <div className = "message-time">
+            {message.createdAt.slice(0, -4)}
         </div>
         <div className = "message-text"> 
-          {message.text}
+            {message.text}
         </div>
-      </div>
+    </div>
     );
 }
  
