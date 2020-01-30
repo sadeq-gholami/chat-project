@@ -17,7 +17,7 @@ class Group extends Component {
             return;
         }
         e.preventDefault();
-        this.props.closepop()
+        this.props.closepopgroup()
         this.props.createRoom(this.state.groupName)
         this.setState({
             groupName:""
@@ -29,6 +29,7 @@ class Group extends Component {
     }
     handleSubmitTojoin=(e)=>{
         e.preventDefault();
+        this.props.closepopgroup()
         this.props.joinaroom(this.state.roomtojoin)
         this.setState({
             roomtojoin:""
@@ -46,7 +47,8 @@ class Group extends Component {
             onChange ={this.handlechange} 
                     value={this.state.groupName}
                     placeholder="Enter Name"
-                    type="text"/>
+                    type="text"
+                    maxLength={5}/>
             <button id = "groupbtn" onClick={this.handleSubmit} type="button" >Create new Room</button> 
             </form>
             </div>

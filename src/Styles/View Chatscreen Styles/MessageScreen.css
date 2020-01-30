@@ -1,7 +1,8 @@
 .messagescreen{
     
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
 
 }

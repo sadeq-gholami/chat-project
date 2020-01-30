@@ -1,20 +1,33 @@
 .chatform  {
   background: white;
   display: flex;
+  
 }
 .chatform input::placeholder {
   color: rgba(0, 0, 0, 0.692);
 }
 .chatform input {
-  width: 90%;
+  width: 100%;
   padding: 15px 10px;
   margin: 0;
-  border-style: none;
+  border: none;
   background: rgb(245, 245, 245);
   font-weight: 400;
   font-size: medium;
-  border-radius: 35px;
-
+  flex-grow: 2;
+}
+.chatform input:focus{
+  outline: none;
+}
+.something{
+  display: flex;
+  flex-direction: row;
+  padding:2px;
+  width: 100%;
+}
+.send{
+  border: none;
+  background: rgb(245, 245, 245);
 }
 .allpicture .test{
   visibility: hidden;

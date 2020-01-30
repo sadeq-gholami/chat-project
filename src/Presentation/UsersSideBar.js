@@ -22,7 +22,6 @@ class UsersSideBar extends Component {
                 <h3>users</h3>
                 <div key={uuid()} className="user-box">
                     <table>
-                        <thead><tr><th/><th/><th/></tr></thead>
                         <tbody>
                         {this.props.users.map((user) => {
                             return (

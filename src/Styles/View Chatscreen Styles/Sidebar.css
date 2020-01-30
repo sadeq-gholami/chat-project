@@ -18,7 +18,7 @@
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 30px;
-  margin: 0 20px 0 20px;
+  margin: 0 100px 0 100px;
 }
 @media screen and (max-width: 600px){
   .content-sidebar h2{
@@ -33,9 +33,9 @@
   
   padding: 20px;
   font-family: "Georgia", serif;
+  font-size: 1.5em;
   cursor: pointer;
-  padding-left: 30px;
-  padding-right: 100px;
+  text-align: center;
   color: rgba(252, 224, 181, 0.827);
   display: block;
 }
@@ -75,8 +75,6 @@
 .creategroupe input::placeholder {
   text-align: center;
   color: black;
-
-
   border-bottom:none;
   border-width: 1px 1px 1px 1px;
   background-color: grey;
@@ -89,13 +87,44 @@
   opacity: 0.6;
 }
 
-.content-sidebar .addroom:hover{
-background-color: #2195F6;
-opacity: 0.4;
-}
-
 .content-sidebar .addroom #roomname{
   color: white ;
   font-family: arial;
   padding-left: 11px;
 }
+.btnside{
+  display: block;
+  border:none;
+  width: 100%;
+  background-color: #f4511e;
+  opacity: 0.6;
+  font-size: 1rem;
+  padding: 15px;
+  transition: all 0.7s;
+  cursor: pointer;
+  margin-top: 20px;
+  }
+  .btnside span {
+    display: inline-block;
+    position: relative;
+    transition: 0.7s;
+  }
+  .btnside span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    right: -20px;
+    transition: 0.7s;
+  }
+  
+  .btnside:hover{
+    opacity: 1;
+  }
+  .btnside:hover span {
+    padding-right: 25px;
+  }
+  
+  .btnside:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
