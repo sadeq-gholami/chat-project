@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../Styles/View Chatscreen Styles/Sidebar.css';
-import * as PropTypes from "prop-types";
 
 class Sidebar extends React.Component{
     
