@@ -75,8 +75,6 @@
 .creategroupe input::placeholder {
   text-align: center;
   color: black;
-
-
   border-bottom:none;
   border-width: 1px 1px 1px 1px;
   background-color: grey;

@@ -32,9 +32,17 @@ class Phtotos extends Component {
             );
         }else{
             return(
-                <div className="Photos">
-                   <div className="app-name"> {this.props.model.currentRoomName}</div>
-                <div className ="no-images">no images in current room please select another room</div>
+                <div className="no-photos">
+                    <div className="app-name">
+                   {this.props.model.currentRoomName}
+                    <img  width="100" className="right"
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/>
+                    <img  width="100" className="left"
+                            src ={ require('../images/crown12.png')}
+                            alt ={"could not load image"}/>
+                            </div>
+                     <div className="no-images">No images in current room please select another room!</div>
                 </div>
             )
         }
