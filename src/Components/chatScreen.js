@@ -6,10 +6,7 @@ import ChatForm from '../Presentation/ChatForm';
 import Header from '../Presentation/Header';
 import UsersSideBar from '../Presentation/UsersSideBar';
 import RoomSettings from "../Presentation/Roomsettings";
-
-
 import Group from '../Presentation/Group';
-import Roomsettings from '../Presentation/Roomsettings'; 
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import SendPicPopUp from '../Presentation/SendPicPopUp';
 class ChatScreen extends Component {
@@ -285,35 +282,27 @@ class ChatScreen extends Component {
 
                 <RoomSettings
                     leaveRoom={roomId => this.leaveroomID()}
-                    deleteRoom={roomId => this.deleteRoom()}
                     addUserToRoom={user => this.addUserToRoom(user)}
                     removeUserFromRoom={user => this.removeUserFromRoom(user)}/>
-            <div className={"groupbody-model"}>
-                    <div className={"groupbody"}>
-                    <div className="close" onClick={this.closePopupGroup}>+</div>
-                    <Group closepopgroup={this.closePopupGroup} joinaroom={roomid=>this.joinaroom(roomid)} currentUser={this.state.currentUser} createRoom={name=>this.createRoom(name)}/>
+                    <div className={"groupbody-model"}>
+                        <div className={"groupbody"}>
+                            <div className="close" onClick={this.closePopupGroup}>+</div>
+                            <Group closepopgroup={this.closePopupGroup} joinaroom={roomid=>this.joinaroom(roomid)} currentUser={this.state.currentUser} createRoom={name=>this.createRoom(name)}/>
+                        </div>
                     </div>
-                </div>
 
-                <div className={"invitebody-model"}>
-                    <div className={"invitebody"}>
-                    <div className="close" onClick={this.closePopupInvite}>+</div>
-                    <div className="invlink">
-                        <p>Copy link and send to friend!</p>
-                    <input className="createinvinput"type="text"value={this.state.currentRoomId}/>
-                    <CopyToClipboard text={this.state.currentRoomId}>
-                    <button id="copybtn">Copy</button>
-                  </CopyToClipboard>
+                    <div className={"invitebody-model"}>
+                        <div className={"invitebody"}>
+                            <div className="close" onClick={this.closePopupInvite}>+</div>
+                            <div className="invlink">
+                                <p>Copy link and send to friend!</p>
+                                <input className="createinvinput"type="text"value={this.state.currentRoomId}/>
+                                <CopyToClipboard text={this.state.currentRoomId}>
+                                    <button id="copybtn">Copy</button>
+                                </CopyToClipboard>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
-
-                <Roomsettings   leaveRoom={roomId=>this.leaveroomID()} 
-                                joinroom={roomId=>this.joinaroom(roomId)}
-                                addusertoroom={user=>this.addusertoroom(user)}
-                                removeUserFromRoom={user=>this.removeUserFromRoom(user)}
-                                users={this.state.users}/>
-                
             </div>
         );
     }
