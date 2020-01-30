@@ -38,7 +38,7 @@ The styles folder contains the css for the components in the presentation folder
 ##### Server handles file transfers.
 
 ### Unchecked
-#####nothing
+##### nothing
 
 ## Learn More
 
