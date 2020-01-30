@@ -33,7 +33,7 @@ class RoomSettings extends Component {
         return (
             <div className={"room-settings"}>
                 <div className={"bg-settings"}>
-                    <div className={"settings-popup"}>
+                    <div className={"settings-popup2"}>
                         <div className="close" onClick={this.closePopup}>+</div>
                         <table>
                             <tbody>

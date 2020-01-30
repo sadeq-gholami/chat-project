@@ -26,13 +26,6 @@ const Message = ({message,currentUser})=> {
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
-        <div className ="tooltip2">
-<span className="tooltip2text" >
-
-<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
-   {message.sender.name}
-   </span>
-   </div>
       </div>
     );
   }
@@ -50,13 +43,6 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
-        <div className ="tooltip2">
-<span className="tooltip2text" >
-
-<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
-   {message.sender.name}
-   </span>
-   </div>
       </div>
     );
   }
@@ -79,13 +65,6 @@ const Message = ({message,currentUser})=> {
                 alt ={"could not load image"}
                 className="sent-image"/>
         </a>
-        <div className ="tooltip2">
-<span className="tooltip2text" >
-
-<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
-   {message.sender.name}
-   </span>
-   </div>
       </div>
     );
   }
@@ -102,13 +81,6 @@ const Message = ({message,currentUser})=> {
         <div className = "message-text"> 
           {message.text}
         </div>
-        <div className ="tooltip2">
-<span className="tooltip2text" >
-
-<img src ={message.sender.avatarURL} alt ={"no image"} className="user-image"/>
-   {message.sender.name}
-   </span>
-   </div>
       </div>
     );
 }

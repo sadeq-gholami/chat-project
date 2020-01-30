@@ -26,7 +26,6 @@
     padding-top: 5px;
     text-align: center;
     font-weight: 900;
-
 }
 
 .no-images{
@@ -44,11 +43,11 @@
 }
 @media screen and (max-width: 600px){
     .image{
-        width: 250px;
+        width: 200px;
     }
 }
 .image-len{
-    max-height: 250px;
+    max-height: 200px;
 }
 .image:hover{
     color: black;

@@ -13,7 +13,7 @@
   color: rgb(162, 163, 163);
   opacity: 0.9;
   
-  margin-left: 5px;
+  margin-left: 2px;
   margin-top: 9px;
 }
 .user-pic{
@@ -22,32 +22,6 @@
 }
 .message-name:hover{
   cursor: pointer;
-}
-.tooltip2{
-  padding-right: 50px;
-  float: right;
-}
-.tooltip2 .tooltip2text {
-  visibility: hidden;
-  font-weight: 30;
-  font-size: 12px;
-  width: 200px;
-  height:150px ;
-  opacity: 0.4;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
- 
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
-  margin-left: -65px;
-}
-
-.tooltip2:hover .tooltip2text {
-  visibility: visible;
 }
   .Message .message-time{
     font-size: 8px;
@@ -74,8 +48,6 @@
 .userMessage .message-name{
   font-size: 15px;
   color: rgb(162, 163, 163);
-  opacity: 0.9;
-  
   margin-right: 5px;
   margin-top: 9px;
 
