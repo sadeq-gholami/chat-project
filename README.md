@@ -1,3 +1,4 @@
+## Royal Chat
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Project Description
@@ -30,14 +31,14 @@ The styles folder contains the css for the components in the presentation folder
 ### Checked
 ##### Succeeded with simple API calls e.g sending messages, creating users and creating rooms.
 ##### Fixed own server for handling authentication.
-
-### Unchecked
 ##### No spaghetti-like code.
-##### To-do list for the students.
-##### Sending files and pictures.
+##### Sending pictures.
 ##### user icon.
 ##### Being able to see user status.
 ##### Server handles file transfers.
+
+### Unchecked
+##### nothing
 
 ## Learn More
 
