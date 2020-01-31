@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Styles/View Chatscreen Styles/Group.css';
+import '../Styles/ViewChatscreenStyles/Group.css';
 class Group extends Component {
     constructor(){
         super();

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Styles/View Chatscreen Styles/Sidebar.css';
+import '../Styles/ViewChatscreenStyles/Sidebar.css';
 
 class Sidebar extends React.Component{
     

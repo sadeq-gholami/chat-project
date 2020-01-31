@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../Styles/View Chatscreen Styles/Header.css';
+import '../Styles/ViewChatscreenStyles/Header.css';
 import {Link} from "react-router-dom";
 class Header extends Component {
     state = { 

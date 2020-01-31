@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../Styles/View Chatscreen Styles/Message.css';
+import '../Styles/ViewChatscreenStyles/Message.css';
 
 const Message = ({message,currentUser})=> {
   if (message.text.includes(112)){

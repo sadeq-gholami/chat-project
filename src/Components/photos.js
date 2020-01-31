@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Styles/View PhotoScreen/Photos.css';
+import '../Styles/ViewPhotoScreen/Photos.css';
 class Phtotos extends Component {
     state= {}
     render() { 

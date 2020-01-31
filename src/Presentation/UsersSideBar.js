@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../Styles/Gstyle.css';
-import '../Styles/View Chatscreen Styles/RoomSetting.css'
+import '../Styles/ViewChatscreenStyles/RoomSetting.css'
 import uuid from 'react-uuid'
 import ImageWithDefault from "./ImageWithDefault";
 import no_profile_picture from "../images/no_profile_picture.png";

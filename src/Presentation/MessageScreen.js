@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Message from './Message'
-import '../Styles/View Chatscreen Styles/MessageScreen.css';
+import '../Styles/ViewChatscreenStyles/MessageScreen.css';
 import LoadingIndicator from './LoadingIndicator';
 
 class MessageScreen extends React.Component{

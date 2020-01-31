@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../Presentation/Login'
 import ReactDOM from 'react-dom';
-import '../Styles/View Home Styles/Home.css';
+import '../Styles/ViewHomeStyles/Home.css';
 import SignupPopup from '../Presentation/signupPopup';
 class Home extends Component {
     constructor(){
